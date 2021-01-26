@@ -7,10 +7,16 @@ import { BREAKPOINTS, SIZES, STEP_GRID } from '../../constants';
 const CardCarouselStyled = styled.div`
   width: 100%;
   ${STEP_GRID.full}
-  @media screen and ${BREAKPOINTS.tablet} {
-    > div.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // margin: 0 4rem;
+  > div.carousel-provider {
+    max-width: 80vw;
+    @media screen and ${BREAKPOINTS.tablet} {
       margin: 0 ${SIZES.spacerXl}rem;
       border: 3px solid #000;
+      max-width: 400px;
     }
   }
   .carousel__slider {

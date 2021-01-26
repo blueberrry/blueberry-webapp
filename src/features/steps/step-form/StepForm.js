@@ -35,10 +35,6 @@ const StepFormHeaderStyled = styled.div`
 `;
 
 const StepForm = () => {
-  const [formStep, setFormStep] = useState(1);
-  const incrementFormStep = () => setFormStep((prevStep) => prevStep + 1);
-  const decrementFormStep = () => setFormStep((prevStep) => prevStep - 1);
-
   const [form, setForm] = useState({
     step: 1,
     budgetType: 'monthly',
