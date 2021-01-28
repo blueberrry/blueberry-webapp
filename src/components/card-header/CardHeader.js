@@ -10,22 +10,12 @@ const CardHeaderStyled = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  ${(props) => props.width100 && STEP_GRID.full}
+  ${STEP_GRID.fullWidth}
   @media screen and ${BREAKPOINTS.tablet} {
     > h2 > span.card-header {
       font-size: ${SIZES.fntLg}rem;
     }
-    ${(props) =>
-      props.width100
-        ? ` `
-        : ` grid-column: 1 / span 1; justify-content: flex-end; 
-            > h2 {
-              margin-left: auto;
-              ${OFFSETS.rightLg}
-              border: 5px solid red;
-          }
-    `}
-  } // end of media query
+  }
 `;
 
 const CardHeader = ({ headerText, fullWidth = false, subHeaderText }) => {

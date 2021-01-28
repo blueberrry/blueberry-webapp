@@ -1,6 +1,6 @@
 import React from 'react';
 import carDrivingAway from '../../../assets/images/car-driving-away.svg';
-import { Action, CardImage, CardHeader, CardRange, CardSwitch, CardFooter } from '../../../components';
+import { CardImage, CardHeader, CardMain, CardRange, CardSwitch, CardFooter } from '../../../components';
 
 const Step3 = ({
   decrementFormStep,
@@ -37,11 +37,12 @@ const Step3 = ({
   const switchItems = ['daily', 'yearly'];
   return (
     <>
-      <CardHeader headerText='Roughly how many miles will you be driving?' />
+      <CardHeader headerText='Roughly how many miles do you drive?' />
       <CardImage src={carDrivingAway} alt='Car driving off into the distance.' />
-      <CardSwitch switchItems={switchItems} checkedItem={milesType} handleSwitchChange={handleChange('milesType')} />
-      {/* <CardRange /> */}
-      <MilesRange />
+      <CardMain>
+        <CardSwitch switchItems={switchItems} checkedItem={milesType} handleSwitchChange={handleChange('milesType')} />
+        <MilesRange />
+      </CardMain>
       <CardFooter decrementFormStep={decrementFormStep} incrementFormStep={incrementFormStep} />
     </>
   );

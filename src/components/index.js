@@ -9,6 +9,9 @@ import CardFooter from './card-footer/CardFooter';
 import CardSwitch from './card-switch/CardSwitch';
 import CardCarousel from './card-carousel/CardCarousel';
 import Carousel from './carousel/Carousel';
+import MultiChoice from './multi-choice/MultiChoice';
+import CardMulti from './card-multi/CardMulti';
+import CardMain from './card-main/CardMain';
 
 export {
   Action,
@@ -16,10 +19,13 @@ export {
   Carousel,
   Card,
   CardCarousel,
+  CardMain,
   CardImage,
   CardFooter,
   CardHeader,
   CardRange,
   CardSwitch,
+  CardMulti,
+  MultiChoice,
   Text,
 };

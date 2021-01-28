@@ -5,6 +5,7 @@ import FormLogger from '../../../components/FormLogger';
 import Step1 from '../step-1/Step1';
 import Step2 from '../step-2/Step2';
 import Step3 from '../step-3/Step3';
+import Step4 from '../step-4/Step4';
 import { BREAKPOINTS, COLOURS, SIZES } from '../../../constants';
 import { Card, FONTS, Text } from '../../../components';
 
@@ -133,7 +134,7 @@ const StepForm = () => {
           />
         );
       default:
-        return null;
+        return <Step4 decrementFormStep={prevStep} incrementFormStep={nextStep} handleChange={handleChange} />;
     }
   };
 

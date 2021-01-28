@@ -1,6 +1,15 @@
 import React from 'react';
-import bolt from '../../../assets/images/bolt.svg';
-import { Action, CardImage, CardHeader, CardRange, CardSwitch, CardFooter } from '../../../components';
+import chargingPoint from '../../../assets/images/charging-point.svg';
+import {
+  Action,
+  CardImage,
+  CardHeader,
+  CardRange,
+  CardSwitch,
+  CardMain,
+  CardFooter,
+  CardMulti,
+} from '../../../components';
 
 const Step4 = ({
   decrementFormStep,
@@ -27,11 +36,14 @@ const Step4 = ({
   // const switchItems = ['daily', 'yearly'];
   return (
     <>
-      <CardHeader headerText='How important is car charging time?' />
-      <CardImage src={bolt} alt='Bolt of electricity' />
+      <CardHeader headerText='Where will you usually re-charge your car?' />
+      <CardImage src={chargingPoint} alt='Bolt of electricity' style={{ maxWidth: '300px !important' }} />
       {/* <CardSwitch switchItems={switchItems} checkedItem={milesType} handleSwitchChange={handleChange('milesType')} /> */}
       {/* <CardRange /> */}
-      <ChargingTimeRange />
+      {/* <ChargingTimeRange /> */}
+      <CardMain>
+        <CardMulti />
+      </CardMain>
       <CardFooter decrementFormStep={decrementFormStep} incrementFormStep={incrementFormStep} />
     </>
   );

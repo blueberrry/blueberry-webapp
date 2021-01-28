@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import { CarouselProvider, Slide, Slider, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import { Slide, Slider } from 'pure-react-carousel';
 import { CarouselContext } from 'pure-react-carousel';
 import { FormValuesContext } from '../../context/FormValuesContext';
 import 'pure-react-carousel/dist/react-carousel.es.css';

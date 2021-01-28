@@ -43,7 +43,7 @@ const Step2 = ({ incrementFormStep }) => {
   return (
     <>
       <CardHeader
-        headerText='What type of car are you looking for?'
+        headerText='What size car do you need?'
         fullWidth
         subHeaderText='Choose as many car types as you like'
       />

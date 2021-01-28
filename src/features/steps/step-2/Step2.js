@@ -1,6 +1,6 @@
 import React from 'react';
 import pigImg from '../../../assets/images/pig.svg';
-import { CardImage, CardHeader, CardRange, CardSwitch, CardFooter } from '../../../components';
+import { CardImage, CardHeader, CardMain, CardRange, CardSwitch, CardFooter } from '../../../components';
 
 const Step2 = ({
   decrementFormStep,
@@ -45,8 +45,14 @@ const Step2 = ({
     <>
       <CardHeader headerText='Whats your budget?' />
       <CardImage src={pigImg} alt='Pig' />
-      <CardSwitch switchItems={switchItems} checkedItem={budgetType} handleSwitchChange={handleChange('budgetType')} />
-      <BudgetRange />
+      <CardMain>
+        <CardSwitch
+          switchItems={switchItems}
+          checkedItem={budgetType}
+          handleSwitchChange={handleChange('budgetType')}
+        />
+        <BudgetRange />
+      </CardMain>
       <CardFooter decrementFormStep={decrementFormStep} incrementFormStep={incrementFormStep} />
     </>
   );

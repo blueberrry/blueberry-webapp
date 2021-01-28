@@ -6,7 +6,7 @@ import { BREAKPOINTS, SIZES, STEP_GRID } from '../../constants';
 
 const CardCarouselStyled = styled.div`
   width: 100%;
-  ${STEP_GRID.full}
+  ${STEP_GRID.fullWidth}
   display: flex;
   justify-content: center;
   align-items: center;

@@ -2,15 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import Text from '../text/Text';
 import Range from '../range/Range';
-import { BREAKPOINTS, COLOURS, OFFSETS, SIZES } from '../../constants';
+import { BREAKPOINTS, SIZES } from '../../constants';
 
 const CardRangeStyled = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   @media screen and ${BREAKPOINTS.tablet} {
-    ${OFFSETS.leftLg}
     > h3 {
       > span.range-header {
         font-size: ${SIZES.fntLg};
