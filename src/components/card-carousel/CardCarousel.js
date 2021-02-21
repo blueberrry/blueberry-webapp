@@ -10,9 +10,8 @@ const CardCarouselStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  // margin: 0 4rem;
   > div.carousel-provider {
-    max-width: 80vw;
+    max-width: 67vw;
     @media screen and ${BREAKPOINTS.tablet} {
       margin: 0 ${SIZES.spacerXl}rem;
       border: 3px solid #000;

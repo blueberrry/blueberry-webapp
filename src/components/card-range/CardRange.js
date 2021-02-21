@@ -1,28 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
+import classNames from 'classnames';
 import Text from '../text/Text';
 import Range from '../range/Range';
-import { BREAKPOINTS, SIZES } from '../../constants';
+import { BREAKPOINTS, COLOURS, SIZES } from '../../constants';
 
 const CardRangeStyled = styled.section`
-  @media screen and ${BREAKPOINTS.tablet} {
-    > h3 {
-      > span.range-header {
-        font-size: ${SIZES.fntLg};
-      }
-    }
+  > h3 {
+    margin-top: ${SIZES.spacerMd}rem;
   }
 `;
 
-const CardRange = ({ rangeTitle, steps, rangeValue, handleRangeChange }) => {
+const CardRange = ({ rangeTitle, steps, rangeValue, handleRangeChange, labelSymbol }) => {
   return (
     <CardRangeStyled>
-      <h3>
-        <Text type='h3' className='range-header'>
-          {rangeTitle}
-        </Text>
-      </h3>
-      <Range steps={steps} handleRangeChange={handleRangeChange} value={rangeValue} />
+      <Range steps={steps} handleRangeChange={handleRangeChange} value={rangeValue} labelSymbol={labelSymbol} />
+      <Text type='h3' className='range-header' style={{ textAlign: 'center' }} colour={COLOURS.primary}>
+        {rangeTitle}
+      </Text>
     </CardRangeStyled>
   );
 };

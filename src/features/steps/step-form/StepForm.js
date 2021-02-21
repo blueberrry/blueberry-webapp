@@ -7,9 +7,10 @@ import Step2 from '../step-2/Step2';
 import Step3 from '../step-3/Step3';
 import Step4 from '../step-4/Step4';
 import { BREAKPOINTS, COLOURS, SIZES } from '../../../constants';
-import { Card, FONTS, Text } from '../../../components';
+import { Card, FONTS, Text, ProgressBar } from '../../../components';
 
 const StepFormStyled = styled.form`
+  min-height: inherit;
   display: grid;
   grid-template-columns: 1fr;
   align-content: space-between;
@@ -18,7 +19,6 @@ const StepFormStyled = styled.form`
     grid-template-columns: repeat(2, 1fr);
   }
   border-radius: ${SIZES.crdBrRd}rem;
-  height: 70vh;
   > * {
     border: 1px solid red;
   }
@@ -26,12 +26,8 @@ const StepFormStyled = styled.form`
 
 const StepFormHeaderStyled = styled.div`
   margin: ${SIZES.spacerSm}rem ${SIZES.spacerXSm}rem;
-  @media screen and ${BREAKPOINTS.tablet} {
-    > h1 {
-      > span.article-header {
-        font-size: ${SIZES.fntLg}rem;
-      }
-    }
+  > .progress-bar {
+    margin-top: ${SIZES.spacerXSm}rem;
   }
 `;
 
@@ -45,6 +41,7 @@ const StepForm = () => {
     milesDailyId: 6,
     milesYearlyId: 6,
     chargingTime: 10,
+    chargingLocationId: 1,
   });
 
   const nextStep = () => {
@@ -61,10 +58,18 @@ const StepForm = () => {
     });
   };
 
-  const handleChange = (input) => (e) => {
+  const skipStep = () => {
     setForm({
       ...form,
-      [input]: e.target.value,
+      step: form.step + 2,
+    });
+  };
+
+  const handleChange = (input) => (e) => {
+    if (e.currentTarget) e.preventDefault();
+    setForm({
+      ...form,
+      [input]: e.target ? e.target.value || e.currentTarget.value : e,
     });
   };
 
@@ -99,16 +104,23 @@ const StepForm = () => {
     },
   };
 
+  const CHARGING_LOCATION = {
+    1: 'Home',
+    2: 'Local public charging point',
+    3: 'Charging points during trips',
+  };
+
   const CurrentStep = ({ step }) => {
     switch (step) {
       case 1:
-        return <Step1 incrementFormStep={nextStep} />;
+        return <Step1 decrementFormStep={prevStep} incrementFormStep={nextStep} skip={skipStep} step={step} />;
       case 2:
         return (
           <Step2
             decrementFormStep={prevStep}
             incrementFormStep={nextStep}
             handleChange={handleChange}
+            step={step}
             budgetType={form.budgetType}
             budgetMonthlySteps={RANGE_VALUES.budgetMonthly}
             budgetMonthlyId={form.budgetMonthlyId}
@@ -123,6 +135,8 @@ const StepForm = () => {
           <Step3
             decrementFormStep={prevStep}
             incrementFormStep={nextStep}
+            skip={skipStep}
+            step={step}
             handleChange={handleChange}
             milesType={form.milesType}
             milesDailySteps={RANGE_VALUES.milesDaily}
@@ -133,19 +147,29 @@ const StepForm = () => {
             milesYearly={RANGE_VALUES.milesYearly[form.milesYearlyId]}
           />
         );
+      case 4:
+        return (
+          <Step4
+            decrementFormStep={prevStep}
+            incrementFormStep={nextStep}
+            skip={skipStep}
+            step={step}
+            handleChange={handleChange}
+            activeId={JSON.parse(form.chargingLocationId)}
+          />
+        );
       default:
-        return <Step4 decrementFormStep={prevStep} incrementFormStep={nextStep} handleChange={handleChange} />;
+        return null;
     }
   };
 
   return (
     <>
       <StepFormHeaderStyled>
-        <h1>
-          <Text type='h1' colour={COLOURS.white} className='article-header'>
-            Question {form.step} of 5
-          </Text>
-        </h1>
+        <Text type='h1' colour={COLOURS.white} className='article-header'>
+          Question {form.step} of 5
+        </Text>
+        <ProgressBar />
       </StepFormHeaderStyled>
       <Card>
         <StepFormStyled>
@@ -159,6 +183,8 @@ const StepForm = () => {
         budgetFull={RANGE_VALUES.budgetFull[form.budgetFullId]}
         milesType={form.milesType}
         milesDaily={RANGE_VALUES.milesDaily[form.milesDailyId]}
+        milesYearly={RANGE_VALUES.milesYearly[form.milesYearlyId]}
+        chargingLocation={CHARGING_LOCATION[form.chargingLocationId]}
       />
     </>
   );

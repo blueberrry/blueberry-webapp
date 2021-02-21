@@ -1,31 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import { BREAKPOINTS, COLOURS, SIZES } from '../../constants';
+import Switch from '../switch/Switch';
 
-const CardSwitchStyled = styled.section``;
+const CardSwitchStyled = styled.section`
+  margin-bottom: ${SIZES.spacerMd}rem;
+`;
 
 const CardSwitch = ({ switchItems, checkedItem, handleSwitchChange }) => {
-  const SwitchItems = () =>
-    switchItems.map((item) => {
-      return (
-        <>
-          <input
-            type='radio'
-            id={item}
-            value={item}
-            checked={checkedItem === item}
-            defaultChecked={true}
-            onChange={handleSwitchChange}
-          />
-          <label htmlFor={item}>{item}</label>
-        </>
-      );
-    });
-
   return (
     <CardSwitchStyled>
-      <div className='switch'>
-        <SwitchItems />
-      </div>
+      <Switch switchItems={switchItems} checkedItem={checkedItem} handleSwitchChange={handleSwitchChange} />
     </CardSwitchStyled>
   );
 };

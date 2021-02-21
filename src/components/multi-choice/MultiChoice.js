@@ -1,38 +1,55 @@
 import React from 'react';
 import styled from 'styled-components';
 import chargingPoint from '../../assets/images/charging-point.svg';
-import { SIZES, RESETS } from '../../constants';
+import { BREAKPOINTS, COLOURS, SIZES, RESETS } from '../../constants';
+import { Text } from '../../components';
 
 const ChoiceButtonStyled = styled.button`
   ${RESETS.btnReset}
-  border-radius: ${SIZES.crdBrRd}rem;
-  border: 1px solid green;
+  max-width: 100%;
+  min-height: 5.625rem;
+  border-radius: 0.75rem;
+  border: 1px solid ${COLOURS.primary};
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   text-align: left;
-  max-width: 100%;
-  margin-bottom: ${SIZES.spacerMd}rem;
+  margin-bottom: ${SIZES.spacerXXSm}rem;
+  @media screen and ${BREAKPOINTS.tablet} {
+    margin-bottom: ${SIZES.spacerXSm}rem;
+  }
+  padding: 0 ${SIZES.spacerXXSm}rem;
+  background: ${COLOURS.white};
+  ${(props) => props.isActive && `background: ${COLOURS.primary}; color: ${COLOURS.white};`}
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
-const MultiChoice = () => {
-  const choiceSelections = [
-    { icon: chargingPoint, title: 'Home', info: 'Using your own charger \n (We assume this is A.C. type)' },
-    { icon: chargingPoint, title: 'Local public charging point', info: 'Using a charging point close to your home' },
-    {
-      icon: chargingPoint,
-      title: 'Charging points during trips',
-      info: 'Using a range of public charging points on the go',
-    },
-  ];
-
-  return choiceSelections.map((selection) => {
+const MultiChoice = ({ choiceSelections, activeId, handleMultiChange }) => {
+  return choiceSelections.map((selection, index) => {
+    const isActive = activeId === selection.id;
     return (
-      <ChoiceButtonStyled>
-        <img src={selection.icon} alt='' style={{ flex: '1 0 15%' }} />
-        <div style={{ flex: '1 0 85%', border: '1px solid green;' }}>
-          <p>{selection.title}</p>
-          <p>{selection.info}</p>
+      <ChoiceButtonStyled
+        value={selection.id}
+        isActive={isActive}
+        onClick={handleMultiChange('chargingLocationId')}
+        key={`${selection.id}-blueberry-${index}`}>
+        <div style={{ width: '15%' }}>
+          <img src={selection.icon} alt='' />
+        </div>
+        <div
+          style={{
+            width: `calc(85% - ${SIZES.spacerXXSm}rem`,
+            border: '1px solid green;',
+            paddingLeft: `${SIZES.spacerXXSm}rem`,
+          }}>
+          <Text type='h4' colour={isActive ? COLOURS.white : COLOURS.primary}>
+            {selection.title}
+          </Text>
+          <Text type='body' colour={isActive ? COLOURS.white : COLOURS.primary} className='small'>
+            {selection.info}
+          </Text>
         </div>
       </ChoiceButtonStyled>
     );

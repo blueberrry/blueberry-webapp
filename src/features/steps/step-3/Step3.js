@@ -5,6 +5,8 @@ import { CardImage, CardHeader, CardMain, CardRange, CardSwitch, CardFooter } fr
 const Step3 = ({
   decrementFormStep,
   incrementFormStep,
+  skip,
+  step,
   milesType,
   milesDaily,
   milesDailySteps,
@@ -43,7 +45,7 @@ const Step3 = ({
         <CardSwitch switchItems={switchItems} checkedItem={milesType} handleSwitchChange={handleChange('milesType')} />
         <MilesRange />
       </CardMain>
-      <CardFooter decrementFormStep={decrementFormStep} incrementFormStep={incrementFormStep} />
+      <CardFooter decrementFormStep={decrementFormStep} incrementFormStep={incrementFormStep} skip={skip} step={step} />
     </>
   );
 };

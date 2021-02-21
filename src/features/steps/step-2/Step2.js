@@ -1,10 +1,13 @@
 import React from 'react';
 import pigImg from '../../../assets/images/pig.svg';
 import { CardImage, CardHeader, CardMain, CardRange, CardSwitch, CardFooter } from '../../../components';
+import { CURRENCY_SYMBOL } from '../../../constants';
 
 const Step2 = ({
   decrementFormStep,
   incrementFormStep,
+  skip,
+  step,
   budgetType,
   budgetMonthlySteps,
   budgetMonthlyId,
@@ -14,10 +17,6 @@ const Step2 = ({
   budgetFull,
   handleChange,
 }) => {
-  // const handleBudgetChange = (budgetType) => (e) => {
-  //   setBudgetAmount(RANGE_VALUES.budgetSteps[e.target.value]);
-  // };
-
   const BudgetRange = () => {
     if (budgetType === 'monthly')
       return (
@@ -26,6 +25,7 @@ const Step2 = ({
           steps={budgetMonthlySteps}
           handleRangeChange={handleChange('budgetMonthlyId')}
           rangeValue={budgetMonthlyId}
+          labelSymbol={CURRENCY_SYMBOL}
         />
       );
     if (budgetType === 'inFull')
@@ -35,6 +35,7 @@ const Step2 = ({
           steps={budgetFullSteps}
           handleRangeChange={handleChange('budgetFullId')}
           rangeValue={budgetFullId}
+          labelSymbol={CURRENCY_SYMBOL}
         />
       );
   };
@@ -53,7 +54,7 @@ const Step2 = ({
         />
         <BudgetRange />
       </CardMain>
-      <CardFooter decrementFormStep={decrementFormStep} incrementFormStep={incrementFormStep} />
+      <CardFooter decrementFormStep={decrementFormStep} incrementFormStep={incrementFormStep} skip={skip} step={step} />
     </>
   );
 };

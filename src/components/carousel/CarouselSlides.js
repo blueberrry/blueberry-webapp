@@ -1,11 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import { Slide, Slider } from 'pure-react-carousel';
-import { CarouselContext } from 'pure-react-carousel';
+import { Slide, Slider, CarouselContext } from 'pure-react-carousel';
 import { FormValuesContext } from '../../context/FormValuesContext';
 import 'pure-react-carousel/dist/react-carousel.es.css';
+import { SIZES } from '../../constants';
 import Text from '../text/Text';
 import Image from '../image/Image';
+import './carousel-slides.css';
 
 const CarouselSlideStyled = styled.div`
   display: flex;
@@ -13,8 +14,9 @@ const CarouselSlideStyled = styled.div`
   justify-content: center;
   align-items: center;
   border: 4px solid blue;
-  min-height: 300px;
-  margin: 2rem;
+  // min-height: 300px;
+  height: 100%;
+  margin: ${SIZES.carouselSm}rem;
 `;
 
 const Carousel = ({ slides = [] }) => {
@@ -23,14 +25,14 @@ const Carousel = ({ slides = [] }) => {
       <Slide
         index={index}
         key={`${slide.slideId}-${index}`}
-        classNameHidden='hidden-slide'
-        classNameVisible='visible-slide'>
-        <CarouselSlideStyled>
+        classNameHidden='inactive-slide'
+        classNameVisible='active-slide'>
+        <CarouselSlideStyled key={`${slide.slideId}-${index}`}>
           <Image src={slide.img} alt='slide image' />
           <Text>{slide.title}</Text>
-          <div class='slide-icons'>
-            {slide.icons.map((icon) => (
-              <img src={icon} alt='' />
+          <div className='slide-icons'>
+            {slide.icons.map((icon, index) => (
+              <img src={icon} alt='' key={`carousel-img-${index}`} />
             ))}
           </div>
           <Text>{slide.info}</Text>

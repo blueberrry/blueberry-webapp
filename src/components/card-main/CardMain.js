@@ -9,9 +9,10 @@ const CardMainStyled = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: ${SIZES.spacerLg}rem;
+  margin: ${SIZES.spacerXSm}rem;
   @media screen and ${BREAKPOINTS.tablet} {
     ${STEP_GRID.rhs}
+    margin: ${SIZES.spacerLg}rem;
   }
 `;
 const CardMain = ({ children }) => {

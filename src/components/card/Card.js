@@ -5,13 +5,15 @@ import { BREAKPOINTS, COLOURS, SIZES, RESETS } from '../../constants';
 import { Text } from '../text/Text';
 
 const StyledCard = styled.section`
+  min-height: 40.5rem;
+  border-radius: ${SIZES.crdBrRd}rem;
   @media screen and ${BREAKPOINTS.tablet} {
     max-width: 80rem;
+    min-height: 40.5rem;
   }
-  border-radius: ${SIZES.crdBrRd}rem;
-  height: 70vh;
   background-color: ${COLOURS.white};
-  margin: 0 auto;
+  margin: ${SIZES.spacerXSm}rem;
+  // margin: 0 auto;
   > * {
     border: 1px solid red;
   }

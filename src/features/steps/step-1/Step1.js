@@ -13,7 +13,7 @@ import familyLuggage2 from '../../../assets/images/family-luggage_02.svg';
 import familyLuggage3 from '../../../assets/images/family-luggage_03.svg';
 import familyLuggage4 from '../../../assets/images/family-luggage_04.svg';
 
-const Step2 = ({ incrementFormStep }) => {
+const Step1 = ({ decrementFormStep, incrementFormStep, skip, step }) => {
   const carTypes = [
     {
       id: 123,
@@ -48,9 +48,9 @@ const Step2 = ({ incrementFormStep }) => {
         subHeaderText='Choose as many car types as you like'
       />
       <CardCarousel slides={carTypes} />
-      <CardFooter incrementFormStep={incrementFormStep} />
+      <CardFooter decrementFormStep={decrementFormStep} incrementFormStep={incrementFormStep} skip={skip} step={step} />
     </>
   );
 };
 
-export default Step2;
+export default Step1;

@@ -4,7 +4,16 @@ import Text from '../components/text/Text';
 import { COLOURS } from '../constants';
 import { FormValuesContext } from '../context/FormValuesContext';
 
-const FormLogger = ({ formStep, budgetType, budgetMonthly, budgetFull, milesType, milesDaily }) => {
+const FormLogger = ({
+  formStep,
+  budgetType,
+  budgetMonthly,
+  budgetFull,
+  milesType,
+  milesDaily,
+  milesYearly,
+  chargingLocation,
+}) => {
   const formValuesContext = useContext(FormValuesContext);
   return (
     <>
@@ -12,12 +21,12 @@ const FormLogger = ({ formStep, budgetType, budgetMonthly, budgetFull, milesType
         <br />
         <br />
         <Text type='bodyBold' colour={COLOURS.white}>
-          Form Values
+          Stepper Form Values
         </Text>
         <br />
         <br />
       </div>
-      <div style={{ maxWidth: '100%', marginLeft: '1rem', display: 'grid', 'grid-template-columns': 'repeat(3, 1fr)' }}>
+      <div style={{ maxWidth: '100%', marginLeft: '1rem', display: 'grid', 'grid-template-columns': 'repeat(4, 1fr)' }}>
         <div>
           {formValuesContext.carType && (
             <Text type='bodyBold' colour={COLOURS.white}>
@@ -60,6 +69,19 @@ const FormLogger = ({ formStep, budgetType, budgetMonthly, budgetFull, milesType
           {milesDaily && (
             <Text type='bodyBold' colour={COLOURS.white}>
               &#123; Miles Daily: &nbsp; &nbsp; &nbsp; {milesDaily} &#125;
+            </Text>
+          )}
+          <br />
+          {milesYearly && (
+            <Text type='bodyBold' colour={COLOURS.white}>
+              &#123; Miles Yearly: &nbsp; &nbsp; &nbsp; {milesYearly} &#125;
+            </Text>
+          )}
+        </div>
+        <div>
+          {chargingLocation && (
+            <Text type='bodyBold' colour={COLOURS.white}>
+              &#123; Charging Location: &nbsp; &nbsp; &nbsp; {chargingLocation} &#125;
             </Text>
           )}
         </div>

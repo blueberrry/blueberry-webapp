@@ -14,6 +14,7 @@ export const COLOURS = {
   secondary: colourTheme.elm,
   light: colourTheme.white,
   dark: colourTheme.tundoro,
+  lightGray: colourTheme.alto,
   gray: colourTheme.silverChalice,
   black: colourTheme.black,
   white: colourTheme.white,

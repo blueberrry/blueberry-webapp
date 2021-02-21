@@ -17,12 +17,12 @@ const CardMultiStyled = styled.div`
   }
 `;
 
-const CardImage = ({ src, alt }) => {
+const CardMulti = (props) => {
   return (
     <CardMultiStyled>
-      <MultiChoice />
+      <MultiChoice {...props} />
     </CardMultiStyled>
   );
 };
 
-export default CardImage;
+export default CardMulti;

@@ -1,5 +1,6 @@
 import ArticleContainer from './article-container/ArticleContainer';
 import Action from './actions/Action';
+import AppHeader from './app-header/AppHeader';
 import Text from './text/Text';
 import Card from './card/Card';
 import CardImage from './card-image/CardImage';
@@ -12,9 +13,12 @@ import Carousel from './carousel/Carousel';
 import MultiChoice from './multi-choice/MultiChoice';
 import CardMulti from './card-multi/CardMulti';
 import CardMain from './card-main/CardMain';
+import Image from './image/Image';
+import ProgressBar from './progress-bar/ProgressBar';
 
 export {
   Action,
+  AppHeader,
   ArticleContainer,
   Carousel,
   Card,
@@ -26,6 +30,8 @@ export {
   CardRange,
   CardSwitch,
   CardMulti,
+  Image,
+  ProgressBar,
   MultiChoice,
   Text,
 };
