@@ -8,6 +8,7 @@ import Step3 from '../step-3/Step3';
 import Step4 from '../step-4/Step4';
 import { BREAKPOINTS, COLOURS, SIZES } from '../../../constants';
 import { Card, FONTS, Text, ProgressBar } from '../../../components';
+import postJSON from '../../../services/post-json';
 
 const StepFormStyled = styled.form`
   min-height: inherit;
@@ -40,9 +41,11 @@ const StepForm = () => {
     milesType: 'daily',
     milesDailyId: 6,
     milesYearlyId: 6,
-    chargingTime: 10,
+    // chargingTime: 10,
     chargingLocationId: 1,
   });
+
+  const [carResults, setCarResults] = useState(null);
 
   const nextStep = () => {
     setForm({
@@ -58,19 +61,34 @@ const StepForm = () => {
     });
   };
 
-  const skipStep = () => {
+  const skipStep = (skipped1, skipped2) => {
     setForm({
       ...form,
-      step: form.step + 2,
+      step: form.step + 1,
+      [skipped1]: 'skipped',
+      [skipped2]: 'skipped',
     });
   };
 
   const handleChange = (input) => (e) => {
+    debugger;
     if (e.currentTarget) e.preventDefault();
     setForm({
       ...form,
       [input]: e.target ? e.target.value || e.currentTarget.value : e,
     });
+  };
+
+  const tempSelectedCarTypes = ['large', 'standard', 'personal'];
+
+  const postData = (e) => {
+    e.preventDefault();
+    return postJSON(
+      tempSelectedCarTypes, //carTypes
+      form.budgetMonthlyId || form.budgetFullId, // price
+      form.milesDailyId || form.milesYearlyId, // range
+      form.chargingLocationId // chargetime -- home: 2, local: 5, trips: 10
+    ).then((response) => setCarResults(response.results));
   };
 
   const RANGE_VALUES = {
@@ -82,11 +100,11 @@ const StepForm = () => {
       10: 3000,
     },
     budgetFull: {
-      2: 10000,
-      4: 20000,
-      6: 30000,
-      8: 40000,
-      10: 50000,
+      2: 25000,
+      4: 45000,
+      6: 65000,
+      8: 85000,
+      10: 100000,
     },
     milesDaily: {
       2: 10,
@@ -110,6 +128,9 @@ const StepForm = () => {
     3: 'Charging points during trips',
   };
 
+  console.log(JSON.stringify(form, null, 2));
+  console.log('car results', JSON.stringify(carResults, null, 2));
+
   const CurrentStep = ({ step }) => {
     switch (step) {
       case 1:
@@ -120,6 +141,7 @@ const StepForm = () => {
             decrementFormStep={prevStep}
             incrementFormStep={nextStep}
             handleChange={handleChange}
+            skip={skipStep}
             step={step}
             budgetType={form.budgetType}
             budgetMonthlySteps={RANGE_VALUES.budgetMonthly}
@@ -152,6 +174,7 @@ const StepForm = () => {
           <Step4
             decrementFormStep={prevStep}
             incrementFormStep={nextStep}
+            postData={postData}
             skip={skipStep}
             step={step}
             handleChange={handleChange}
@@ -179,11 +202,13 @@ const StepForm = () => {
       <FormLogger
         formStep={form.step}
         budgetType={form.budgetType}
-        budgetMonthly={RANGE_VALUES.budgetMonthly[form.budgetMonthlyId]}
-        budgetFull={RANGE_VALUES.budgetFull[form.budgetFullId]}
+        budgetMonthly={
+          form.budgetMonthlyId === 'skipped' ? 'Not set' : RANGE_VALUES.budgetMonthly[form.budgetMonthlyId]
+        }
+        budgetFull={form.budgetFullId === 'skipped' ? 'Not set' : RANGE_VALUES.budgetFull[form.budgetFullId]}
         milesType={form.milesType}
-        milesDaily={RANGE_VALUES.milesDaily[form.milesDailyId]}
-        milesYearly={RANGE_VALUES.milesYearly[form.milesYearlyId]}
+        milesDaily={form.milesDailyId === 'skipped' ? 'Not set' : RANGE_VALUES.milesDaily[form.milesDailyId]}
+        milesYearly={form.milesYearlyId === 'skipped' ? 'Not set' : RANGE_VALUES.milesYearly[form.milesYearlyId]}
         chargingLocation={CHARGING_LOCATION[form.chargingLocationId]}
       />
     </>

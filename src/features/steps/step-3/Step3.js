@@ -45,7 +45,12 @@ const Step3 = ({
         <CardSwitch switchItems={switchItems} checkedItem={milesType} handleSwitchChange={handleChange('milesType')} />
         <MilesRange />
       </CardMain>
-      <CardFooter decrementFormStep={decrementFormStep} incrementFormStep={incrementFormStep} skip={skip} step={step} />
+      <CardFooter
+        decrementFormStep={decrementFormStep}
+        incrementFormStep={incrementFormStep}
+        skip={() => skip('milesDailyId', 'milesYearlyId')}
+        step={step}
+      />
     </>
   );
 };

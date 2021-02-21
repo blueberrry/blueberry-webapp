@@ -11,7 +11,7 @@ import {
   CardMulti,
 } from '../../../components';
 
-const Step4 = ({ decrementFormStep, incrementFormStep, skip, step, activeId, handleChange }) => {
+const Step4 = ({ decrementFormStep, incrementFormStep, postData, skip, step, activeId, handleChange }) => {
   // const ChargingTimeRange = () => {
   //   return (
   //     <CardRange
@@ -46,7 +46,13 @@ const Step4 = ({ decrementFormStep, incrementFormStep, skip, step, activeId, han
       <CardMain>
         <CardMulti choiceSelections={choiceSelections} activeId={activeId} handleMultiChange={handleChange} />
       </CardMain>
-      <CardFooter decrementFormStep={decrementFormStep} incrementFormStep={incrementFormStep} skip={skip} step={step} />
+      <CardFooter
+        decrementFormStep={decrementFormStep}
+        incrementFormStep={incrementFormStep}
+        postData={postData}
+        skip={skip}
+        step={step}
+      />
     </>
   );
 };

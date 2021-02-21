@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -63,7 +63,13 @@ const StepLabels = styled.div`
 `;
 
 const Range = ({ steps, value, handleRangeChange, labelSymbol }) => {
-  const [rangeValue, setRangeValue] = useState(value);
+  const initialRange = 6;
+  const [rangeValue, setRangeValue] = useState(value === 'skipped' ? initialRange : value);
+  //const [rangeValue, setRangeValue] = useState(initialRange);
+
+  useEffect(() => {
+    value === 'skipped' && handleRangeChange(initialRange);
+  }, [value, handleRangeChange]);
 
   /*steps: {
     2: 200,
@@ -72,7 +78,6 @@ const Range = ({ steps, value, handleRangeChange, labelSymbol }) => {
     8: 800,
     10: 3000,
   },*/
-  //className={value === JSON.parse(step) ? 'step-label--active' : 'step-label--inactive'
   const labels = Object.keys(steps).map((step) => (
     <Text
       colour={COLOURS.primary}

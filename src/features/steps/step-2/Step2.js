@@ -54,7 +54,12 @@ const Step2 = ({
         />
         <BudgetRange />
       </CardMain>
-      <CardFooter decrementFormStep={decrementFormStep} incrementFormStep={incrementFormStep} skip={skip} step={step} />
+      <CardFooter
+        decrementFormStep={decrementFormStep}
+        incrementFormStep={incrementFormStep}
+        skip={() => skip('budgetMonthlyId', 'budgetFullId')}
+        step={step}
+      />
     </>
   );
 };
