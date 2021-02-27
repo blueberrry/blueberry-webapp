@@ -7,19 +7,18 @@ import { Text } from '../text/Text';
 const StyledCard = styled.section`
   min-height: 40.5rem;
   border-radius: ${SIZES.crdBrRd}rem;
+  background-color: ${(props) => (!props.resultsPage ? COLOURS.white : COLOURS.primary)};
+  margin: ${SIZES.spacerXSm}rem;
   @media screen and ${BREAKPOINTS.tablet} {
     max-width: 80rem;
     min-height: 40.5rem;
   }
-  background-color: ${COLOURS.white};
-  margin: ${SIZES.spacerXSm}rem;
-  // margin: 0 auto;
   > * {
     border: 1px solid red;
   }
 `;
 
-const Card = ({ children, primary, secondary }) => {
+const Card = ({ children, resultsPage }) => {
   // let cardStyles = {};
   // if (primary) {
   //   cardStyles = {
@@ -29,7 +28,7 @@ const Card = ({ children, primary, secondary }) => {
   //   };
   // }
 
-  return <StyledCard>{children}</StyledCard>;
+  return <StyledCard resultsPage={resultsPage}>{children}</StyledCard>;
 };
 
 export default Card;

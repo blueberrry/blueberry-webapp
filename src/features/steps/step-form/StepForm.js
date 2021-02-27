@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FormValuesContext } from '../../../context/FormValuesContext';
 import FormLogger from '../../../components/FormLogger';
@@ -6,9 +6,10 @@ import Step1 from '../step-1/Step1';
 import Step2 from '../step-2/Step2';
 import Step3 from '../step-3/Step3';
 import Step4 from '../step-4/Step4';
+import Step5Results from '../step-5-results/Step5Results';
 import { BREAKPOINTS, COLOURS, SIZES } from '../../../constants';
 import { Card, FONTS, Text, ProgressBar } from '../../../components';
-import postJSON from '../../../services/post-json';
+import { postJSON, getJSON } from '../../../services/';
 
 const StepFormStyled = styled.form`
   min-height: inherit;
@@ -45,7 +46,17 @@ const StepForm = () => {
     chargingLocationId: 1,
   });
 
+  const [carTypes, setCarTypes] = useState(null);
+  useEffect(() => {
+    getJSON('https://neev.uk/api/cardata').then((response) => {
+      setCarTypes(response);
+    });
+  }, []);
+
+  // carTypes && console.log('carTypes', JSON.stringify(carTypes, null, 2));
+
   const [carResults, setCarResults] = useState(null);
+  // carResults && console.log('carTypes', JSON.stringify(carResults, null, 2));
 
   const nextStep = () => {
     setForm({
@@ -71,7 +82,6 @@ const StepForm = () => {
   };
 
   const handleChange = (input) => (e) => {
-    debugger;
     if (e.currentTarget) e.preventDefault();
     setForm({
       ...form,
@@ -83,6 +93,7 @@ const StepForm = () => {
 
   const postData = (e) => {
     e.preventDefault();
+    nextStep();
     return postJSON(
       tempSelectedCarTypes, //carTypes
       form.budgetMonthlyId || form.budgetFullId, // price
@@ -120,7 +131,7 @@ const StepForm = () => {
       8: 14000,
       10: 18000,
     },
-  };
+  }; //constants
 
   const CHARGING_LOCATION = {
     1: 'Home',
@@ -128,8 +139,8 @@ const StepForm = () => {
     3: 'Charging points during trips',
   };
 
-  console.log(JSON.stringify(form, null, 2));
-  console.log('car results', JSON.stringify(carResults, null, 2));
+  const lastStep = 5;
+  const isLastStep = form.step === lastStep;
 
   const CurrentStep = ({ step }) => {
     switch (step) {
@@ -181,8 +192,10 @@ const StepForm = () => {
             activeId={JSON.parse(form.chargingLocationId)}
           />
         );
+      case lastStep:
+        return <Step5Results carTypes={carTypes} carResults={carResults} />;
       default:
-        return null;
+        return <p>Something went wrong</p>;
     }
   };
 
@@ -190,11 +203,11 @@ const StepForm = () => {
     <>
       <StepFormHeaderStyled>
         <Text type='h1' colour={COLOURS.white} className='article-header'>
-          Question {form.step} of 5
+          {!isLastStep ? `Question ${form.step} of 5` : `Your top car matches`}
         </Text>
-        <ProgressBar />
+        {!isLastStep ? <ProgressBar /> : <p>Change answers/order by matches</p>}
       </StepFormHeaderStyled>
-      <Card>
+      <Card resultsPage={!isLastStep ? false : true}>
         <StepFormStyled>
           <CurrentStep step={form.step} />
         </StepFormStyled>

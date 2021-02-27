@@ -10,6 +10,7 @@ import CardFooter from './card-footer/CardFooter';
 import CardSwitch from './card-switch/CardSwitch';
 import CardCarousel from './card-carousel/CardCarousel';
 import Carousel from './carousel/Carousel';
+import ListItem from './list-item/ListItem';
 import MultiChoice from './multi-choice/MultiChoice';
 import CardMulti from './card-multi/CardMulti';
 import CardMain from './card-main/CardMain';
@@ -30,6 +31,7 @@ export {
   CardRange,
   CardSwitch,
   CardMulti,
+  ListItem,
   Image,
   ProgressBar,
   MultiChoice,
