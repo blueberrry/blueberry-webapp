@@ -4,7 +4,7 @@ import { BREAKPOINTS } from '../../constants';
 
 const ArticleContainerStyled = styled.article`
   @media screen and ${BREAKPOINTS.tablet} {
-    max-width: 80rem;
+    max-width: 1000px;
     margin: 0 auto;
   }
 `;

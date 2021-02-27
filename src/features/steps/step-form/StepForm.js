@@ -12,6 +12,7 @@ import { Card, FONTS, Text, ProgressBar } from '../../../components';
 import { postJSON, getJSON } from '../../../services/';
 
 const StepFormStyled = styled.form`
+  // max-width: 1000px;
   min-height: inherit;
   display: grid;
   grid-template-columns: 1fr;

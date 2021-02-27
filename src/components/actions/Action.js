@@ -11,10 +11,11 @@ const Action = styled.button`
   @media screen and ${BREAKPOINTS.tablet} {
     padding: ${(props) => props.styles.pdLg};
   }
-  border-radius: ${SIZES.btnBrRd}rem;
+  border-radius: ${(props) => (props.fullWidth ? 0 : `${SIZES.btnBrRd}rem`)};
+  ${(props) => props.fullWidth && 'width: 100%'}
 `;
 
-const Button = ({ handleClick, children, primary, secondary, modest }) => {
+const Button = ({ handleClick, children, primary, secondary, modest, fullWidth }) => {
   let buttonStyles = {};
   if (primary) {
     buttonStyles = {
@@ -39,9 +40,16 @@ const Button = ({ handleClick, children, primary, secondary, modest }) => {
       ...buttonStyles,
     };
   }
+  if (fullWidth) {
+    buttonStyles = {
+      bg: COLOURS.secondary,
+      pd: `${SIZES.btnPdYLg}rem ${SIZES.btnPdXLg}rem`,
+      ...buttonStyles,
+    };
+  }
 
   return (
-    <Action onClick={handleClick} styles={buttonStyles}>
+    <Action onClick={handleClick} styles={buttonStyles} fullWidth={fullWidth}>
       {children}
     </Action>
   );

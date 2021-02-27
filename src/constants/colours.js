@@ -6,6 +6,7 @@ const colourTheme = {
   alto: '#e0dfdf',
   concrete: '#f3f3f3',
   black: '#212121',
+  gallery: '#f0f0f0',
   white: '#ffffff',
 };
 
@@ -14,6 +15,7 @@ export const COLOURS = {
   secondary: colourTheme.elm,
   light: colourTheme.white,
   dark: colourTheme.tundoro,
+  lighterGrap: colourTheme.gallery,
   lightGray: colourTheme.alto,
   gray: colourTheme.silverChalice,
   black: colourTheme.black,
