@@ -5,12 +5,11 @@ import Action from '../actions/Action';
 import { BREAKPOINTS, COLOURS, OFFSETS, SIZES } from '../../constants';
 
 const CardFooterStyled = styled.section`
-  border: 1px solid pink;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: ${SIZES.spacerXXSm}rem;
+  margin-bottom: ${SIZES.spacerXXSm}rem;
   @media screen and ${BREAKPOINTS.tablet} {
     grid-column: 1 / span 2;
     margin: ${SIZES.spacerSm}rem;
@@ -27,10 +26,10 @@ const CardFooterStyled = styled.section`
     justify-content: center;
     margin-left: -${SIZES.spacerXXSm}rem;
     > button:first-of-type {
-      border: 1px solid pink;
+      // border: 1px solid pink;
     }
     > button:last-of-type {
-      border: 1px solid pink;
+      // border: 1px solid pink;
       margin-left: ${SIZES.spacerXXSm}rem;
     }
   }
@@ -39,16 +38,16 @@ const CardFooterStyled = styled.section`
 const CardFooter = ({ decrementFormStep, incrementFormStep, postData, skip, step }) => {
   return (
     <CardFooterStyled>
-      <div className='skip-container'>
+      {/* <div className='skip-container'>
         <Action link handleClick={step !== 4 ? skip : postData}>
           <Text type='bodySemiBold' colour={COLOURS.primary} style={{ textDecoration: 'underline' }}>
             Skip this Question
           </Text>
         </Action>
-      </div>
+      </div> */}
       <div className='main-footer-actions'>
         {decrementFormStep && (
-          <Action modest handleClick={decrementFormStep}>
+          <Action modest handleClick={step !== 1 ? decrementFormStep : window.history.back()}>
             <Text type='bodySemiBold' colour={COLOURS.dark}>
               &lt; Back
             </Text>

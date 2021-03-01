@@ -14,17 +14,21 @@ import { postJSON, getJSON } from '../../../services/';
 const StepFormStyled = styled.form`
   // max-width: 1000px;
   min-height: inherit;
-  display: grid;
-  grid-template-columns: 1fr;
-  align-content: space-between;
+  height: inherit;
+  max-height: inherit;
+  // display: grid;
+  // grid-template-columns: 1fr;
+  // align-content: space-between;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   @media screen and ${BREAKPOINTS.tablet} {
+    display: grid;
+    align-content: space-between;
     grid-template-columns: repeat(2, 1fr);
   }
   border-radius: ${SIZES.crdBrRd}rem;
-  > * {
-    border: 1px solid red;
-  }
 `;
 
 const StepFormHeaderStyled = styled.div`
@@ -105,18 +109,18 @@ const StepForm = () => {
 
   const RANGE_VALUES = {
     budgetMonthly: {
-      2: 200,
-      4: 400,
-      6: 600,
-      8: 800,
-      10: 3000,
+      2: '250',
+      4: '450',
+      6: '650',
+      8: '850',
+      10: '1000+',
     },
     budgetFull: {
-      2: 25000,
-      4: 45000,
-      6: 65000,
-      8: 85000,
-      10: 100000,
+      2: '25k',
+      4: '45k',
+      6: '65k',
+      8: '85k',
+      10: '100k+',
     },
     milesDaily: {
       2: 10,
@@ -202,9 +206,9 @@ const StepForm = () => {
 
   return (
     <>
-      <StepFormHeaderStyled>
+      <StepFormHeaderStyled isLastStep={isLastStep}>
         <Text type='h1' colour={COLOURS.white} className='article-header'>
-          {!isLastStep ? `Question ${form.step} of 5` : `Your top car matches`}
+          {!isLastStep ? `Question ${form.step} of 4` : `Your top car matches`}
         </Text>
         {!isLastStep ? <ProgressBar /> : <p>Change answers/order by matches</p>}
       </StepFormHeaderStyled>
@@ -213,7 +217,7 @@ const StepForm = () => {
           <CurrentStep step={form.step} />
         </StepFormStyled>
       </Card>
-      <FormLogger
+      {/* <FormLogger
         formStep={form.step}
         budgetType={form.budgetType}
         budgetMonthly={
@@ -224,7 +228,7 @@ const StepForm = () => {
         milesDaily={form.milesDailyId === 'skipped' ? 'Not set' : RANGE_VALUES.milesDaily[form.milesDailyId]}
         milesYearly={form.milesYearlyId === 'skipped' ? 'Not set' : RANGE_VALUES.milesYearly[form.milesYearlyId]}
         chargingLocation={CHARGING_LOCATION[form.chargingLocationId]}
-      />
+      /> */}
     </>
   );
 };

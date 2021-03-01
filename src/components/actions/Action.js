@@ -15,7 +15,7 @@ const Action = styled.button`
   ${(props) => props.fullWidth && 'width: 100%'}
 `;
 
-const Button = ({ handleClick, children, primary, secondary, modest, fullWidth }) => {
+const Button = ({ handleClick, children, primary, secondary, modest, modalPrimary, fullWidth }) => {
   let buttonStyles = {};
   if (primary) {
     buttonStyles = {
@@ -44,6 +44,14 @@ const Button = ({ handleClick, children, primary, secondary, modest, fullWidth }
     buttonStyles = {
       bg: COLOURS.secondary,
       pd: `${SIZES.btnPdYLg}rem ${SIZES.btnPdXLg}rem`,
+      ...buttonStyles,
+    };
+  }
+
+  if (modalPrimary) {
+    buttonStyles = {
+      bg: COLOURS.secondary,
+      pd: `${SIZES.btnPdYSm}rem ${SIZES.btnPdXXSm}rem`,
       ...buttonStyles,
     };
   }

@@ -4,13 +4,16 @@ import Text from '../text/Text';
 import { BREAKPOINTS, COLOURS, OFFSETS, SIZES, STEP_GRID } from '../../constants';
 
 const CardHeaderStyled = styled.section`
-  border: 1px solid pink;
-  margin: ${SIZES.spacerXSm}rem;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0 ${SIZES.spacerXSm}rem;
   ${STEP_GRID.fullWidth}
+  @media screen and ${BREAKPOINTS.tablet} {
+    padding: ${SIZES.spacerXSm}rem;
+  }
 `;
 
 const CardHeader = ({ headerText }) => {

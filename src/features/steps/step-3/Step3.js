@@ -1,5 +1,5 @@
 import React from 'react';
-import carDrivingAway from '../../../assets/images/car-driving-away.svg';
+import movingCar from '../../../assets/images/svgs/moving-car.svg';
 import { CardImage, CardHeader, CardMain, CardRange, CardSwitch, CardFooter } from '../../../components';
 
 const Step3 = ({
@@ -40,7 +40,7 @@ const Step3 = ({
   return (
     <>
       <CardHeader headerText='Roughly how many miles do you drive?' />
-      <CardImage src={carDrivingAway} alt='Car driving off into the distance.' />
+      <CardImage src={movingCar} alt='Car driving off into the distance.' />
       <CardMain>
         <CardSwitch switchItems={switchItems} checkedItem={milesType} handleSwitchChange={handleChange('milesType')} />
         <MilesRange />

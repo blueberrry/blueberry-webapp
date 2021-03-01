@@ -7,11 +7,6 @@ const StyledH1 = styled.h1`
   > span.logo {
     font-size: ${SIZES.h1Xl}rem;
   }
-  @media screen and ${BREAKPOINTS.tablet} {
-    // span.h2 {
-    //   font-size: ${SIZES.h1Lg}rem;
-    // }
-  }
 `;
 
 const StyledH2 = styled.h2`
@@ -29,9 +24,23 @@ const StyledH3 = styled.h3`
 `;
 
 const StyledH4 = styled.h4`
+  span.h4 {
+    font-weight: 600;
+  }
   @media screen and ${BREAKPOINTS.tablet} {
     span.h4 {
       font-size: ${SIZES.h4Lg}rem;
+    }
+  }
+`;
+
+const StyledH5 = styled.h5`
+  span.h5 {
+    ${FONTS.h5}
+  }
+  @media screen and ${BREAKPOINTS.tablet} {
+    span.h5 {
+      font-size: ${SIZES.h5Lg}rem;
     }
   }
 `;
@@ -49,6 +58,9 @@ const StyledBody = styled.p`
     font-size: ${SIZES.bodyLg}rem;
   }
   @media screen and ${BREAKPOINTS.tablet} {
+    span.small {
+      font-size: ${SIZES.bodyMd}rem;
+    }
     span.p {
       font-size: ${SIZES.bodyLg}rem;
     }
@@ -78,6 +90,8 @@ const Text = ({ type, colour, children, className, tagClassName, style, enlarge 
         return <StyledH3 style={style}>{children}</StyledH3>;
       case 'h4':
         return <StyledH4 style={style}>{children}</StyledH4>;
+      case 'h5':
+        return <StyledH5 style={style}>{children}</StyledH5>;
       case 'body':
         return <StyledBody style={style}>{children}</StyledBody>;
       case 'bodySemiBold':

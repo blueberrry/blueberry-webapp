@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { BREAKPOINTS } from '../../constants';
 
 const ArticleContainerStyled = styled.article`
+  height: 100vh;
   @media screen and ${BREAKPOINTS.tablet} {
+    height: unset;
     max-width: 1000px;
     margin: 0 auto;
   }

@@ -9,7 +9,9 @@ const CardMainStyled = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: ${SIZES.spacerXSm}rem;
+  // margin: ${SIZES.spacerXSm}rem;
+  margin: 0;
+  padding: 0 ${SIZES.spacerXSm}rem;
   @media screen and ${BREAKPOINTS.tablet} {
     ${STEP_GRID.rhs}
     margin: ${SIZES.spacerLg}rem;

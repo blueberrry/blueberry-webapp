@@ -8,7 +8,6 @@ const status = (response) => {
 const json = (response) => response.json();
 
 const getJSON = (url) => {
-  debugger;
   return fetch(url).then(status).then(json);
 };
 

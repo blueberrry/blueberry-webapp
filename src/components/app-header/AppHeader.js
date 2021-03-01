@@ -12,13 +12,15 @@ const AppHeaderStyled = styled.header`
 const AppHeader = () => {
   return (
     <AppHeaderStyled>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <a
+        href='https://neev.uk'
+        style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', textDecoration: 'none' }}>
         <Image src={logo} alt='Neev logo' />
         &nbsp;
         <Text type='h1' colour={COLOURS.white} className='logo'>
           Neev
         </Text>
-      </div>
+      </a>
       <svg
         height='32px'
         version='1.1'

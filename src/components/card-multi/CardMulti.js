@@ -5,8 +5,6 @@ import MultiChoice from '../multi-choice/MultiChoice';
 import { BREAKPOINTS, SIZES } from '../../constants';
 
 const CardMultiStyled = styled.div`
-  border: 1px solid pink;
-
   display: flex;
   flex-direction: column;
   width: 100%;

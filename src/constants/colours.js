@@ -15,9 +15,10 @@ export const COLOURS = {
   secondary: colourTheme.elm,
   light: colourTheme.white,
   dark: colourTheme.tundoro,
-  lighterGrap: colourTheme.gallery,
+  lighterGray: colourTheme.gallery,
   lightGray: colourTheme.alto,
   gray: colourTheme.silverChalice,
+  graySecondary: colourTheme.concrete,
   black: colourTheme.black,
   white: colourTheme.white,
 };

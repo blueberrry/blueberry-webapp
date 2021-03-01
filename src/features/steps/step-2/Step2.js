@@ -1,5 +1,6 @@
 import React from 'react';
-import pigImg from '../../../assets/images/pig.svg';
+// import pigImg from '../../../assets/images/pig.svg';
+import piggyBank from '../../../assets/images/svgs/piggy-bank.svg';
 import { CardImage, CardHeader, CardMain, CardRange, CardSwitch, CardFooter } from '../../../components';
 import { CURRENCY_SYMBOL } from '../../../constants';
 
@@ -45,7 +46,7 @@ const Step2 = ({
   return (
     <>
       <CardHeader headerText='Whats your budget?' />
-      <CardImage src={pigImg} alt='Pig' />
+      <CardImage src={piggyBank} alt='Pig' />
       <CardMain>
         <CardSwitch
           switchItems={switchItems}

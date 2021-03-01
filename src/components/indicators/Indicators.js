@@ -15,11 +15,15 @@ const IndicatorsStyled = styled.div`
 const Indicators = ({ title, score, info }) => {
   return (
     <IndicatorsStyled>
-      <Badge colour={COLOURS.lightGray}>
-        <Text h4>{title}</Text>
+      <Badge colour={COLOURS.lighterGray}>
+        <Text type='h5' colour={COLOURS.primary}>
+          {title}
+        </Text>
       </Badge>
       <Image src={TempBenchmarkSrc} />
-      <Text>{info}</Text>
+      <Text type='bodySemiBold' colour={COLOURS.primary} className='small'>
+        {info}
+      </Text>
     </IndicatorsStyled>
   );
 };

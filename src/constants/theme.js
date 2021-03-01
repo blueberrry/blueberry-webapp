@@ -26,7 +26,7 @@ export const SIZES = {
   btnPdXSm: 2.5,
   btnPdYLg: 1,
   btnPdXLg: 5,
-  btnBrRd: 1.5,
+  btnBrRd: 2.5,
   btnBrRdSm: 1,
 
   // card
@@ -37,9 +37,12 @@ export const SIZES = {
   h1Xl: 1.75,
   h2: 1.313, // 21
   h2Lg: 1.625,
-  h3: 1.15,
+  h3: 1,
+  h3Lg: 1.15,
   h4: 0.875, // 14
   h4Lg: 1, // 16
+  h5: 0.75,
+  h5Lg: 0.875,
   body: 1, // 16
   bodyLg: 1.25, // 20
   bodyMd: 0.875, // 14
@@ -49,7 +52,8 @@ export const SIZES = {
   mobileSm: 19,
   mobileMd: 23,
   mobileLg: 33,
-  tablet: 47,
+  // tablet: 47,
+  tablet: 52.5,
 };
 
 export const OFFSETS = {
@@ -60,8 +64,9 @@ export const OFFSETS = {
 export const FONTS = {
   h1: `font-family: 'Poppins Semi Bold'; font-size: ${SIZES.h1}rem; line-height: normal;`,
   h2: `font-family: 'Poppins Bold'; font-size: ${SIZES.h2}rem; line-height: 2.625rem;`,
-  h3: `font-family: 'Poppins Semi Bold'; font-size: ${SIZES.h3}rem; line-height: 1.969rem;`,
-  h4: `font-family: 'Poppins Bold'; font-size: ${SIZES.h4}rem; line-height: normal;`,
+  h3: `font-family: 'Poppins Semi Bold'; font-size: ${SIZES.h3}rem; line-height: normal;`,
+  h4: `font-family: 'Poppins Semi Bold'; font-size: ${SIZES.h4}rem; line-height: normal;`,
+  h5: `font-family: 'Poppins Semi Bold'; font-size: ${SIZES.h5}rem; line-height: normal;`,
   body: `font-family: 'Poppins Regular'; font-size: ${SIZES.body}rem; line-height: normal;`,
   bodyBold: `font-family: 'Poppins Bold'; font-size: ${SIZES.body}rem; line-height: normal;`,
   bodyItalic: `font-family: 'Poppins Italic'; font-size: ${SIZES.body}rem; line-height: normal;`,
