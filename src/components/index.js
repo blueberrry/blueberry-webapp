@@ -16,6 +16,7 @@ import CardMulti from './card-multi/CardMulti';
 import CardMain from './card-main/CardMain';
 import Image from './image/Image';
 import ProgressBar from './progress-bar/ProgressBar';
+import Loader from './loader/Loader';
 
 export {
   Action,
@@ -36,4 +37,5 @@ export {
   ProgressBar,
   MultiChoice,
   Text,
+  Loader,
 };

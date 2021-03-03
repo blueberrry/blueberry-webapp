@@ -5,33 +5,23 @@ import { BREAKPOINTS, COLOURS, SIZES, RESETS } from '../../constants';
 import { Text } from '../text/Text';
 
 const StyledCard = styled.section`
-  //min-height: 40.5rem;
-  // max-height: 80vh;
-  height: ${(props) => (!props.resultsPage ? '80vh' : 'auto')};
+  height: ${(props) => (props.lastFormStep || props.resultsPage ? 'auto' : '70vh')};
   border-radius: ${SIZES.crdBrRd}rem;
   background-color: ${(props) => (!props.resultsPage ? COLOURS.white : COLOURS.primary)};
   margin: ${SIZES.spacerXSm}rem;
-  @media screen and ${BREAKPOINTS.tablet} {
+  @media screen and ${BREAKPOINTS.mobileXl} {
     max-width: 80rem;
-    min-height: 40.5rem;
-    height: unset;
-  }
-  > * {
-    // border: 1px solid red;
+    min-height: 32.5rem;
+    height: unset !important;
   }
 `;
 
-const Card = ({ children, resultsPage }) => {
-  // let cardStyles = {};
-  // if (primary) {
-  //   cardStyles = {
-  //     bg: COLOURS.white,
-  //     pd: `${SIZES.btnPdYSm}rem ${SIZES.btnPdXSm}rem`,
-  //     ...cardStyles,
-  //   };
-  // }
-
-  return <StyledCard resultsPage={resultsPage}>{children}</StyledCard>;
+const Card = ({ children, resultsPage, lastFormStep }) => {
+  return (
+    <StyledCard resultsPage={resultsPage} lastFormStep={lastFormStep}>
+      {children}
+    </StyledCard>
+  );
 };
 
 export default Card;

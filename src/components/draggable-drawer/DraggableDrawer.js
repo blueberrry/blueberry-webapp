@@ -6,16 +6,20 @@ import './draggable-drawer.css';
 const DraggableDrawer = ({ open, toggle, children }) => {
   const targetRef = useRef();
 
+  const isIos = ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'].includes(
+    navigator.platform
+  );
+
   useEffect(() => {
-    let targetElement = null;
-    targetElement = targetRef.current;
-    if (open) {
-      disableBodyScroll(targetElement);
-    } else {
-      enableBodyScroll(targetElement);
+    if (!isIos) {
+      if (open) {
+        disableBodyScroll(targetRef.current);
+      } else {
+        enableBodyScroll(targetRef.current);
+      }
     }
-    return () => clearAllBodyScrollLocks();
-  }, [open]);
+    return () => !isIos && clearAllBodyScrollLocks();
+  }, [open, isIos]);
 
   return (
     <Drawer
@@ -25,6 +29,7 @@ const DraggableDrawer = ({ open, toggle, children }) => {
       allowClose={true}
       containerElementClass='modal'
       modalElementClass='modal-top-el'>
+      {/* <div style={{ overflow: 'auto' }}>{children}</div> */}
       {children}
     </Drawer>
   );

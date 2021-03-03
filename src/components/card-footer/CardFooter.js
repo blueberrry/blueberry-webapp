@@ -36,6 +36,7 @@ const CardFooterStyled = styled.section`
 `;
 
 const CardFooter = ({ decrementFormStep, incrementFormStep, postData, skip, step }) => {
+  const isFindCars = step === 4;
   return (
     <CardFooterStyled>
       {/* <div className='skip-container'>
@@ -47,14 +48,26 @@ const CardFooter = ({ decrementFormStep, incrementFormStep, postData, skip, step
       </div> */}
       <div className='main-footer-actions'>
         {decrementFormStep && (
-          <Action modest handleClick={step !== 1 ? decrementFormStep : window.history.back()}>
+          <Action
+            modest
+            handleClick={
+              step !== 1
+                ? decrementFormStep
+                : (e) => {
+                    e.preventDefault();
+                    return window.history.back();
+                  }
+            }>
             <Text type='bodySemiBold' colour={COLOURS.dark}>
               &lt; Back
             </Text>
           </Action>
         )}
         <br />
-        <Action secondary handleClick={step !== 4 ? incrementFormStep : postData}>
+        <Action
+          tertiary={isFindCars ? true : false}
+          secondary={isFindCars ? false : true}
+          handleClick={step !== 4 ? incrementFormStep : postData}>
           <Text type='bodySemiBold' colour={COLOURS.white}>
             {step !== 4 ? 'Next' : 'Find cars'}
           </Text>

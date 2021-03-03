@@ -12,13 +12,9 @@ import { Card, FONTS, Text, ProgressBar } from '../../../components';
 import { postJSON, getJSON } from '../../../services/';
 
 const StepFormStyled = styled.form`
-  // max-width: 1000px;
   min-height: inherit;
   height: inherit;
   max-height: inherit;
-  // display: grid;
-  // grid-template-columns: 1fr;
-  // align-content: space-between;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -94,13 +90,15 @@ const StepForm = () => {
     });
   };
 
+  const [currentSlide, setCurrentSlide] = useState(null);
+
   const tempSelectedCarTypes = ['large', 'standard', 'personal'];
 
   const postData = (e) => {
     e.preventDefault();
     nextStep();
     return postJSON(
-      tempSelectedCarTypes, //carTypes
+      currentSlide, //carTypes
       form.budgetMonthlyId || form.budgetFullId, // price
       form.milesDailyId || form.milesYearlyId, // range
       form.chargingLocationId // chargetime -- home: 2, local: 5, trips: 10
@@ -144,13 +142,23 @@ const StepForm = () => {
     3: 'Charging points during trips',
   };
 
+  const lastFormStep = 4;
+  const isLastFormStep = form.step === lastFormStep;
   const lastStep = 5;
   const isLastStep = form.step === lastStep;
 
   const CurrentStep = ({ step }) => {
     switch (step) {
       case 1:
-        return <Step1 decrementFormStep={prevStep} incrementFormStep={nextStep} skip={skipStep} step={step} />;
+        return (
+          <Step1
+            decrementFormStep={prevStep}
+            incrementFormStep={nextStep}
+            setCurrentSlide={setCurrentSlide}
+            skip={skipStep}
+            step={step}
+          />
+        );
       case 2:
         return (
           <Step2
@@ -210,9 +218,16 @@ const StepForm = () => {
         <Text type='h1' colour={COLOURS.white} className='article-header'>
           {!isLastStep ? `Question ${form.step} of 4` : `Your top car matches`}
         </Text>
-        {!isLastStep ? <ProgressBar /> : <p>Change answers/order by matches</p>}
+        {!isLastStep ? (
+          <ProgressBar step={form.step} />
+        ) : (
+          <Text type='body' colour={COLOURS.white} className='small'>
+            <span style={{ textDecoration: 'line-through', opacity: '0.25' }}>Change answers/order by matches </span>{' '}
+            <span style={{ opacity: '0.25' }}>(coming soon)</span>
+          </Text>
+        )}
       </StepFormHeaderStyled>
-      <Card resultsPage={!isLastStep ? false : true}>
+      <Card resultsPage={!isLastStep ? false : true} lastFormStep={isLastFormStep}>
         <StepFormStyled>
           <CurrentStep step={form.step} />
         </StepFormStyled>

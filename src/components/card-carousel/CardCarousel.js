@@ -1,8 +1,21 @@
 import React, { useContext, useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { CarouselContext } from 'pure-react-carousel';
+import { useWindowSize } from '../../hooks/windowResize';
 import Carousel from '../carousel/Carousel';
-import { BREAKPOINTS, SIZES, STEP_GRID } from '../../constants';
+import { BREAKPOINTS, SIZES, STEP_GRID, DROP_SHADOWS } from '../../constants';
+
+const desktopStyles = css`
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  justify-content: center;
+  > div {
+    height: 250px;
+    min-width: 225px;
+    margin-right: 2rem;
+  }
+`;
 
 const CardCarouselStyled = styled.div`
   width: 100%;
@@ -12,11 +25,7 @@ const CardCarouselStyled = styled.div`
   align-items: center;
   > div.carousel-provider {
     max-width: 67vw;
-    @media screen and ${BREAKPOINTS.tablet} {
-      margin: 0 ${SIZES.spacerXl}rem;
-      border: 3px solid #000;
-      max-width: 400px;
-    }
+    ${(props) => props.isDesktop && desktopStyles}
   }
   .carousel__slider {
     overflow: visible;
@@ -24,9 +33,14 @@ const CardCarouselStyled = styled.div`
 `;
 
 const CardCarousel = ({ slides }) => {
+  const [width, height] = useWindowSize();
+  const [isDesktop, setIsDesktop] = useState(null);
+  useEffect(() => {
+    width > 640 ? setIsDesktop(true) : setIsDesktop(false);
+  }, [width]);
   return (
-    <CardCarouselStyled>
-      <Carousel slides={slides} />
+    <CardCarouselStyled isDesktop={isDesktop}>
+      <Carousel slides={slides} isDesktop={isDesktop} />
     </CardCarouselStyled>
   );
 };

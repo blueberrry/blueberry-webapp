@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 // import pigImg from '../../../assets/images/pig.svg';
+import { FormValuesContext } from '../../../context/FormValuesContext';
 import { CardHeader, CardCarousel, CardFooter } from '../../../components';
 import personalCar from '../../../assets/images/svgs/personal-car.svg';
 import standardCar from '../../../assets/images/svgs/standard-car.svg';
@@ -10,13 +11,17 @@ import standardLuggage from '../../../assets/images/svgs/standard-luggage.svg';
 import smallLuggage from '../../../assets/images/svgs/small-luggage.svg';
 import largeLuggage from '../../../assets/images/svgs/large-luggage.svg';
 
-const Step1 = ({ decrementFormStep, incrementFormStep, skip, step }) => {
+const Step1 = ({ decrementFormStep, incrementFormStep, setCurrentSlide, skip, step }) => {
   const carTypes = [
     {
       id: 123,
       slideId: 1,
       img: largeCar,
-      icons: [fivePassengers, largeLuggage, familyDog],
+      icons: [
+        { icon: fivePassengers, className: 'five-passengers' },
+        { icon: largeLuggage, className: 'large-luggage' },
+        { icon: familyDog, className: 'dog' },
+      ],
       title: 'Large',
       info: '5+ passengers',
     },
@@ -24,7 +29,11 @@ const Step1 = ({ decrementFormStep, incrementFormStep, skip, step }) => {
       id: 345,
       slideId: 2,
       img: standardCar,
-      icons: [fivePassengers, standardLuggage, familyDog],
+      icons: [
+        { icon: fivePassengers, className: 'five-passengers' },
+        { icon: standardLuggage, className: 'standard-luggage' },
+        { icon: familyDog, className: 'dog' },
+      ],
       title: 'Standard',
       info: '5 passengers',
     },
@@ -32,11 +41,16 @@ const Step1 = ({ decrementFormStep, incrementFormStep, skip, step }) => {
       id: 456,
       slideId: 3,
       img: personalCar,
-      icons: [fivePassengers, smallLuggage],
+      icons: [
+        { icon: fivePassengers, className: 'five-passengers' },
+        { icon: smallLuggage, className: 'small-luggage' },
+      ],
       title: 'Personal',
       info: '3 - 5 passengers',
     },
   ];
+
+  const formValuesContext = useContext(FormValuesContext);
   return (
     <>
       <CardHeader
@@ -45,7 +59,16 @@ const Step1 = ({ decrementFormStep, incrementFormStep, skip, step }) => {
         subHeaderText='Choose as many car types as you like'
       />
       <CardCarousel slides={carTypes} />
-      <CardFooter decrementFormStep={decrementFormStep} incrementFormStep={incrementFormStep} skip={skip} step={step} />
+      <CardFooter
+        decrementFormStep={decrementFormStep}
+        incrementFormStep={(e) => {
+          e.preventDefault();
+          setCurrentSlide(formValuesContext.currentSlide);
+          incrementFormStep();
+        }}
+        skip={skip}
+        step={step}
+      />
     </>
   );
 };

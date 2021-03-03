@@ -1,10 +1,17 @@
-import React, { useEffect } from 'react';
-import { ListItem } from '../../../components';
+import React, { useEffect, useState } from 'react';
+// import { useWindowSize } from '../../../hooks/windowResize';
+import { ListItem, Loader } from '../../../components';
 
 const Step5Results = ({ carResults, carTypes }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // const [width, height] = useWindowSize();
+  // const [isDesktop, setIsDesktop] = useState(null);
+  // useEffect(() => {
+  //   width > 1000 ? setIsDesktop(true) : setIsDesktop(false);
+  // }, [width]);
 
   if (carResults) {
     const ResultsCards = () =>
@@ -15,7 +22,7 @@ const Step5Results = ({ carResults, carTypes }) => {
       });
     return <ResultsCards />;
   }
-  return <p>...Loading</p>;
+  return <Loader />;
 };
 
 export default React.memo(Step5Results);

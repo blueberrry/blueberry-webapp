@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
-import { BREAKPOINTS, RANGE, SIZES, COLOURS, DROP_SHADOW } from '../../constants';
+import { BREAKPOINTS, RANGE, SIZES, COLOURS, DROP_SHADOWS } from '../../constants';
 import { Text } from '../../components';
 const RangeContainer = styled.div`
   width: 240px;
@@ -33,7 +33,7 @@ const RangeContainer = styled.div`
         }
       }
       > span.input-range__slider-container {
-        ${DROP_SHADOW}
+        ${DROP_SHADOWS.primary}
         background: ${COLOURS.primary};
         > div.input-range__slider {
           background: ${COLOURS.primary};

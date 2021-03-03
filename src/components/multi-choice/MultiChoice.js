@@ -18,8 +18,9 @@ const ChoiceButtonStyled = styled.button`
   @media screen and ${BREAKPOINTS.tablet} {
     margin-bottom: ${SIZES.spacerXSm}rem;
   }
-  padding: 0 ${SIZES.spacerXXSm}rem;
+  padding: 0 ${SIZES.spacerXSm}rem;
   background: ${COLOURS.white};
+  color: ${COLOURS.primary};
   ${(props) => props.isActive && `background: ${COLOURS.primary}; color: ${COLOURS.white};`}
   &:hover {
     cursor: pointer;
@@ -36,18 +37,18 @@ const MultiChoice = ({ choiceSelections, activeId, handleMultiChange }) => {
         onClick={handleMultiChange('chargingLocationId')}
         key={`${selection.id}-blueberry-${index}`}>
         <div style={{ width: '15%' }}>
-          <img src={selection.icon} alt='' />
+          {/* <img src={selection.icon} alt='' /> */}
+          {selection.icon}
         </div>
         <div
           style={{
             width: `calc(85% - ${SIZES.spacerXXSm}rem`,
-            border: '1px solid green;',
             paddingLeft: `${SIZES.spacerXXSm}rem`,
           }}>
           <Text type='h4' colour={isActive ? COLOURS.white : COLOURS.primary}>
             {selection.title}
           </Text>
-          <Text type='body' colour={isActive ? COLOURS.white : COLOURS.primary} className='small'>
+          <Text type='bodySmall' colour={isActive ? COLOURS.white : COLOURS.primary} className='small'>
             {selection.info}
           </Text>
         </div>

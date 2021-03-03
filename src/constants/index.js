@@ -1,7 +1,7 @@
 import { BREAKPOINTS, GLOBALS, OFFSETS, SIZES, FONTS } from './theme';
 import { RESETS } from './resets';
 import { COLOURS } from './colours';
-import { STEP_GRID, DROP_SHADOW } from './styleFragments';
+import { STEP_GRID, DROP_SHADOWS } from './styleFragments';
 
 const RANGE = {
   min: 2,
@@ -23,6 +23,6 @@ export {
   RESETS,
   RANGE,
   CURRENCY_SYMBOL,
-  DROP_SHADOW,
+  DROP_SHADOWS,
   URL_ROOT,
 };

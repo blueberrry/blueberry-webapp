@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { COLOURS, SIZES, DROP_SHADOW } from '../../constants';
+import { COLOURS, SIZES, DROP_SHADOWS } from '../../constants';
 import { convertCamelCase } from '../../utils';
 
 const SwitchContainerStyled = styled.div`
@@ -22,7 +22,7 @@ const SwitchStyled = styled.input`
     cursor: pointer;
   }
   &:checked + label {
-    ${DROP_SHADOW}
+    ${DROP_SHADOWS.primary}
     color: ${COLOURS.white};
     background: ${COLOURS.primary};
   }

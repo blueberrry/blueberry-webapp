@@ -6,16 +6,19 @@ import { Text } from '../text/Text';
 
 const Action = styled.button`
   ${RESETS.btnReset}
-  background-color: ${(props) => props.styles.bg};
+  background-color: ${(props) => props.styles.bg || COLOURS.white};
   padding: ${(props) => props.styles.pd};
   @media screen and ${BREAKPOINTS.tablet} {
     padding: ${(props) => props.styles.pdLg};
   }
   border-radius: ${(props) => (props.fullWidth ? 0 : `${SIZES.btnBrRd}rem`)};
-  ${(props) => props.fullWidth && 'width: 100%'}
+  ${(props) => props.fullWidth && 'width: 100%; margin-bottom: -1px;'}
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
-const Button = ({ handleClick, children, primary, secondary, modest, modalPrimary, fullWidth }) => {
+const Button = ({ handleClick, children, primary, secondary, tertiary, modest, modalPrimary, fullWidth }) => {
   let buttonStyles = {};
   if (primary) {
     buttonStyles = {
@@ -27,6 +30,14 @@ const Button = ({ handleClick, children, primary, secondary, modest, modalPrimar
   if (secondary) {
     buttonStyles = {
       bg: COLOURS.primary,
+      pd: `${SIZES.btnPdYSm}rem ${SIZES.btnPdXXSm}rem`,
+      pdLg: `${SIZES.btnPdYSm}rem ${SIZES.btnPdXSm}rem`,
+      ...buttonStyles,
+    };
+  }
+  if (tertiary) {
+    buttonStyles = {
+      bg: COLOURS.secondary,
       pd: `${SIZES.btnPdYSm}rem ${SIZES.btnPdXXSm}rem`,
       pdLg: `${SIZES.btnPdYSm}rem ${SIZES.btnPdXSm}rem`,
       ...buttonStyles,

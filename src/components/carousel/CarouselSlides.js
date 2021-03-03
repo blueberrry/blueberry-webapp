@@ -6,20 +6,10 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 import { SIZES } from '../../constants';
 import Text from '../text/Text';
 import Image from '../image/Image';
+import CarouselCards from './CarouselCards';
 import './carousel-slides.css';
 
-const CarouselSlideStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 4px solid blue;
-  // min-height: 300px;
-  height: 100%;
-  margin: ${SIZES.carouselSm}rem;
-`;
-
-const Carousel = ({ slides = [] }) => {
+const CarouselSlides = ({ slides = [] }) => {
   const Slides = ({ slides }) => {
     return slides.map((slide, index) => (
       <Slide
@@ -27,16 +17,7 @@ const Carousel = ({ slides = [] }) => {
         key={`${slide.slideId}-${index}`}
         classNameHidden='inactive-slide'
         classNameVisible='active-slide'>
-        <CarouselSlideStyled key={`${slide.slideId}-${index}`}>
-          <Image src={slide.img} alt='slide image' />
-          <Text>{slide.title}</Text>
-          <div className='slide-icons'>
-            {slide.icons.map((icon, index) => (
-              <img src={icon} alt='' key={`carousel-img-${index}`} />
-            ))}
-          </div>
-          <Text>{slide.info}</Text>
-        </CarouselSlideStyled>
+        <CarouselCards slide={slide} index={index} isDesktop={false} />
       </Slide>
     ));
   };
@@ -64,4 +45,4 @@ const Carousel = ({ slides = [] }) => {
   );
 };
 
-export default Carousel;
+export default CarouselSlides;

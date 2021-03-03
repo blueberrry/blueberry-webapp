@@ -1,5 +1,4 @@
 const status = (response) => {
-  debugger;
   if (response.ok) return response;
   var error = new Error(response.statusText || response.status);
   error.response = response;
@@ -9,14 +8,16 @@ const status = (response) => {
 
 const json = (response) => response.json();
 
-const postJSON = (carTypes, price, range, chargeTime, power = 5, speed = 5) => {
-  // debugger;
+const postJSON = (carType, price, range, chargeTime, power = 5, speed = 5) => {
   const apiRoot = 'https://neev.uk/api'; // constants
-  const defaultCars = { large: 'SUV', standard: 'Saloon', personal: 'Hatchback' }; //constants
-  const cars = carTypes.map((car) => defaultCars[car]).join(',');
+  const defaultCars = ['SUV', 'Saloon', 'Hatchback'];
+  const car = defaultCars[carType];
+  // const defaultCars = { large: 'SUV', standard: 'Saloon', personal: 'Hatchback' }; //constants
+  // const cars = carTypes.map((car) => defaultCars[car]).join(',');
 
   const defaultQs = `https://neev.uk/api?range=4&chargetime=3&power=4&speed=2&price=3&carType=Saloon,Hatchback`; // constants
-  const qs = `${apiRoot}?range=${range}&chargetime=${chargeTime}&power=${power}&speed=${speed}&price=${price}&carType=${cars}`;
+  const qs = `${apiRoot}?range=${range}&chargetime=${chargeTime}&power=${power}&speed=${speed}&price=${price}&carType=${car}`;
+  console.log(qs);
   return fetch(qs).then(status).then(json);
 };
 

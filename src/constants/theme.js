@@ -52,6 +52,7 @@ export const SIZES = {
   mobileSm: 19,
   mobileMd: 23,
   mobileLg: 33,
+  mobileXl: 40,
   // tablet: 47,
   tablet: 52.5,
 };
@@ -80,5 +81,6 @@ export const BREAKPOINTS = {
   mobileSm: `(min-width: ${SIZES.mobileSm}rem)`,
   mobileMd: `(min-width: ${SIZES.mobileMd}rem)`,
   mobileLg: `(min-width: ${SIZES.mobileLg}rem)`,
+  mobileXl: `(min-width: ${SIZES.mobileXl}rem)`,
   tablet: `(min-width: ${SIZES.tablet}rem)`,
 };
