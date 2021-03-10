@@ -64,7 +64,7 @@ export const OFFSETS = {
 
 export const FONTS = {
   h1: `font-family: 'Poppins Semi Bold'; font-size: ${SIZES.h1}rem; line-height: normal;`,
-  h2: `font-family: 'Poppins Bold'; font-size: ${SIZES.h2}rem; line-height: 2.625rem;`,
+  h2: `font-family: 'Poppins Semi Bold'; font-size: ${SIZES.h2}rem; line-height: 2.625rem;`,
   h3: `font-family: 'Poppins Semi Bold'; font-size: ${SIZES.h3}rem; line-height: normal;`,
   h4: `font-family: 'Poppins Semi Bold'; font-size: ${SIZES.h4}rem; line-height: normal;`,
   h5: `font-family: 'Poppins Semi Bold'; font-size: ${SIZES.h5}rem; line-height: normal;`,

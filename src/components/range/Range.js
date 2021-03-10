@@ -18,10 +18,20 @@ const RangeContainer = styled.div`
 
   > div.input-range {
     > div.input-range__track {
+      position: relative;
       height: 0.5rem;
       border-radius: 1rem;
       @media screen and ${BREAKPOINTS.tablet} {
         height: 0.75rem;
+      }
+      &:before {
+        position: absolute;
+        content: '';
+        top: -15px;
+        right: -15px;
+        left: -15px;
+        bottom: -30px;
+        // border: 1px solid red;
       }
       background: ${COLOURS.lightGray};
       > .input-range__track--active {
@@ -56,7 +66,7 @@ const RangeContainer = styled.div`
   }
 `;
 
-const StepLabels = styled.div`
+const StyledStepLabels = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 0.65rem;
@@ -78,27 +88,32 @@ const Range = ({ steps, value, handleRangeChange, labelSymbol }) => {
     8: 800,
     10: 3000,
   },*/
-  const labels = Object.keys(steps).map((step) => (
-    <Text
-      colour={COLOURS.primary}
-      className={
-        value === JSON.parse(step) ? 'step-label--active' : 'step-label--inactive'
-      }>{`${labelSymbol}${steps[step]}`}</Text>
-  ));
+  const Labels = () =>
+    Object.keys(steps).map((step) => (
+      <Text
+        colour={COLOURS.primary}
+        className={
+          rangeValue === JSON.parse(step) ? 'step-label--active' : 'step-label--inactive'
+        }>{`${labelSymbol}${steps[step]}`}</Text>
+    ));
   return (
-    <RangeContainer className='range-container'>
-      <InputRange
-        minValue={RANGE.min}
-        maxValue={RANGE.max}
-        formatLabel={(value) => `${labelSymbol}${steps[value]}`}
-        value={rangeValue}
-        onChange={(value) => setTimeout(() => setRangeValue(value), 50)}
-        onChangeComplete={() => setTimeout(() => handleRangeChange(rangeValue), 50)}
-        step={2}
-        draggableTrack={false}
-      />
-      <StepLabels className='step-labels'>{labels}</StepLabels>
-    </RangeContainer>
+    <>
+      <RangeContainer className='range-container'>
+        <InputRange
+          minValue={RANGE.min}
+          maxValue={RANGE.max}
+          formatLabel={(value) => `${labelSymbol}${steps[value]}`}
+          value={rangeValue}
+          onChange={(value) => setTimeout(() => setRangeValue(value), 50)}
+          onChangeComplete={() => setTimeout(() => handleRangeChange(rangeValue), 70)}
+          step={2}
+          draggableTrack={false}
+        />
+        <StyledStepLabels className='step-labels'>
+          <Labels />
+        </StyledStepLabels>
+      </RangeContainer>
+    </>
   );
 };
 

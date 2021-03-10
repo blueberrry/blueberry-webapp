@@ -8,8 +8,9 @@ import Step3 from '../step-3/Step3';
 import Step4 from '../step-4/Step4';
 import Step5Results from '../step-5-results/Step5Results';
 import { BREAKPOINTS, COLOURS, SIZES } from '../../../constants';
-import { Card, FONTS, Text, ProgressBar } from '../../../components';
-import { postJSON, getJSON } from '../../../services/';
+import { Card, Text, ProgressBar, Action } from '../../../components';
+import { getJSON } from '../../../services/utils';
+import { postForm } from '../../../services/post-form';
 
 const StepFormStyled = styled.form`
   min-height: inherit;
@@ -31,6 +32,9 @@ const StepFormHeaderStyled = styled.div`
   margin: ${SIZES.spacerSm}rem ${SIZES.spacerXSm}rem;
   > .progress-bar {
     margin-top: ${SIZES.spacerXSm}rem;
+  }
+  > .form-title {
+    margin-bottom: ${SIZES.spacerXXSm}rem;
   }
 `;
 
@@ -56,7 +60,6 @@ const StepForm = () => {
 
   // carTypes && console.log('carTypes', JSON.stringify(carTypes, null, 2));
 
-  const [carResults, setCarResults] = useState(null);
   // carResults && console.log('carTypes', JSON.stringify(carResults, null, 2));
 
   const nextStep = () => {
@@ -93,16 +96,21 @@ const StepForm = () => {
   const [currentSlide, setCurrentSlide] = useState(null);
 
   const tempSelectedCarTypes = ['large', 'standard', 'personal'];
+  const [carResults, setCarResults] = useState(null);
+  const [resultsId, setResultsId] = useState(null);
 
   const postData = (e) => {
     e.preventDefault();
     nextStep();
-    return postJSON(
+    return postForm(
       currentSlide, //carTypes
       form.budgetMonthlyId || form.budgetFullId, // price
       form.milesDailyId || form.milesYearlyId, // range
       form.chargingLocationId // chargetime -- home: 2, local: 5, trips: 10
-    ).then((response) => setCarResults(response.results));
+    ).then((response) => {
+      setResultsId(response.resultID);
+      setCarResults(response.results);
+    });
   };
 
   const RANGE_VALUES = {
@@ -206,7 +214,7 @@ const StepForm = () => {
           />
         );
       case lastStep:
-        return <Step5Results carTypes={carTypes} carResults={carResults} />;
+        return <Step5Results carTypes={carTypes} carResults={carResults} resultsId={resultsId} />;
       default:
         return <p>Something went wrong</p>;
     }
@@ -215,16 +223,38 @@ const StepForm = () => {
   return (
     <>
       <StepFormHeaderStyled isLastStep={isLastStep}>
-        <Text type='h1' colour={COLOURS.white} className='article-header'>
-          {!isLastStep ? `Question ${form.step} of 4` : `Your top car matches`}
-        </Text>
+        <div className='form-title'>
+          <Text type='h1' colour={COLOURS.white} className='article-header'>
+            {!isLastStep ? `Question ${form.step} of 4` : `Your top car matches`}
+          </Text>
+        </div>
         {!isLastStep ? (
           <ProgressBar step={form.step} />
         ) : (
-          <Text type='body' colour={COLOURS.white} className='small'>
-            <span style={{ textDecoration: 'line-through', opacity: '0.25' }}>Change answers/order by matches </span>{' '}
-            <span style={{ opacity: '0.25' }}>(coming soon)</span>
-          </Text>
+          <span>
+            <Action
+              invert
+              handleClick={() =>
+                setForm({
+                  ...form,
+                  step: 1,
+                })
+              }
+              containerStyles={{ marginRight: `${SIZES.spacerXXSm}rem` }}>
+              <Text type='bodySemiBold' colour={COLOURS.white} className='small'>
+                Change Answers
+              </Text>
+            </Action>
+            <Action modest handleClick={() => {}}>
+              <Text type='bodySemiBold' colour={COLOURS.primary} className='small'>
+                Order by matches
+              </Text>
+            </Action>
+            {/* <Text type='body' colour={COLOURS.white} className='small'>
+              <span style={{ textDecoration: 'line-through', opacity: '0.25' }}>Change answers/order by matches </span>
+              <span style={{ opacity: '0.25' }}>(coming soon)</span>
+            </Text> */}
+          </span>
         )}
       </StepFormHeaderStyled>
       <Card resultsPage={!isLastStep ? false : true} lastFormStep={isLastFormStep}>

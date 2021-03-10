@@ -10,6 +10,7 @@ import DraggableDrawer from '../draggable-drawer/DraggableDrawer';
 import Detail from '../detail/Detail';
 import TempImage from '../../assets/images/listing-images/_default-listing-img.png';
 import TempImageDealership from '../../assets/images/listing-images/_default-dealership.png';
+import postJSON from '../../services/utils/post-json';
 import { BREAKPOINTS, COLOURS, SIZES, RESETS } from '../../constants';
 import { buildImgSrc } from '../../utils';
 import { fontSvgStyles } from '../detail/Detail';
@@ -179,11 +180,11 @@ const MakeModel = ({ model, price, primary, secondary }) => {
   );
 };
 
-const ListItem = ({ matchRate, data, isDesktop, children }) => {
+const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
   const [showDraggableDrawer, setShowDraggableDrawer] = useState(false);
   const imgSrc = buildImgSrc(data['imgURL']);
   const toggleDraggableDrawer = () => setShowDraggableDrawer(!showDraggableDrawer);
-
+  // console.log(data);
   return (
     <StyledListItemContainer>
       <StyledListItem>
@@ -192,7 +193,7 @@ const ListItem = ({ matchRate, data, isDesktop, children }) => {
           <Image src={imgSrc} />
         </StyledImageContainer>
         <div className='list-item-body'>
-          <MakeModel primary model={data['MakeModel']} price={`£${data['OTR Price']}`} />
+          <MakeModel primary model={`${data['Make']} ${data['Model']}`} price={`£${data['OTR Price']}`} />
           <StyledListStatistics>
             <Indicators title={`Range`} score={5} info={`${data['Range (WLTP)']} miles`} />
             <Indicators title={`Charge`} score={5} info={`${data['FastCharge']} min`} />
@@ -204,6 +205,8 @@ const ListItem = ({ matchRate, data, isDesktop, children }) => {
           handleClick={(e) => {
             e.preventDefault();
             toggleDraggableDrawer();
+            const requestDetails = `neev.uk/api/sel?selectedCarId=${data.UID}&resultID=-${resultsId}`;
+            postJSON(requestDetails);
             ReactGA.event({
               category: 'Conversion',
               action: 'Click',
@@ -309,13 +312,13 @@ const ListItem = ({ matchRate, data, isDesktop, children }) => {
               hr
               isExpandable={true}
               summaryLeft='Normal charge time'
-              summaryRight={`${data['NormalCharge']} miles`}
+              summaryRight={`${data['NormalCharge']} mins`}
               details='Normal charge is when you would typically use your AC wall charger at home to charge your car. This is likely to be the most common charging scenario for most electric car users'
             />
             <Detail
               isExpandable={true}
               summaryLeft='Slow charge time'
-              summaryRight={`${data['SlowCharge']} miles`}
+              summaryRight={`${data['SlowCharge']} mins`}
               details='Normal charge is when you would typically use your AC wall charger at home to charge your car. This is likely to be the most common charging scenario for most electric car users'
             />
           </div>

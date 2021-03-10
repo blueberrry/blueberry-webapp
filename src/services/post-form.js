@@ -1,14 +1,6 @@
-const status = (response) => {
-  if (response.ok) return response;
-  var error = new Error(response.statusText || response.status);
-  error.response = response;
-  console.log(error);
-  throw error;
-};
+import { postJSON } from './utils/';
 
-const json = (response) => response.json();
-
-const postJSON = (carType, price, range, chargeTime, power = 5, speed = 5) => {
+export const postForm = (carType, price, range, chargeTime, power = 5, speed = 5) => {
   const apiRoot = 'https://neev.uk/api'; // constants
   const defaultCars = ['SUV', 'Saloon', 'Hatchback'];
   const car = defaultCars[carType];
@@ -18,7 +10,5 @@ const postJSON = (carType, price, range, chargeTime, power = 5, speed = 5) => {
   const defaultQs = `https://neev.uk/api?range=4&chargetime=3&power=4&speed=2&price=3&carType=Saloon,Hatchback`; // constants
   const qs = `${apiRoot}?range=${range}&chargetime=${chargeTime}&power=${power}&speed=${speed}&price=${price}&carType=${car}`;
   console.log(qs);
-  return fetch(qs).then(status).then(json);
+  return postJSON(qs);
 };
-
-export default postJSON;

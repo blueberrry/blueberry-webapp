@@ -71,6 +71,9 @@ const StyledText = styled.span`
   ${(props) => props.fnt}
   color: ${(props) => props.colour};
   transition: font-size 2s ease-in;
+  &.step-label--inactive {
+    transition: font-size 2s ease-in;
+  }
   &.step-label--active {
     display: block;
     font-size: ${SIZES.bodyLg}rem;

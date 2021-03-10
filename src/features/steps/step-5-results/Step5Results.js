@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import { useWindowSize } from '../../../hooks/windowResize';
 import { ListItem, Loader } from '../../../components';
 
-const Step5Results = ({ carResults, carTypes }) => {
+const Step5Results = ({ carResults, carTypes, resultsId }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -18,7 +18,7 @@ const Step5Results = ({ carResults, carTypes }) => {
       carResults.map((results) => {
         const resultItem = carTypes.find((carType) => carType.UID === results.car);
         const matchRate = Math.round(results.matchRate);
-        return <ListItem key={resultItem.UID} matchRate={matchRate} data={resultItem}></ListItem>;
+        return <ListItem key={resultItem.UID} matchRate={matchRate} data={resultItem} resultsId={resultsId}></ListItem>;
       });
     return <ResultsCards />;
   }
