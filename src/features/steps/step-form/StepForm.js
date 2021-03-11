@@ -245,15 +245,15 @@ const StepForm = () => {
                 Change Answers
               </Text>
             </Action>
-            <Action modest handleClick={() => {}}>
+            {/* <Action modest handleClick={() => {}}>
               <Text type='bodySemiBold' colour={COLOURS.primary} className='small'>
                 Order by matches
               </Text>
-            </Action>
-            {/* <Text type='body' colour={COLOURS.white} className='small'>
-              <span style={{ textDecoration: 'line-through', opacity: '0.25' }}>Change answers/order by matches </span>
+            </Action> */}
+            <Text type='body' colour={COLOURS.white} className='small'>
+              <span style={{ textDecoration: 'line-through', opacity: '0.25' }}>order by matches </span>
               <span style={{ opacity: '0.25' }}>(coming soon)</span>
-            </Text> */}
+            </Text>
           </span>
         )}
       </StepFormHeaderStyled>
