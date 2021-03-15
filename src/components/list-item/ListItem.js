@@ -184,9 +184,9 @@ const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
   const [showDraggableDrawer, setShowDraggableDrawer] = useState(false);
   const imgSrc = buildImgSrc(data['imgURL']);
   const toggleDraggableDrawer = () => setShowDraggableDrawer(!showDraggableDrawer);
-  // console.log(data);
+  console.log(data);
   return (
-    <StyledListItemContainer>
+    <StyledListItemContainer key={resultsId}>
       <StyledListItem>
         <StyledMatch>{`${matchRate}% match`}</StyledMatch>
         <StyledImageContainer>
@@ -195,17 +195,17 @@ const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
         <div className='list-item-body'>
           <MakeModel primary model={`${data['Make']} ${data['Model']}`} price={`£${data['OTR Price']}`} />
           <StyledListStatistics>
-            <Indicators title={`Range`} score={5} info={`${data['Range (WLTP)']} miles`} />
-            <Indicators title={`Charge`} score={5} info={`${data['FastCharge']} min`} />
-            <Indicators title={`Power`} score={5} info={`${data['HP']}bhp`} />
-            <Indicators title={`Speed`} score={5} info={`${data['Top Speed']}mph`} />
+            <Indicators title={`Range`} score={data.rangeDial} info={`${data['Range (WLTP)']} miles`} />
+            <Indicators title={`Charge`} score={data.chargeDial} info={`${data['FastCharge']} min`} />
+            <Indicators title={`Power`} score={data.powerDial} info={`${data['HP']}bhp`} />
+            <Indicators title={`Speed`} score={data.speedDial} info={`${data['Top Speed']}mph`} />
           </StyledListStatistics>
         </div>
         <Action
           handleClick={(e) => {
             e.preventDefault();
             toggleDraggableDrawer();
-            const requestDetails = `neev.uk/api/sel?selectedCarId=${data.UID}&resultID=-${resultsId}`;
+            const requestDetails = `/api/sel?selectedCarId=${data.UID}&resultID=-${resultsId}`;
             postJSON(requestDetails);
             ReactGA.event({
               category: 'Conversion',
