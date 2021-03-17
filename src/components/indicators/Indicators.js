@@ -61,13 +61,16 @@ function useOnScreen(ref, rootMargin = '0px') {
         rootMargin,
       }
     );
+    let currentRef = ref.current;
     if (ref.current) {
-      observer.observe(ref.current);
+      observer.observe(currentRef);
     }
     return () => {
-      observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
     };
-  }, []); // Empty array ensures that effect is only run on mount and unmount
+  }, [ref, rootMargin]); // Empty array ensures that effect is only run on mount and unmount
 
   return isIntersecting;
 }

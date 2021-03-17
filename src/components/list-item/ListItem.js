@@ -184,7 +184,6 @@ const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
   const [showDraggableDrawer, setShowDraggableDrawer] = useState(false);
   const imgSrc = buildImgSrc(data['imgURL']);
   const toggleDraggableDrawer = () => setShowDraggableDrawer(!showDraggableDrawer);
-  console.log(data);
   return (
     <StyledListItemContainer key={resultsId}>
       <StyledListItem>
@@ -205,7 +204,7 @@ const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
           handleClick={(e) => {
             e.preventDefault();
             toggleDraggableDrawer();
-            const requestDetails = `/api/sel?selectedCarId=${data.UID}&resultID=-${resultsId}`;
+            const requestDetails = `/api/sel?selectedCarId=${data.UID}&resultID=${resultsId}`;
             postJSON(requestDetails);
             ReactGA.event({
               category: 'Conversion',

@@ -1,5 +1,5 @@
-import React from 'react';
-// import pigImg from '../../../assets/images/pig.svg';
+import React, { useEffect, useMemo } from 'react';
+import ReactGA from 'react-ga';
 import piggyBank from '../../../assets/images/svgs/piggy-bank.svg';
 import { CardImage, CardHeader, CardMain, CardRange, CardSwitch, CardFooter } from '../../../components';
 import { CURRENCY_SYMBOL } from '../../../constants';
@@ -18,6 +18,10 @@ const Step2 = ({
   budgetFull,
   handleChange,
 }) => {
+  // useEffect(() => {
+  //   ReactGA.pageview('/question-2');
+  //   console.log('called');
+  // }, []);
   const BudgetRange = () => {
     if (budgetType === 'monthly')
       return (

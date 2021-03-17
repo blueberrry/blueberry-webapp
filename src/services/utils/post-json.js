@@ -2,7 +2,6 @@ const status = (response) => {
   if (response.ok) return response;
   var error = new Error(response.statusText || response.status);
   error.response = response;
-  console.log(error);
   throw error;
 };
 

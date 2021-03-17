@@ -16,6 +16,7 @@ const Step3 = ({
   milesYearlyId,
   handleChange,
 }) => {
+  // ReactGA.pageview('/question-3');
   const MilesRange = () => {
     if (milesType === 'daily')
       return (

@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
+import ReactGA from 'react-ga';
 // import pigImg from '../../../assets/images/pig.svg';
 import { FormValuesContext } from '../../../context/FormValuesContext';
 import { CardHeader, CardCarousel, CardFooter } from '../../../components';
@@ -11,7 +12,20 @@ import standardLuggage from '../../../assets/images/svgs/standard-luggage.svg';
 import smallLuggage from '../../../assets/images/svgs/small-luggage.svg';
 import largeLuggage from '../../../assets/images/svgs/large-luggage.svg';
 
+// ReactGA.pageview(window.location.pathname);
+
+ReactGA.pageview('/question-1');
+
 const Step1 = ({ decrementFormStep, incrementFormStep, setCurrentSlide, skip, step }) => {
+  // useEffect(() => {
+  //   ReactGA.pageview('question-1');
+  // }, []);
+
+  // ReactGA.pageview('question-1');
+  // useEffect(() => {
+  //   ReactGA.pageview('/question-1');
+  // }, []);
+
   const carTypes = [
     {
       id: 123,

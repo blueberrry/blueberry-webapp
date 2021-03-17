@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import ReactGA from 'react-ga';
 import { FormValuesContext } from '../../../context/FormValuesContext';
 import FormLogger from '../../../components/FormLogger';
 import Step1 from '../step-1/Step1';
@@ -38,7 +39,31 @@ const StepFormHeaderStyled = styled.div`
   }
 `;
 
-const StepForm = () => {
+const StepFormWrapper = () => {
+  const [page, setPage] = useState(null);
+
+  useEffect(() => {
+    if (page === 1) {
+      ReactGA.pageview('/question-1');
+    }
+    if (page === 2) {
+      ReactGA.pageview('/question-2');
+    }
+    if (page === 3) {
+      ReactGA.pageview('/question-3');
+    }
+    if (page === 4) {
+      ReactGA.pageview('/question-4');
+    }
+    if (page === 5) {
+      ReactGA.pageview('/results');
+    }
+  }, [page]);
+
+  return <StepForm setPage={setPage} />;
+};
+
+const StepForm = ({ setPage }) => {
   const [form, setForm] = useState({
     step: 1,
     budgetType: 'monthly',
@@ -61,6 +86,10 @@ const StepForm = () => {
   // carTypes && console.log('carTypes', JSON.stringify(carTypes, null, 2));
 
   // carResults && console.log('carTypes', JSON.stringify(carResults, null, 2));
+
+  useEffect(() => {
+    setPage && setPage(form.step);
+  }, [form.step, setPage]);
 
   const nextStep = () => {
     setForm({
@@ -278,4 +307,4 @@ const StepForm = () => {
   );
 };
 
-export default StepForm;
+export default StepFormWrapper;

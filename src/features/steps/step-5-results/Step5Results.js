@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ReactGA from 'react-ga';
 // import { useWindowSize } from '../../../hooks/windowResize';
 import { ListItem, Loader } from '../../../components';
 

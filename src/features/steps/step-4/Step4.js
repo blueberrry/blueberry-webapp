@@ -1,5 +1,4 @@
 import React from 'react';
-//import chargingPoint from '../../../assets/images/charging-point.svg';
 import carBattery from '../../../assets/images/svgs/car-battery.svg';
 import home from '../../../assets/images/svgs/home.svg';
 import roadSideCharging from '../../../assets/images/svgs/road-side-charging.svg';
@@ -16,18 +15,6 @@ import {
 } from '../../../components';
 
 const Step4 = ({ decrementFormStep, incrementFormStep, postData, skip, step, activeId, handleChange }) => {
-  // const ChargingTimeRange = () => {
-  //   return (
-  //     <CardRange
-  //       rangeTitle={`Around ${milesDaily} per day`}
-  //       steps={milesDailySteps}
-  //       handleRangeChange={handleChange('milesDailyId')}
-  //       rangeValue={milesDailyId}
-  //     />
-  //   );
-  // };
-  // const switchItems = ['daily', 'yearly'];
-
   const Home = () => (
     <svg width='40' height='38' viewBox='0 0 40 38' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <path
