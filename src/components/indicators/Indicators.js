@@ -85,7 +85,6 @@ const Indicators = ({ title, score, info }) => {
 
   const arcLength = 226.22650146484375;
   const arcIncrement = arcLength / 10;
-  console.log('blah');
   const arcFinalDashOffset = {
     1: arcLength - arcIncrement,
     2: arcLength - arcIncrement * 2,

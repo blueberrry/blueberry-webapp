@@ -11,7 +11,7 @@ const CardHeaderStyled = styled.section`
   align-items: center;
   padding: 0 ${SIZES.spacerXSm}rem;
   ${STEP_GRID.fullWidth}
-  @media screen and ${BREAKPOINTS.tablet} {
+  @media screen and ${BREAKPOINTS.tabletSm} {
     padding: ${SIZES.spacerXSm}rem;
   }
 `;

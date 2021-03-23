@@ -14,7 +14,7 @@ const Carousel = ({ slides = [], isDesktop }) => {
     return (
       <div className='carousel-provider'>
         {slides.map((slide, index) => (
-          <CarouselCards slide={slide} index={index} isDesktop={true} />
+          <CarouselCards key={index} slide={slide} index={index} isDesktop={true} />
         ))}
       </div>
     );

@@ -21,12 +21,15 @@ const StepFormStyled = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  @media screen and ${BREAKPOINTS.tablet} {
+  @media screen and ${BREAKPOINTS.tabletSm} {
     display: grid;
     align-content: space-between;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 1rem;
   }
-  border-radius: ${SIZES.crdBrRd}rem;
+  @media screen and ${BREAKPOINTS.tablet} {
+    grid-gap: ${SIZES.spacerGridGap}rem;
+  }
 `;
 
 const StepFormHeaderStyled = styled.div`
@@ -40,11 +43,11 @@ const StepFormHeaderStyled = styled.div`
 `;
 
 const StepFormWrapper = () => {
-  const [page, setPage] = useState(null);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     if (page === 1) {
-      ReactGA.pageview('/question-1');
+      return ReactGA.pageview('/question-1');
     }
     if (page === 2) {
       ReactGA.pageview('/question-2');

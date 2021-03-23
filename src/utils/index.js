@@ -7,6 +7,11 @@ export const buildImgSrc = (url) => {
   return imgSrc;
 };
 
+export const buildLogoImgSrc = (url) => {
+  const imgSrc = `${url}`;
+  return imgSrc;
+};
+
 export const convertCamelCase = (text) => {
   var result = text.replace(/([A-Z])/g, ' $1');
   var finalResult = result.charAt(0).toUpperCase() + result.slice(1);

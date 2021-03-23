@@ -8,7 +8,7 @@ const CardMultiStyled = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  @media screen and ${BREAKPOINTS.tablet} {
+  @media screen and ${BREAKPOINTS.tabletSm} {
     > img {
       transform: translateX(-${SIZES.offsetLg}rem);
     }

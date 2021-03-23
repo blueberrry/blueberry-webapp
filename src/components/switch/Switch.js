@@ -31,10 +31,10 @@ const SwitchStyled = styled.input`
 const Switch = ({ checkedItem, switchItems, handleSwitchChange }) => {
   return (
     <SwitchContainerStyled>
-      {switchItems.map((switchItem) => {
+      {switchItems.map((switchItem, index) => {
         const switchName = convertCamelCase(switchItem);
         return (
-          <>
+          <React.Fragment key={index}>
             <SwitchStyled
               type='radio'
               id={switchItem}
@@ -44,7 +44,7 @@ const Switch = ({ checkedItem, switchItems, handleSwitchChange }) => {
               onChange={handleSwitchChange}
             />
             <label htmlFor={switchItem}>{switchName}</label>
-          </>
+          </React.Fragment>
         );
       })}
     </SwitchContainerStyled>

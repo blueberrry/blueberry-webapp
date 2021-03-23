@@ -15,7 +15,7 @@ const CardImageStyled = styled.div`
     height: inherit;
     max-height: inherit;
   }
-  @media screen and ${BREAKPOINTS.tablet} {
+  @media screen and ${BREAKPOINTS.tabletSm} {
     max-width: 300px;
     max-height: unset;
     ${STEP_GRID.lhs}

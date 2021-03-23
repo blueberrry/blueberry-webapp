@@ -8,7 +8,7 @@ import { BREAKPOINTS, RANGE, SIZES, COLOURS, DROP_SHADOWS } from '../../constant
 import { Text } from '../../components';
 const RangeContainer = styled.div`
   width: 240px;
-  @media screen and ${BREAKPOINTS.tablet} {
+  @media screen and ${BREAKPOINTS.tabletSm} {
     width: 300px;
   }
   > div.step-labels {
@@ -21,7 +21,7 @@ const RangeContainer = styled.div`
       position: relative;
       height: 0.5rem;
       border-radius: 1rem;
-      @media screen and ${BREAKPOINTS.tablet} {
+      @media screen and ${BREAKPOINTS.tabletSm} {
         height: 0.75rem;
       }
       &:before {
@@ -38,7 +38,7 @@ const RangeContainer = styled.div`
         height: 0.5rem;
         background: ${COLOURS.primary};
         border-radius: 1rem;
-        @media screen and ${BREAKPOINTS.tablet} {
+        @media screen and ${BREAKPOINTS.tabletSm} {
           height: 0.75rem;
         }
       }
@@ -52,7 +52,7 @@ const RangeContainer = styled.div`
           height: 2rem;
           margin-left: -0.95rem;
           margin-top: -1.15rem;
-          @media screen and ${BREAKPOINTS.tablet} {
+          @media screen and ${BREAKPOINTS.tabletSm} {
             margin-top: -1.25rem;
           }
         }
@@ -91,6 +91,7 @@ const Range = ({ steps, value, handleRangeChange, labelSymbol }) => {
   const Labels = () =>
     Object.keys(steps).map((step) => (
       <Text
+        key={step}
         colour={COLOURS.primary}
         className={
           rangeValue === JSON.parse(step) ? 'step-label--active' : 'step-label--inactive'

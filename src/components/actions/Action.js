@@ -13,6 +13,26 @@ const configureMinPadding = (pdL, pdR) => {
   return DEFAULT_PADDING;
 };
 
+const ActionAnchor = styled.a`
+  ${RESETS.btnReset}
+  background-color: ${(props) => props.styles.bg || COLOURS.white};
+  padding: ${(props) =>
+    configureMinPadding(props.styles.pd && props.styles.pd[0], props.styles.pd && props.styles.pd[1])};
+  @media screen and ${BREAKPOINTS.mobileMd} {
+    padding: ${(props) => (props.styles.pd && props.styles.pd.join(' ')) || DEFAULT_PADDING};
+  }
+  @media screen and ${BREAKPOINTS.tablet} {
+    padding: ${(props) => (props.styles.pd && props.styles.pd.join(' ')) || DEFAULT_PADDING};
+  }
+  border-radius: ${(props) => (props.fullWidth ? 0 : `${SIZES.btnBrRd}rem`)};
+  ${(props) => props.fullWidth && 'width: 100%; margin-bottom: -1px;'}
+  border: ${(props) => props.styles.br || 'none'};
+  &:hover {
+    cursor: pointer;
+  }
+  text-decoration: none;
+`;
+
 const Action = styled.button`
   ${RESETS.btnReset}
   background-color: ${(props) => props.styles.bg || COLOURS.white};
@@ -30,6 +50,15 @@ const Action = styled.button`
   &:hover {
     cursor: pointer;
   }
+  ${(props) =>
+    props.iconButton &&
+    `
+    padding: 0.25rem !important;
+    width: 35px;
+    height: 35px;
+    display: grid;
+    place-items: center;
+  `}
 `;
 
 const Button = ({
@@ -41,8 +70,11 @@ const Button = ({
   modest,
   modalPrimary,
   invert,
+  feedbackBtn,
   fullWidth,
   containerStyles,
+  iconButton,
+  external,
 }) => {
   let buttonStyles = {};
   if (primary) {
@@ -93,8 +125,38 @@ const Button = ({
     };
   }
 
+  if (feedbackBtn) {
+    if (feedbackBtn === 'standard') {
+      buttonStyles = {
+        bg: COLOURS.primary,
+        pd: [`0.25rem`, `1rem`],
+        br: `1px solid ${COLOURS.white}`,
+      };
+    }
+    if (feedbackBtn === 'invert') {
+      buttonStyles = {
+        bg: COLOURS.lighterGray,
+        pd: [`0.25rem`, `1rem`],
+        br: `1px solid ${COLOURS.lighterGray}`,
+      };
+    }
+  }
+
+  if (external) {
+    return (
+      <ActionAnchor href={external} styles={buttonStyles} fullWidth={fullWidth} style={containerStyles}>
+        {children}
+      </ActionAnchor>
+    );
+  }
+
   return (
-    <Action onClick={handleClick} styles={buttonStyles} fullWidth={fullWidth} style={containerStyles}>
+    <Action
+      onClick={handleClick}
+      styles={buttonStyles}
+      fullWidth={fullWidth}
+      style={containerStyles}
+      iconButton={iconButton}>
       {children}
     </Action>
   );

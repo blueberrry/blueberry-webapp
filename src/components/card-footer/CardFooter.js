@@ -10,7 +10,7 @@ const CardFooterStyled = styled.section`
   justify-content: center;
   align-items: center;
   margin-bottom: ${SIZES.spacerXXSm}rem;
-  @media screen and ${BREAKPOINTS.tablet} {
+  @media screen and ${BREAKPOINTS.tabletSm} {
     grid-column: 1 / span 2;
     margin: ${SIZES.spacerSm}rem;
   }

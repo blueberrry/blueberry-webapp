@@ -8,6 +8,8 @@ const colourTheme = {
   black: '#212121',
   gallery: '#f0f0f0',
   white: '#ffffff',
+  bluewoodMask: 'rgba(44, 61, 85, 0.75)',
+  congressBlueMask: 'rgba(3,60,140,0.13)',
 };
 
 export const COLOURS = {
@@ -21,4 +23,6 @@ export const COLOURS = {
   graySecondary: colourTheme.concrete,
   black: colourTheme.black,
   white: colourTheme.white,
+  primaryMask: colourTheme.bluewoodMask,
+  secondaryMask: colourTheme.congressBlueMask,
 };

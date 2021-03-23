@@ -12,13 +12,13 @@ const CardMainStyled = styled.section`
   // margin: ${SIZES.spacerXSm}rem;
   margin: 0;
   padding: 0 ${SIZES.spacerXSm}rem;
-  @media screen and ${BREAKPOINTS.tablet} {
+  @media screen and ${BREAKPOINTS.tabletSm} {
     ${STEP_GRID.rhs}
-    margin: ${SIZES.spacerLg}rem;
+    ${(props) => !props.noMargin && `margin: ${SIZES.spacerLg}rem;`}
   }
 `;
-const CardMain = ({ children }) => {
-  return <CardMainStyled>{children}</CardMainStyled>;
+const CardMain = ({ children, noMargin }) => {
+  return <CardMainStyled noMargin={noMargin}>{children}</CardMainStyled>;
 };
 
 export default CardMain;

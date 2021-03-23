@@ -15,7 +15,7 @@ const ChoiceButtonStyled = styled.button`
   align-items: center;
   text-align: left;
   margin-bottom: ${SIZES.spacerXXSm}rem;
-  @media screen and ${BREAKPOINTS.tablet} {
+  @media screen and ${BREAKPOINTS.tabletSm} {
     margin-bottom: ${SIZES.spacerXSm}rem;
   }
   padding: 0 ${SIZES.spacerXSm}rem;

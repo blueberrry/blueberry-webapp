@@ -13,6 +13,13 @@ const StyledCard = styled.section`
     max-width: 80rem;
     min-height: 32.5rem;
     height: unset !important;
+    // margin: ${SIZES.spacerGridGap}rem;
+  }
+  @media screen and ${BREAKPOINTS.tabletSm} {
+    margin: 1rem;
+  }
+  @media screen and ${BREAKPOINTS.tablet} {
+    margin: ${SIZES.spacerGridGap}rem;
   }
 `;
 

@@ -12,6 +12,8 @@ export const SIZES = {
   spacerLg: 2.5,
   spacerXl: 8,
 
+  spacerGridGap: 2,
+
   carouselSm: 0.25,
   carouselMd: 0.5,
 
@@ -54,7 +56,8 @@ export const SIZES = {
   mobileLg: 33,
   mobileXl: 40,
   // tablet: 47,
-  tablet: 52.5,
+  tabletSm: 48,
+  tablet: 62.5,
 };
 
 export const OFFSETS = {
@@ -82,5 +85,6 @@ export const BREAKPOINTS = {
   mobileMd: `(min-width: ${SIZES.mobileMd}rem)`,
   mobileLg: `(min-width: ${SIZES.mobileLg}rem)`,
   mobileXl: `(min-width: ${SIZES.mobileXl}rem)`,
+  tabletSm: `(min-width: ${SIZES.tabletSm}rem)`,
   tablet: `(min-width: ${SIZES.tablet}rem)`,
 };

@@ -10,7 +10,7 @@ const StyledH1 = styled.h1`
 `;
 
 const StyledH2 = styled.h2`
-  @media screen and ${BREAKPOINTS.tablet} {
+  @media screen and ${BREAKPOINTS.tabletSm} {
     span.h2 {
       font-size: ${SIZES.h2Lg}rem;
     }
@@ -27,7 +27,7 @@ const StyledH4 = styled.h4`
   span.h4 {
     font-weight: 600;
   }
-  @media screen and ${BREAKPOINTS.tablet} {
+  @media screen and ${BREAKPOINTS.tabletSm} {
     span.h4 {
       font-size: ${SIZES.h4Lg}rem;
     }
@@ -38,7 +38,7 @@ const StyledH5 = styled.h5`
   span.h5 {
     ${FONTS.h5}
   }
-  @media screen and ${BREAKPOINTS.tablet} {
+  @media screen and ${BREAKPOINTS.tabletSm} {
     span.h5 {
       font-size: ${SIZES.h5Lg}rem;
     }
@@ -57,7 +57,7 @@ const StyledBody = styled.p`
   > span.main-action {
     font-size: ${SIZES.bodyLg}rem;
   }
-  @media screen and ${BREAKPOINTS.tablet} {
+  @media screen and ${BREAKPOINTS.tabletSm} {
     span.small {
       font-size: ${SIZES.bodyMd}rem;
     }
@@ -70,9 +70,9 @@ const StyledBody = styled.p`
 const StyledText = styled.span`
   ${(props) => props.fnt}
   color: ${(props) => props.colour};
-  transition: font-size 2s ease-in;
+  transition: font-size 0.2s ease-in;
   &.step-label--inactive {
-    transition: font-size 2s ease-in;
+    transition: font-size 0.2s ease-in;
   }
   &.step-label--active {
     display: block;
