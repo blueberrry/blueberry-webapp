@@ -6,11 +6,10 @@ import { BREAKPOINTS, SIZES, STEP_GRID } from '../../constants';
 const CardImageStyled = styled.div`
   // width: 200px;
   // margin: 0 auto;
+  display: none;
   width: 100%;
   max-height: 115px;
   padding: 0 ${SIZES.spacerSm}rem;
-  display: flex;
-  flex-direction: column;
   ${STEP_GRID.fullWidth}
   > img {
     width: inherit;
@@ -18,7 +17,8 @@ const CardImageStyled = styled.div`
     max-height: inherit;
   }
   @media screen and ${BREAKPOINTS.tabletSm} {
-    max-width: 300px;
+    display: flex;
+    flex-direction: column;
     max-height: unset;
     ${STEP_GRID.lhs}
     display: flex;
@@ -27,6 +27,9 @@ const CardImageStyled = styled.div`
     width: 100%;
     align-items: center;
     padding: 0;
+    > img {
+      max-width: 217px !important;
+    }
   }
 `;
 

@@ -25,10 +25,10 @@ const StepFormStyled = styled.form`
     display: grid;
     align-content: space-between;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-gap: 1rem;
+    ${(props) => props.isLastStep && `grid-gap: 1rem;`}
   }
   @media screen and ${BREAKPOINTS.tablet} {
-    grid-gap: ${SIZES.spacerGridGap}rem;
+    ${(props) => props.isLastStep && `grid-gap: 2rem;`}
   }
 `;
 
@@ -290,7 +290,7 @@ const StepForm = ({ setPage }) => {
         )}
       </StepFormHeaderStyled>
       <Card resultsPage={!isLastStep ? false : true} lastFormStep={isLastFormStep}>
-        <StepFormStyled>
+        <StepFormStyled isLastStep={isLastStep}>
           <CurrentStep step={form.step} />
         </StepFormStyled>
       </Card>

@@ -4,12 +4,14 @@ import { BREAKPOINTS, COLOURS, SIZES } from '../../constants';
 import Switch from '../switch/Switch';
 
 const CardSwitchStyled = styled.section`
-  margin-bottom: ${SIZES.spacerMd}rem;
+  @media screen ${BREAKPOINTS.tabletSm} {
+    margin-bottom: ${SIZES.spacerMd}rem;
+  }
 `;
 
 const CardSwitch = ({ switchItems, checkedItem, handleSwitchChange }) => {
   return (
-    <CardSwitchStyled>
+    <CardSwitchStyled className='card-switch'>
       <Switch switchItems={switchItems} checkedItem={checkedItem} handleSwitchChange={handleSwitchChange} />
     </CardSwitchStyled>
   );

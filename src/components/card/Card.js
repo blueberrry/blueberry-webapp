@@ -5,21 +5,18 @@ import { BREAKPOINTS, COLOURS, SIZES, RESETS } from '../../constants';
 import { Text } from '../text/Text';
 
 const StyledCard = styled.section`
-  height: ${(props) => (props.lastFormStep || props.resultsPage ? 'auto' : '70vh')};
+  height: ${(props) => (props.lastFormStep || props.resultsPage ? 'auto' : '75vh')};
   border-radius: ${SIZES.crdBrRd}rem;
   background-color: ${(props) => (!props.resultsPage ? COLOURS.white : COLOURS.primary)};
   margin: ${SIZES.spacerXSm}rem;
+  margin-top: 0;
   @media screen and ${BREAKPOINTS.mobileXl} {
     max-width: 80rem;
     min-height: 32.5rem;
     height: unset !important;
-    // margin: ${SIZES.spacerGridGap}rem;
   }
   @media screen and ${BREAKPOINTS.tabletSm} {
     margin: 1rem;
-  }
-  @media screen and ${BREAKPOINTS.tablet} {
-    margin: ${SIZES.spacerGridGap}rem;
   }
 `;
 

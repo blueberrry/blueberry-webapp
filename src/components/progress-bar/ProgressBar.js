@@ -1,10 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
-import { COLOURS } from '../../constants';
+import styled, { css } from 'styled-components';
+import { BREAKPOINTS, COLOURS } from '../../constants';
 
+const trackHeight = css`
+  height: 1rem;
+  @media screen and ${BREAKPOINTS.tabletSm} {
+    height: 1.5rem;
+  }
+`;
 const Track = styled.div`
   width: 100%;
-  height: 1.5rem;
+  ${trackHeight}
   background: ${COLOURS.white};
   border-radius: 3rem;
 `;
@@ -12,7 +18,7 @@ const Track = styled.div`
 const TrackCharged = styled.div`
   transition: width 1s;
   width: ${(props) => props.width};
-  height: 1.5rem;
+  ${trackHeight}
   background: ${COLOURS.secondary};
   border-radius: 3rem;
   display: grid;

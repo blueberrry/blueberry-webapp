@@ -6,7 +6,7 @@ const ArticleContainerStyled = styled.article`
   height: 100vh;
   @media screen and ${BREAKPOINTS.tablet} {
     height: unset;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
   }
 `;

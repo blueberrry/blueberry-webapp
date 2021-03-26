@@ -10,6 +10,7 @@ const CardHeaderStyled = styled.section`
   justify-content: center;
   align-items: center;
   padding: 0 ${SIZES.spacerXSm}rem;
+  text-align: center;
   ${STEP_GRID.fullWidth}
   @media screen and ${BREAKPOINTS.tabletSm} {
     padding: ${SIZES.spacerXSm}rem;

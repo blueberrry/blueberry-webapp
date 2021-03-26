@@ -4,6 +4,8 @@ export const GLOBALS = {
 
 export const SIZES = {
   // spacers
+  spacerBase: 1,
+
   spacerUltraSm: 0.3,
   spacerXXSm: 0.75,
   spacerXSm: 1.25,

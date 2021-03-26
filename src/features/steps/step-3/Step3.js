@@ -2,22 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import movingCar from '../../../assets/images/svgs/moving-car.svg';
 import { CardImage, CardHeader, CardMain, CardRange, CardSwitch, CardFooter, ToolTip } from '../../../components';
-import { BREAKPOINTS } from '../../../constants';
-
-const ToolTipDesktopContainer = styled.div`
-  display: none;
-  @media screen and ${BREAKPOINTS.tabletSm} {
-    display: block;
-  }
-`;
-
-const ToolTipMobileContainer = styled.div`
-  display: block;
-
-  @media screen and ${BREAKPOINTS.tabletSm} {
-    display: none;
-  }
-`;
 
 const Step3 = ({
   decrementFormStep,
@@ -55,23 +39,15 @@ const Step3 = ({
       );
   };
   const switchItems = ['daily', 'yearly'];
-  const toolTipMessage =
-    'When choosing your budget, keep in mind that running costs such as road tax, fuel and service charges for electric cars are significantly lower on average compared with petrol or diesel cars.';
+
   return (
     <>
       <CardHeader headerText='Roughly how many miles do you drive?' />
-      <CardImage src={movingCar} alt='Car driving off into the distance.'>
-        <ToolTipDesktopContainer>
-          <ToolTip message={toolTipMessage} />
-        </ToolTipDesktopContainer>
-      </CardImage>
+      <CardImage src={movingCar} alt={null}></CardImage>
       <CardMain>
         <CardSwitch switchItems={switchItems} checkedItem={milesType} handleSwitchChange={handleChange('milesType')} />
         <MilesRange />
       </CardMain>
-      <ToolTipMobileContainer>
-        <ToolTip message={toolTipMessage} />
-      </ToolTipMobileContainer>
       <CardFooter
         decrementFormStep={decrementFormStep}
         incrementFormStep={incrementFormStep}
