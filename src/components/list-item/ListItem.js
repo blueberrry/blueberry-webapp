@@ -236,7 +236,7 @@ const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
       <StyledListItem>
         <StyledMatch>{`${matchRate}% match`}</StyledMatch>
         <StyledImageContainer>
-          <Image src={imgSrc} />
+          <Image src={imgSrc} alt={null} />
         </StyledImageContainer>
         <div className='list-item-body'>
           <MakeModel primary model={`${data['Make']} ${data['Model']}`} price={`£${data['OTR Price']}`} />
@@ -321,7 +321,7 @@ const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
           <div className='more-info-section'>
             <MakeModel secondary model={data['MakeModel']} price={`£${data['OTR Price']}`} />
             <div className='more-info-img'>
-              <Image src={imgSrc} />
+              <Image src={imgSrc} alt={null} />
             </div>
             <StyledMoreInfoSubHeader>
               <Text colour={COLOURS.primary} type='h4'>

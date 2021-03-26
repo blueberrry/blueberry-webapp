@@ -9,6 +9,8 @@ const CardImageStyled = styled.div`
   width: 100%;
   max-height: 115px;
   padding: 0 ${SIZES.spacerSm}rem;
+  display: flex;
+  flex-direction: column;
   ${STEP_GRID.fullWidth}
   > img {
     width: inherit;
@@ -28,10 +30,11 @@ const CardImageStyled = styled.div`
   }
 `;
 
-const CardImage = ({ src, alt, style }) => {
+const CardImage = ({ src, alt, style, children }) => {
   return (
     <CardImageStyled>
       <Image src={src} alt={alt} style={style} />
+      {children}
     </CardImageStyled>
   );
 };

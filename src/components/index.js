@@ -17,6 +17,7 @@ import CardMain from './card-main/CardMain';
 import Image from './image/Image';
 import ProgressBar from './progress-bar/ProgressBar';
 import Loader from './loader/Loader';
+import ToolTip from './tooltip/ToolTip';
 
 export {
   Action,
@@ -38,4 +39,5 @@ export {
   MultiChoice,
   Text,
   Loader,
+  ToolTip,
 };
