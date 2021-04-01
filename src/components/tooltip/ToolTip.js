@@ -24,7 +24,7 @@ const ToolTip = ({ message }) => {
   return (
     <StyledToolTip>
       <ToolTipIcon />
-      <Text style={{ fontWeight: 500 }} className='small' colour={COLOURS.primary}>
+      <Text type='bodyMedium' className='small' colour={COLOURS.primary}>
         {message}
       </Text>
     </StyledToolTip>

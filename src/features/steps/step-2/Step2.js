@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 import ReactGA from 'react-ga';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import piggyBank from '../../../assets/images/svgs/piggy-bank.svg';
 import { CardImage, CardHeader, CardMain, CardRange, CardSwitch, CardFooter, ToolTip, Text } from '../../../components';
 import { CURRENCY_SYMBOL, BREAKPOINTS, COLOURS, SIZES } from '../../../constants';
@@ -10,19 +10,40 @@ const ToolTipDesktopContainer = styled.div`
   @media screen and ${BREAKPOINTS.tabletSm} {
     display: block;
     margin-top: 1.875rem;
+    margin-bottom: 1.875rem;
   }
 `;
 
 const ToolTipMobileContainer = styled.div`
-  display: block;
+  display: flex;
+  justify-content: center;
   @media screen and ${BREAKPOINTS.tabletSm} {
     display: none;
   }
 `;
 
 const MessageStyled = styled.div`
+  max-width: 380px;
+  display: flex;
   text-align: center;
-  margin: ${SIZES.spacerBase}rem auto;
+`;
+
+const RESET_ANCHOR = css`
+  &:hover {
+    cursor: pointer;
+  }
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto;
+  &:visited {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+  }
+`;
+
+export const StyledAnchor = styled.a`
+  ${RESET_ANCHOR}
 `;
 
 const Step2 = ({
@@ -39,10 +60,6 @@ const Step2 = ({
   budgetFull,
   handleChange,
 }) => {
-  // useEffect(() => {
-  //   ReactGA.pageview('/question-2');
-  //   console.log('called');
-  // }, []);
   const BudgetRange = () => {
     if (budgetType === 'monthly')
       return (
@@ -71,10 +88,30 @@ const Step2 = ({
   const toolTipMessage =
     'When choosing your budget, keep in mind that running costs such as road tax, fuel and service charges for electric cars are significantly lower on average compared with petrol or diesel cars.';
 
+  const LearnMoreLink = () => {
+    return (
+      <StyledAnchor href='https://neev.uk/grant.amp.html'>
+        <span style={{ fontWeight: 600 }}> Learn more.</span>
+      </StyledAnchor>
+    );
+  };
+
+  const Message = () =>
+    budgetType === 'inFull' ? (
+      <>
+        <Text className='small' colour={COLOURS.primary} type='bodyMedium'>
+          Get a government grant of up to £2,500 when you buy in full.
+          <LearnMoreLink />
+        </Text>
+      </>
+    ) : (
+      ''
+    );
+
   return (
     <>
       <CardHeader headerText='Whats your budget?' />
-      <CardImage src={piggyBank} alt='Pig'>
+      <CardImage src={piggyBank} alt='Pig' imgMaxWidth={{ maxWidth: '215px' }}>
         <ToolTipDesktopContainer>
           <ToolTip message={toolTipMessage} />
         </ToolTipDesktopContainer>
@@ -85,13 +122,9 @@ const Step2 = ({
           checkedItem={budgetType}
           handleSwitchChange={handleChange('budgetType')}
         />
-        {budgetType === 'inFull' && (
-          <MessageStyled className='message'>
-            <Text className='small' colour={COLOURS.primary}>
-              Get a government grant of up to £2,500 when you buy in full. Learn more
-            </Text>
-          </MessageStyled>
-        )}
+        <MessageStyled className='message'>
+          <Message />
+        </MessageStyled>
         <BudgetRange />
       </CardMain>
       <ToolTipMobileContainer className='tooltip-mobile'>

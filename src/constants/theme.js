@@ -6,13 +6,21 @@ export const SIZES = {
   // spacers
   spacerBase: 1,
 
+  // spacerUltraSm: 0.3,
+  // spacerXXSm: 0.75,
+  // spacerXSm: 1.25,
+  // spacerSm: 1.65,
+  // spacerMd: 1.9,
+  // spacerLg: 2.5,
+  // spacerXl: 8,
+
   spacerUltraSm: 0.3,
-  spacerXXSm: 0.75,
-  spacerXSm: 1.25,
-  spacerSm: 1.75,
-  spacerMd: 1.9,
-  spacerLg: 2.5,
-  spacerXl: 8,
+  spacerXXSm: 0.65,
+  spacerXSm: 1.2,
+  spacerSm: 1.5,
+  spacerMd: 1.8,
+  spacerLg: 2.3,
+  spacerXl: 7.5,
 
   spacerGridGap: 2,
 
@@ -77,6 +85,7 @@ export const FONTS = {
   bodyBold: `font-family: 'Poppins Bold'; font-size: ${SIZES.body}rem; line-height: normal;`,
   bodyItalic: `font-family: 'Poppins Italic'; font-size: ${SIZES.body}rem; line-height: normal;`,
   bodySemiBold: `font-family: 'Poppins Semi Bold'; font-size: ${SIZES.body}rem; line-height: normal;`,
+  bodyMedium: `font-family: 'Poppins Medium'; font-size: ${SIZES.body}rem; line-height: normal;`,
   bodyLight: `font-family: 'Poppins Semi Bold'; font-size: ${SIZES.body}rem; line-height: normal;`,
   bodyLightItalic: `font-family: 'Poppins Semi Bold Italic'; font-size: ${SIZES.body}rem; line-height: normal;`,
   logo: `font-family: 'Poppins Bold'; font-size: ${SIZES.h4}rem; line-height: normal;`,

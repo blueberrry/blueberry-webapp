@@ -86,10 +86,6 @@ const StepForm = ({ setPage }) => {
     });
   }, []);
 
-  // carTypes && console.log('carTypes', JSON.stringify(carTypes, null, 2));
-
-  // carResults && console.log('carTypes', JSON.stringify(carResults, null, 2));
-
   useEffect(() => {
     setPage && setPage(form.step);
   }, [form.step, setPage]);
@@ -182,8 +178,6 @@ const StepForm = ({ setPage }) => {
     3: 'Charging points during trips',
   };
 
-  const lastFormStep = 4;
-  const isLastFormStep = form.step === lastFormStep;
   const lastStep = 5;
   const isLastStep = form.step === lastStep;
 
@@ -289,7 +283,7 @@ const StepForm = ({ setPage }) => {
           </span>
         )}
       </StepFormHeaderStyled>
-      <Card resultsPage={!isLastStep ? false : true} lastFormStep={isLastFormStep}>
+      <Card resultsPage={!isLastStep ? false : true}>
         <StepFormStyled isLastStep={isLastStep}>
           <CurrentStep step={form.step} />
         </StepFormStyled>

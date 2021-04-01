@@ -14,14 +14,18 @@ const CarouselSlideStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid ${COLOURS.secondary};
+  border: 2px solid ${COLOURS.gray};
   border-radius: 1rem;
   // min-height: 300px;
   height: 100%;
   margin: ${SIZES.carouselSm}rem;
   ${DROP_SHADOWS.secondary}
   transition: transform .2s ease-in;
+  &.mobile-active-slide{
+    border: 2px solid ${COLOURS.secondary} !important;
+  }
   &.desktop-active-slide {
+    border: 2px solid ${COLOURS.secondary};
     transform: scale(1.12);
     &:hover {
       transform: scale(1.12);
@@ -59,10 +63,16 @@ const CarouselCards = ({ slide, index, isDesktop }) => {
     <CarouselSlideStyled
       isDesktop={isDesktop}
       key={`${slide.slideId}-${index}`}
-      className={isDesktop && index === formValuesContext.currentSlide ? `desktop-active-slide` : ``}
+      className={
+        isDesktop && index === formValuesContext.currentSlide
+          ? `desktop-active-slide`
+          : !isDesktop && index === formValuesContext.currentSlide
+          ? `mobile-active-slide`
+          : ``
+      }
       onClick={isDesktop ? () => formValuesContext.updateCurrentSlide(index) : () => {}}>
-      <Image src={slide.img} alt='slide image' style={{ marginBottom: `${SIZES.spacerXSm}rem` }} />
-      <Badge colour={COLOURS.lighterGray}>
+      <Image src={slide.img} alt='slide image' />
+      <Badge colour={COLOURS.lighterGray} style={{ margin: `${SIZES.spacerXXSm}rem ${SIZES.spacerUltraSm}rem 0 0` }}>
         <Text type='bodyBold' colour={COLOURS.primary}>
           {slide.title}
         </Text>

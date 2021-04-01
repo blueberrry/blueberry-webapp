@@ -29,6 +29,12 @@ const CarouselSlides = ({ slides = [] }) => {
   formValuesContext.updateCurrentSlide(carouselContext.state.currentSlide);
 
   useEffect(() => {
+    if (formValuesContext.currentSlide === null) {
+      formValuesContext.updateCurrentSlide(1);
+    }
+  }, [formValuesContext]);
+
+  useEffect(() => {
     function onChange() {
       const currentSlide = carouselContext.state.currentSlide + 1;
       formValuesContext.updateCarType(slides.find((type) => type.slideId === currentSlide).id);

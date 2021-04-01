@@ -1,7 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Image = ({ src, alt, style }) => {
-  return <img src={src} alt={alt} style={{ maxWidth: '100%', ...style }} />;
+const Image2 = ({ src, alt, maxWidth }) => {
+  return <img src={src} alt={alt} style={{ ...maxWidth }} />;
 };
 
-export default Image;
+export default Image2;
+
+Image2.defaultProps = {
+  maxWidth: { maxWidth: '100%' },
+};
+
+Image2.propTypes = {
+  maxWidth: PropTypes.object,
+};

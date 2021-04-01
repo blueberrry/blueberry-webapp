@@ -78,7 +78,7 @@ const UpArrow = () => (
   </svg>
 );
 
-const Detail = ({ hr, isExpandable, summaryLeft, summaryRight, details }) => {
+const Detail = ({ hr, isExpandable, summaryLeft, summaryRight, details, className }) => {
   const [isOpen, setIsOpen] = useState(false);
   const onToggle = (e) => {
     if (!isExpandable) {

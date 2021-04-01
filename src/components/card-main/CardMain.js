@@ -9,37 +9,12 @@ const CardMainStyled = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  // margin: ${SIZES.spacerXSm}rem;
   margin: 0;
   padding: 0 ${SIZES.spacerXSm}rem;
   @media screen and ${BREAKPOINTS.tabletSm} {
     // justify-content: center;
+    padding-top: 50px;
     ${STEP_GRID.rhs}
-  }
-
-  > .card-switch {
-    margin-top: 1rem;
-    margin-bottom: auto;
-  }
-  > .message {
-    margin-bottom: auto;
-  }
-  > .card-range {
-    margin-top: 1rem;
-    margin-bottom: auto;
-  }
-
-  @media screen and ${BREAKPOINTS.tabletSm} {
-    > .card-switch {
-      margin-bottom: unset;
-    }
-    > .message {
-      margin-bottom: unset;
-    }
-    > .card-range {
-      margin-bottom: unset;
-    }
   }
 `;
 

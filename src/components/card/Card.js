@@ -5,14 +5,14 @@ import { BREAKPOINTS, COLOURS, SIZES, RESETS } from '../../constants';
 import { Text } from '../text/Text';
 
 const StyledCard = styled.section`
-  height: ${(props) => (props.lastFormStep || props.resultsPage ? 'auto' : '75vh')};
+  height: ${(props) => (props.resultsPage ? 'auto' : '570px')};
   border-radius: ${SIZES.crdBrRd}rem;
   background-color: ${(props) => (!props.resultsPage ? COLOURS.white : COLOURS.primary)};
   margin: ${SIZES.spacerXSm}rem;
   margin-top: 0;
   @media screen and ${BREAKPOINTS.mobileXl} {
     max-width: 80rem;
-    min-height: 32.5rem;
+    min-height: 34rem;
     height: unset !important;
   }
   @media screen and ${BREAKPOINTS.tabletSm} {
@@ -20,12 +20,8 @@ const StyledCard = styled.section`
   }
 `;
 
-const Card = ({ children, resultsPage, lastFormStep }) => {
-  return (
-    <StyledCard resultsPage={resultsPage} lastFormStep={lastFormStep}>
-      {children}
-    </StyledCard>
-  );
+const Card = ({ children, resultsPage }) => {
+  return <StyledCard resultsPage={resultsPage}>{children}</StyledCard>;
 };
 
 export default Card;

@@ -47,7 +47,7 @@ const StyledH5 = styled.h5`
 
 const StyledBody = styled.p`
   > span.p {
-    ${(props) => props.semiBold && FONTS.bodyBold}
+    ${(props) => props.medium && FONTS.bodyMedium}
     ${(props) => props.semiBold && FONTS.bodySemiBold}
     ${(props) => props.bold && FONTS.bodyBold}
   }
@@ -97,6 +97,12 @@ const Text = ({ type, colour, children, className, tagClassName, style, enlarge 
         return <StyledH5 style={style}>{children}</StyledH5>;
       case 'body':
         return <StyledBody style={style}>{children}</StyledBody>;
+      case 'bodyMedium':
+        return (
+          <StyledBody medium style={style}>
+            {children}
+          </StyledBody>
+        );
       case 'bodySemiBold':
         return (
           <StyledBody semiBold style={style}>

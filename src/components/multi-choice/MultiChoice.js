@@ -36,10 +36,7 @@ const MultiChoice = ({ choiceSelections, activeId, handleMultiChange }) => {
         isActive={isActive}
         onClick={handleMultiChange('chargingLocationId')}
         key={`${selection.id}-blueberry-${index}`}>
-        <div style={{ width: '15%' }}>
-          {/* <img src={selection.icon} alt='' /> */}
-          {selection.icon}
-        </div>
+        <div style={{ width: '15%' }}>{selection.icon}</div>
         <div
           style={{
             width: `calc(85% - ${SIZES.spacerXXSm}rem`,
@@ -48,7 +45,7 @@ const MultiChoice = ({ choiceSelections, activeId, handleMultiChange }) => {
           <Text type='h4' colour={isActive ? COLOURS.white : COLOURS.primary}>
             {selection.title}
           </Text>
-          <Text type='bodySmall' colour={isActive ? COLOURS.white : COLOURS.primary} className='small'>
+          <Text type='body' colour={isActive ? COLOURS.white : COLOURS.primary} className='small'>
             {selection.info}
           </Text>
         </div>

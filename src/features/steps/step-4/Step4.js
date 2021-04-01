@@ -181,10 +181,12 @@ const Step4 = ({ decrementFormStep, incrementFormStep, postData, skip, step, act
       id: 3,
     },
   ];
+
+  // imgMaxWidth should just be '317px' OR primary/secondary
   return (
     <>
       <CardHeader headerText='Where will you usually re-charge your car?' />
-      <CardImage src={carBattery} alt='Bolt of electricity' />
+      <CardImage src={carBattery} alt='Bolt of electricity' imgMaxWidth={{ maxWidth: '317px' }} />
       <CardMain noMargin>
         <CardMulti choiceSelections={choiceSelections} activeId={activeId} handleMultiChange={handleChange} />
       </CardMain>

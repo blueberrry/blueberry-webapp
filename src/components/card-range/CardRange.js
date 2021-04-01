@@ -6,6 +6,7 @@ import Range from '../range/Range';
 import { BREAKPOINTS, COLOURS, SIZES } from '../../constants';
 
 const CardRangeStyled = styled.section`
+  margin-top: 29px;
   > h3 {
     margin-top: ${SIZES.spacerMd}rem;
   }

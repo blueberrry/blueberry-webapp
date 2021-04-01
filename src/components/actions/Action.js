@@ -59,6 +59,7 @@ const Action = styled.button`
     display: grid;
     place-items: center;
   `}
+  ${(props) => props.wrapper && `all: unset !important;  margin: 0 !important; padding: 0 !important;`}
 `;
 
 const Button = ({
@@ -74,6 +75,7 @@ const Button = ({
   fullWidth,
   containerStyles,
   iconButton,
+  wrapper,
   external,
 }) => {
   let buttonStyles = {};
@@ -156,7 +158,8 @@ const Button = ({
       styles={buttonStyles}
       fullWidth={fullWidth}
       style={containerStyles}
-      iconButton={iconButton}>
+      iconButton={iconButton}
+      wrapper={wrapper}>
       {children}
     </Action>
   );
@@ -170,6 +173,7 @@ Button.defaultProps = {
   primary: false,
   secondary: false,
   propStyles: {},
+  wrapper: false,
 };
 Button.propTypes = {
   text: PropTypes.string,
@@ -177,4 +181,5 @@ Button.propTypes = {
   primary: PropTypes.bool,
   secondary: PropTypes.bool,
   propStyles: PropTypes.object,
+  wrapper: PropTypes.bool,
 };

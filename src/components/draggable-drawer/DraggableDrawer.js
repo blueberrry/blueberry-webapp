@@ -43,9 +43,10 @@ const DraggableDrawer = ({ open, toggle, children }) => {
         ref={targetRef}
         open={open}
         onRequestClose={toggle}
-        allowClose={true}
+        // allowClose={false}
+        dontApplyListeners={false}
         containerElementClass='modal'
-        modalElementClass='modal-top-el'>
+        modalElementClass={'modal-top-el'}>
         <StyledDraggableIndicator className='draggable-indicator' />
         {children}
       </Drawer>

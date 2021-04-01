@@ -12,8 +12,10 @@ const CardHeaderStyled = styled.section`
   padding: 0 ${SIZES.spacerXSm}rem;
   text-align: center;
   ${STEP_GRID.fullWidth}
+  margin-top: 20px;
+  margin-bottom: 17px;
   @media screen and ${BREAKPOINTS.tabletSm} {
-    padding: ${SIZES.spacerXSm}rem;
+    margin: ${SIZES.spacerXSm}rem;
   }
 `;
 

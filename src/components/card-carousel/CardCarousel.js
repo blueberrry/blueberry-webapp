@@ -23,6 +23,10 @@ const CardCarouselStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: -37px;
+  @media screen and ${BREAKPOINTS.tabletSm} {
+    margin-top: unset;
+  }
   > div.carousel-provider {
     max-width: 67vw;
     ${(props) => props.isDesktop && desktopStyles}

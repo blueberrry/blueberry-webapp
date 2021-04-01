@@ -43,7 +43,7 @@ const Step3 = ({
   return (
     <>
       <CardHeader headerText='Roughly how many miles do you drive?' />
-      <CardImage src={movingCar} alt={null}></CardImage>
+      <CardImage src={movingCar} alt={null} imgMaxWidth={{ maxWidth: '375px' }}></CardImage>
       <CardMain>
         <CardSwitch switchItems={switchItems} checkedItem={milesType} handleSwitchChange={handleChange('milesType')} />
         <MilesRange />

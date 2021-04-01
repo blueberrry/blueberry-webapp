@@ -26,8 +26,8 @@ const benchmarkAnimation = (props) => {
 };
 
 const BenchmarkStyled = styled.svg`
-  width: 75%;
-  margin: ${SIZES.spacerUltraSm}rem 0;
+  width: 52%;
+  margin: ${SIZES.spacerXXSm}rem 0;
   > path.arc-path-bg {
     fill: transparent;
     stroke: ${COLOURS.lightGray};
