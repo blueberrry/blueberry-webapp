@@ -126,7 +126,7 @@ const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
     other: false,
   });
 
-  const [scrollToInDrawer, setScrollToInDrawer] = useState('img');
+  const [scrollToInDrawer, setScrollToInDrawer] = useState('');
 
   return (
     <StyledListItemContainer key={resultsId}>

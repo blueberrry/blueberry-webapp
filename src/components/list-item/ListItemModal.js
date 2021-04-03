@@ -39,7 +39,6 @@ const flashingBorderAnimation = (props) => {
 
 const StyledMoreInfoModal = styled.div`
   padding: ${SIZES.spacerSm}rem;
-  // min-height: 200vh;
   > .more-info-header {
     // background-color: red;
     .back-button {
@@ -47,6 +46,9 @@ const StyledMoreInfoModal = styled.div`
     }
     .close-button {
       display: none;
+      > .close-button-text {
+        margin-left: ${SIZES.spacerXXSm}rem;
+      }
     }
     @media screen and ${BREAKPOINTS.tabletSm} {
       .back-button {
@@ -197,7 +199,7 @@ export const ListItemModal = ({
               </div>
               <div className='close-button'>
                 <Close isFont />
-                Close
+                <span className='close-button-text'>Close</span>
               </div>
             </Text>
           </Action>

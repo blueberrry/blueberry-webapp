@@ -125,8 +125,13 @@ const FeedbackPopover = ({ visibility = false, setVisibility, carId, resultsId, 
   };
   if (visibility)
     return (
-      <StyledFeedbackBg className='feed-back'>
-        <StyledFeedbackPopover>
+      <StyledFeedbackBg
+        className='feed-back'
+        onClick={(e) => {
+          e.preventDefault();
+          setVisibility(false);
+        }}>
+        <StyledFeedbackPopover onClick={(e) => e.stopPropagation()}>
           <div className='dismiss'>
             <Action
               iconButton
