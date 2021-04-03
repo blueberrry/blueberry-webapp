@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { BREAKPOINTS, COLOURS, SIZES } from '../../constants';
 import { Text } from '../../components';
-import { ToolTipIcon } from '../IconLibrary';
+import { ToolTip } from '../IconLibrary';
 
 const StyledToolTip = styled.div`
   max-width: 400px;
@@ -20,10 +20,10 @@ const StyledToolTip = styled.div`
   }
 `;
 
-const ToolTip = ({ message }) => {
+const ToolTipContainer = ({ message }) => {
   return (
     <StyledToolTip>
-      <ToolTipIcon />
+      <ToolTip />
       <Text type='bodyMedium' className='small' colour={COLOURS.primary}>
         {message}
       </Text>
@@ -31,4 +31,4 @@ const ToolTip = ({ message }) => {
   );
 };
 
-export default ToolTip;
+export default ToolTipContainer;

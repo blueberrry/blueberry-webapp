@@ -8,6 +8,7 @@ const colourTheme = {
   black: '#212121',
   gallery: '#f0f0f0',
   white: '#ffffff',
+  guardsmanRed: '#C50000',
   bluewoodMask: 'rgba(44, 61, 85, 0.75)',
   congressBlueMask: 'rgba(3,60,140,0.13)',
 };
@@ -16,7 +17,7 @@ export const COLOURS = {
   primary: colourTheme.blueWood,
   secondary: colourTheme.elm,
   light: colourTheme.white,
-  
+
   dark: colourTheme.tundoro,
   lighterGray: colourTheme.gallery,
   lightGray: colourTheme.alto,
@@ -24,6 +25,7 @@ export const COLOURS = {
   graySecondary: colourTheme.concrete,
   black: colourTheme.black,
   white: colourTheme.white,
+  danger: colourTheme.guardsmanRed,
   primaryMask: colourTheme.bluewoodMask,
   secondaryMask: colourTheme.congressBlueMask,
 };

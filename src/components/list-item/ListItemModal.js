@@ -1,54 +1,15 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import ReactGA from 'react-ga';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 import Text from '../text/Text';
 import Image from '../image/Image';
-import Indicators from '../indicators/Indicators';
 import Action from '../actions/Action';
 import DraggableDrawer from '../draggable-drawer/DraggableDrawer';
 import Detail from '../detail/Detail';
-import TempImage from '../../assets/images/listing-images/_default-listing-img.png';
-import TempImageDealership from '../../assets/images/listing-images/_default-dealership.png';
-import postJSON from '../../services/utils/post-json';
-import { BREAKPOINTS, COLOURS, SIZES, RESETS } from '../../constants';
+import { BREAKPOINTS, COLOURS, SIZES } from '../../constants';
 import { buildImgSrc, buildLogoImgSrc } from '../../utils';
-import { fontSvgStyles } from '../detail/Detail';
 import { StyledAnchor } from '../../features/steps/step-2/Step2';
-import { getJSON } from '../../services/utils';
-import FeedbackPopover from '../feedback-popover/FeedbackPopover';
-import { enableBodyScroll } from 'body-scroll-lock';
-
-//icon lib
-const CloseIcon = () => (
-  <svg
-    class='svg-icon'
-    style={{ ...fontSvgStyles, fill: 'none', marginRight: `${SIZES.spacerUltraSm}rem` }}
-    viewBox='0 0 1024 1024'
-    version='1.1'
-    xmlns='http://www.w3.org/2000/svg'>
-    <path
-      d='M895.156706 86.256941a30.177882 30.177882 0 0 1 42.767059-0.180706c11.745882 11.745882 11.745882 30.870588-0.180706 42.767059L128.843294 937.743059c-11.866353 11.866353-30.930824 12.047059-42.767059 0.180706-11.745882-11.745882-11.745882-30.870588 0.180706-42.767059L895.156706 86.256941z'
-      fill='#000000'
-    />
-    <path
-      d='M86.076235 86.076235c11.745882-11.745882 30.870588-11.745882 42.767059 0.180706l808.899765 808.899765c11.866353 11.866353 12.047059 30.930824 0.180706 42.767059-11.745882 11.745882-30.870588 11.745882-42.767059-0.180706L86.256941 128.843294a30.177882 30.177882 0 0 1-0.180706-42.767059z'
-      fill='#000000'
-    />
-    <path d='M0 0h1024v1024H0z' fill='#FFF4F4' fill-opacity='0' />
-  </svg>
-);
-
-//icon lib
-const BackChevron = () => (
-  <svg
-    style={{ ...fontSvgStyles, fill: 'none', marginRight: `${SIZES.spacerUltraSm}rem` }}
-    viewBox='0 0 11 17'
-    fill='none'
-    xmlns='http://www.w3.org/2000/svg'>
-    <path d='M9.99927 1L2.09637 8.38313L10.1921 15.5543' stroke='currentColor' strokeWidth='2' />
-  </svg>
-);
+import { BackChevron, Close } from '../IconLibrary';
 
 const flashingBorderAnimation = (props) => {
   const SHADOW = `0px 0px 9px 4px #2C3D55`;
@@ -231,11 +192,11 @@ export const ListItemModal = ({
           <Action handleClick={() => toggleDraggableDrawer()}>
             <Text colour={COLOURS.primary} type='bodySemiBold'>
               <div className='back-button'>
-                <BackChevron />
+                <BackChevron isFont />
                 Back
               </div>
               <div className='close-button'>
-                <CloseIcon />
+                <Close isFont />
                 Close
               </div>
             </Text>

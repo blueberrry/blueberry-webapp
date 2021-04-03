@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState } from 'react';
 import ReactGA from 'react-ga';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -6,17 +6,12 @@ import Text from '../text/Text';
 import Image from '../image/Image';
 import Indicators from '../indicators/Indicators';
 import Action from '../actions/Action';
-import DraggableDrawer from '../draggable-drawer/DraggableDrawer';
-import Detail from '../detail/Detail';
-import TempImage from '../../assets/images/listing-images/_default-listing-img.png';
-import TempImageDealership from '../../assets/images/listing-images/_default-dealership.png';
 import postJSON from '../../services/utils/post-json';
-import { BREAKPOINTS, COLOURS, SIZES, RESETS } from '../../constants';
-import { buildImgSrc, buildLogoImgSrc } from '../../utils';
-import { fontSvgStyles } from '../detail/Detail';
-import { getJSON } from '../../services/utils';
+import { BREAKPOINTS, COLOURS, SIZES, } from '../../constants';
+import { buildImgSrc } from '../../utils';
 import FeedbackPopover from '../feedback-popover/FeedbackPopover';
 import ListItemModal from './ListItemModal';
+import { FeedbackDelete } from '../../components/IconLibrary';
 
 const StyledListItemContainer = styled.div`
   position: relative;
@@ -95,13 +90,6 @@ const StyledMatch = styled.div`
   z-index: 20;
 `;
 
-const FeedbackDeleteIcon = () => (
-  <svg width='18' height='17' viewBox='0 0 18 17' fill='none' xmlns='http://www.w3.org/2000/svg'>
-    <path d='M16.9298 1L9.06122 8.35111L17.1218 15.4912' stroke='#2C3D55' strokeWidth='2.5' />
-    <path d='M1.19196 1L9.06057 8.35111L0.999992 15.4912' stroke='#2C3D55' strokeWidth='2.5' />
-  </svg>
-);
-
 const StyledFeedbackAction = styled.div`
   position: absolute;
   z-index: 20;
@@ -154,7 +142,7 @@ const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
               setFeedbackVisibility(true);
             }
           }}>
-          <FeedbackDeleteIcon />
+          <FeedbackDelete />
         </Action>
       </StyledFeedbackAction>
       <StyledListItem>
@@ -177,7 +165,6 @@ const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
               setScrollToInDrawer('price');
               toggleDraggableDrawer();
             }}
-            // style={{ width: '100%' }}
             wrapper={true}>
             <MakeModel primary model={`${data['Make']} ${data['Model']}`} price={`£${data['OTR Price']}`} />
           </Action>
