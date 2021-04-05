@@ -7,7 +7,7 @@ import Image from '../image/Image';
 import Indicators from '../indicators/Indicators';
 import Action from '../actions/Action';
 import postJSON from '../../services/utils/post-json';
-import { BREAKPOINTS, COLOURS, SIZES, } from '../../constants';
+import { BREAKPOINTS, COLOURS, SIZES } from '../../constants';
 import { buildImgSrc } from '../../utils';
 import FeedbackPopover from '../feedback-popover/FeedbackPopover';
 import ListItemModal from './ListItemModal';
@@ -196,6 +196,7 @@ const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
         <Action
           handleClick={(e) => {
             e.preventDefault();
+            setScrollToInDrawer('');
             toggleDraggableDrawer();
             const requestDetails = `/api/sel?selectedCarId=${data.UID}&resultID=${resultsId}`;
             postJSON(requestDetails);
