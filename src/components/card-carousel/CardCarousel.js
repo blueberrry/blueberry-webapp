@@ -18,6 +18,7 @@ const desktopStyles = css`
 `;
 
 const CardCarouselStyled = styled.div`
+  perspective: 1000px;
   width: 100%;
   ${STEP_GRID.fullWidth}
   display: flex;

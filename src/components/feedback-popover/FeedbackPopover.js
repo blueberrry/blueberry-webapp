@@ -25,7 +25,7 @@ const StyledFeedbackPopover = styled.div`
   min-height: 50%;
   margin-left: 0.75rem;
   display: flex;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
   flex-direction: column;
   // padding: 1rem 1rem 0rem 1rem;

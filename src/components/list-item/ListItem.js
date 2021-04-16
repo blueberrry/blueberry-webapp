@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 import ReactGA from 'react-ga';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import ShareLink from '../share-link/ShareLink';
 import Text from '../text/Text';
 import Image from '../image/Image';
 import Indicators from '../indicators/Indicators';
 import Action from '../actions/Action';
 import postJSON from '../../services/utils/post-json';
-import { BREAKPOINTS, COLOURS, SIZES } from '../../constants';
+import { BREAKPOINTS, COLOURS, SIZES, GUIDE_ROOT, GUIDE_DOMAIN } from '../../constants';
 import { buildImgSrc } from '../../utils';
 import FeedbackPopover from '../feedback-popover/FeedbackPopover';
+import Popover from '../popover/Popover';
 import ListItemModal from './ListItemModal';
-import { FeedbackDelete } from '../../components/IconLibrary';
+import { FeedbackDelete, Share } from '../../components/IconLibrary';
 
 const StyledListItemContainer = styled.div`
   position: relative;
@@ -44,6 +46,7 @@ const StyledListItem = styled.section`
       padding: 0 ${SIZES.spacerSm}rem;
     }
   }
+  ${(props) => props.popoverActive && `filter: blur(3px);`}
 `;
 
 const StyledListHeader = styled.div`
@@ -74,6 +77,7 @@ const StyledImageContainer = styled.div`
 `;
 
 export const Badge = styled.span`
+  display: flex;
   align-self: center;
   border-radius: 1rem;
   background-color: ${(props) => props.colour};
@@ -95,21 +99,22 @@ const StyledFeedbackAction = styled.div`
   z-index: 20;
 `;
 
-const MakeModel = ({ model, price, primary, secondary }) => {
-  return (
-    <StyledListHeader>
-      <Text type='h3' colour={COLOURS.primary}>
-        {model}
-      </Text>
-      <Badge colour={primary ? COLOURS.lighterGray : COLOURS.primary}>
-        <Text colour={primary ? COLOURS.primary : COLOURS.white}>{price}</Text>
-      </Badge>
-    </StyledListHeader>
-  );
-};
+const StyledShareButton = styled.span`
+  margin-left: ${SIZES.spacerUltraSm}rem;
+`;
+
+const StyledShareLinkContainer = styled.span`
+  display: flex;
+  padding: ${SIZES.spacerXSm}rem;
+  > a:not(:last-of-type) {
+    margin-right: ${SIZES.spacerXSm}rem;
+  }
+`;
 
 const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
-  const [feedbackVisibility, setFeedbackVisibility] = useState(false);
+  const initialPopoversVisibility = false;
+  const [feedbackVisibility, setFeedbackVisibility] = useState(initialPopoversVisibility);
+  const [shareVisibility, setShareVisibility] = useState(initialPopoversVisibility);
 
   const [showDraggableDrawer, setShowDraggableDrawer] = useState(false);
   const imgSrc = buildImgSrc(data['imgURL']);
@@ -128,6 +133,10 @@ const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
 
   const [scrollToInDrawer, setScrollToInDrawer] = useState('');
 
+  console.log('data', data);
+
+  const shareLink = `${GUIDE_ROOT}${data.MakeModel}${GUIDE_DOMAIN}`;
+
   return (
     <StyledListItemContainer key={resultsId}>
       <StyledFeedbackAction>
@@ -145,7 +154,7 @@ const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
           <FeedbackDelete />
         </Action>
       </StyledFeedbackAction>
-      <StyledListItem>
+      <StyledListItem popoverActive={feedbackVisibility || shareVisibility}>
         <StyledMatch>{`${matchRate}% match`}</StyledMatch>
         <Action
           handleClick={(e) => {
@@ -159,15 +168,34 @@ const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
           </StyledImageContainer>
         </Action>
         <div className='list-item-body'>
-          <Action
-            handleClick={(e) => {
-              e.preventDefault();
-              setScrollToInDrawer('price');
-              toggleDraggableDrawer();
-            }}
-            wrapper={true}>
-            <MakeModel primary model={`${data['Make']} ${data['Model']}`} price={`£${data['OTR Price']}`} />
-          </Action>
+          <StyledListHeader>
+            <span style={{ display: 'flex' }}>
+              <Text type='h3' colour={COLOURS.primary}>
+                {`${data['Make']} ${data['Model']}`}
+              </Text>
+              <StyledShareButton>
+                <Action
+                  handleClick={(e) => {
+                    e.preventDefault();
+                    setShareVisibility(true);
+                  }}
+                  wrapper={true}>
+                  <Share colour='primary' />
+                </Action>
+              </StyledShareButton>
+            </span>
+            <Action
+              handleClick={(e) => {
+                e.preventDefault();
+                setScrollToInDrawer('price');
+                toggleDraggableDrawer();
+              }}
+              wrapper={true}>
+              <Badge colour={COLOURS.lighterGray}>
+                <Text colour={COLOURS.primary}>{`£${data['OTR Price']}`}</Text>
+              </Badge>
+            </Action>
+          </StyledListHeader>
           <StyledListStatistics>
             <Action
               handleClick={(e) => {
@@ -223,6 +251,29 @@ const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
           feedbackItems={feedbackItems}
           setFeedbackItems={setFeedbackItems}
         />
+      )}
+      {shareVisibility && (
+        <Popover visibility={shareVisibility} setVisibility={setShareVisibility}>
+          <Text colour={COLOURS.primary} type='bodySemiBold'>
+            Share this car
+          </Text>
+          <StyledShareLinkContainer>
+            <ShareLink
+              twitter
+              // urlRoot='https://neev.uk/guides/'
+              // urlPage={data.MakeModel}
+              url={shareLink}
+              message='Check out this electric car I found on Neev'
+            />
+            <ShareLink
+              facebook
+              // urlRoot='https://neev.uk/guides/'
+              // urlPage={data.MakeModel}
+              url={shareLink}
+              message='Check out this electric car I found on Neev'
+            />
+          </StyledShareLinkContainer>
+        </Popover>
       )}
 
       <ListItemModal

@@ -9,6 +9,19 @@ import Image from '../image/Image';
 import { Badge } from '../list-item/ListItem';
 import './carousel-slides.css';
 
+// .card {
+//   transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
+//   transform-origin: top left;
+// }
+
+// .card.card-lift:hover {
+//   transform: translateZ(75px);
+//   filter: drop-shadow(-5px 31px 21px #000000);
+//   cursor: pointer;
+// }
+
+const transateZ = `50px`;
+
 const CarouselSlideStyled = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,23 +29,24 @@ const CarouselSlideStyled = styled.div`
   align-items: center;
   border: 2px solid ${COLOURS.gray};
   border-radius: 1rem;
-  // min-height: 300px;
   height: 100%;
   margin: ${SIZES.carouselSm}rem;
+  background-color: ${COLOURS.white};
   ${DROP_SHADOWS.secondary}
-  transition: transform .2s ease-in;
-  &.mobile-active-slide{
-    border: 2px solid ${COLOURS.secondary} !important;
-  }
-  &.desktop-active-slide {
+  transition: transform .5s ease-in-out, filter 0.5s ease-in-out, border 0.5s ease-in-out;
+  transform-origin: center center;
+  &.active-slide {
+    transition: transform .5s ease-in-out, filter 0.5s ease-in-out, border 0.5s ease-in-out;
     border: 2px solid ${COLOURS.secondary};
-    transform: scale(1.12);
+    transform: translateZ(${transateZ});
+    ${DROP_SHADOWS.secondaryActive};
     &:hover {
-      transform: scale(1.12);
+      transform: translateZ(85px);
     }
   }
   &:hover {
-    transform: scale(1.02);
+    transform: translateZ(${transateZ});
+    filter: ${DROP_SHADOWS.secondaryActive};
     cursor: pointer;
   }
   > .slide-icons {
@@ -63,13 +77,8 @@ const CarouselCards = ({ slide, index, isDesktop }) => {
     <CarouselSlideStyled
       isDesktop={isDesktop}
       key={`${slide.slideId}-${index}`}
-      className={
-        isDesktop && index === formValuesContext.currentSlide
-          ? `desktop-active-slide`
-          : !isDesktop && index === formValuesContext.currentSlide
-          ? `mobile-active-slide`
-          : ``
-      }
+      className={index === formValuesContext.currentSlide && `active-slide`}
+      // activeSlide={index === formValuesContext.currentSlide}
       onClick={isDesktop ? () => formValuesContext.updateCurrentSlide(index) : () => {}}>
       <Image src={slide.img} alt='slide image' />
       <Badge colour={COLOURS.lighterGray} style={{ margin: `${SIZES.spacerXXSm}rem ${SIZES.spacerUltraSm}rem 0 0` }}>

@@ -18,6 +18,8 @@ import Image from './image/Image';
 import ProgressBar from './progress-bar/ProgressBar';
 import Loader from './loader/Loader';
 import ToolTip from './tooltip/ToolTip';
+import Popover from './popover/Popover';
+import ShareLink from './share-link/ShareLink';
 
 export {
   Action,
@@ -35,9 +37,11 @@ export {
   CardMulti,
   ListItem,
   Image,
+  Popover,
   ProgressBar,
   MultiChoice,
   Text,
   Loader,
+  ShareLink,
   ToolTip,
 };
