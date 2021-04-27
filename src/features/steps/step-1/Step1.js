@@ -11,8 +11,7 @@ import fivePassengers from '../../../assets/images/svgs/5-passengers.svg';
 import standardLuggage from '../../../assets/images/svgs/standard-luggage.svg';
 import smallLuggage from '../../../assets/images/svgs/small-luggage.svg';
 import largeLuggage from '../../../assets/images/svgs/large-luggage.svg';
-
-// ReactGA.pageview(window.location.pathname);
+import ScrollLock from '../../../hocs/ScrollLock';
 
 ReactGA.pageview('/question-1');
 
@@ -66,7 +65,7 @@ const Step1 = ({ decrementFormStep, incrementFormStep, setCurrentSlide, skip, st
 
   const formValuesContext = useContext(FormValuesContext);
   return (
-    <>
+    <ScrollLock>
       <CardHeader
         headerText='What size car do you need?'
         fullWidth
@@ -83,7 +82,7 @@ const Step1 = ({ decrementFormStep, incrementFormStep, setCurrentSlide, skip, st
         skip={skip}
         step={step}
       />
-    </>
+    </ScrollLock>
   );
 };
 

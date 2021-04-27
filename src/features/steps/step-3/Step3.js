@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import movingCar from '../../../assets/images/svgs/moving-car.svg';
 import { CardImage, CardHeader, CardMain, CardRange, CardSwitch, CardFooter, ToolTip } from '../../../components';
+import ScrollLock from '../../../hocs/ScrollLock';
 
 const Step3 = ({
   decrementFormStep,
@@ -41,7 +42,7 @@ const Step3 = ({
   const switchItems = ['daily', 'yearly'];
 
   return (
-    <>
+    <ScrollLock>
       <CardHeader headerText='Roughly how many miles do you drive?' />
       <CardImage src={movingCar} alt={null} imgMaxWidth={{ maxWidth: '375px' }}></CardImage>
       <CardMain>
@@ -54,7 +55,7 @@ const Step3 = ({
         skip={() => skip('milesDailyId', 'milesYearlyId')}
         step={step}
       />
-    </>
+    </ScrollLock>
   );
 };
 

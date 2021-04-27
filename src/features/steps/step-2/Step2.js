@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import piggyBank from '../../../assets/images/svgs/piggy-bank.svg';
 import { CardImage, CardHeader, CardMain, CardRange, CardSwitch, CardFooter, ToolTip, Text } from '../../../components';
 import { CURRENCY_SYMBOL, BREAKPOINTS, COLOURS, SIZES } from '../../../constants';
+import ScrollLock from '../../../hocs/ScrollLock';
 
 const ToolTipDesktopContainer = styled.div`
   display: none;
@@ -109,7 +110,7 @@ const Step2 = ({
     );
 
   return (
-    <>
+    <ScrollLock>
       <CardHeader headerText='Whats your budget?' />
       <CardImage src={piggyBank} alt='Pig' imgMaxWidth={{ maxWidth: '215px' }}>
         <ToolTipDesktopContainer>
@@ -136,7 +137,7 @@ const Step2 = ({
         skip={() => skip('budgetMonthlyId', 'budgetFullId')}
         step={step}
       />
-    </>
+    </ScrollLock>
   );
 };
 
