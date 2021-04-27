@@ -11,8 +11,8 @@ const StyledFeedbackBg = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 102%;
+  height: 102%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +23,7 @@ const StyledFeedbackBg = styled.div`
 const StyledFeedbackPopover = styled.div`
   width: calc(100% - 3rem);
   min-height: 50%;
-  margin-left: 0.75rem;
+  margin-left: calc(0.75rem - 2%);
   display: flex;
   // justify-content: center;
   align-items: center;
@@ -86,7 +86,8 @@ const StyledFeedbackFooter = styled.div`
 
 const FeedbackPopover = ({ visibility = false, setVisibility, carId, resultsId, feedbackItems, setFeedbackItems }) => {
   // https://neev.uk/api/sel?selectedCarId=033b03da-8523-44f6-b970-90f2ddadd012&resultID=-MWFX7EP2ste5KiLbTr0&price=true
-  // https://neev.uk/api/sel?selectedCarId=033b03da-8523-44f6-b970-90f2ddadd012&resultID=-MWFX7EP2ste5KiLbTr0&price=true&charge=false&range=false&speed=false&colour=false&size=false&make=false&other=false
+  // https://neev.uk/api/sel?selectedCarId=033b03da-8523-44f6-b970-90f2ddadd012&resultID=-MWFX7EP2ste5KiLbTr0&price=true&charge=false&range=false&speed=false&colour=false&size=false&make=false&other=false;
+
   const getFeedback = (feedbackName, feedbackValue) => {
     setFeedbackItems({
       ...feedbackItems,

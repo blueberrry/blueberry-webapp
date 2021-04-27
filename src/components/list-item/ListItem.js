@@ -12,6 +12,7 @@ import { BREAKPOINTS, COLOURS, SIZES, GUIDE_ROOT, GUIDE_DOMAIN } from '../../con
 import { buildImgSrc } from '../../utils';
 import FeedbackPopover from '../feedback-popover/FeedbackPopover';
 import Popover from '../popover/Popover';
+import SharePopoverContent from '../share-popover-content/SharePopoverContent';
 import ListItemModal from './ListItemModal';
 import { FeedbackDelete, Share } from '../../components/IconLibrary';
 
@@ -103,14 +104,6 @@ const StyledShareButton = styled.span`
   margin-left: ${SIZES.spacerUltraSm}rem;
 `;
 
-const StyledShareLinkContainer = styled.span`
-  display: flex;
-  padding: ${SIZES.spacerXSm}rem;
-  > a:not(:last-of-type) {
-    margin-right: ${SIZES.spacerXSm}rem;
-  }
-`;
-
 const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
   const initialPopoversVisibility = false;
   const [feedbackVisibility, setFeedbackVisibility] = useState(initialPopoversVisibility);
@@ -132,8 +125,6 @@ const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
   });
 
   const [scrollToInDrawer, setScrollToInDrawer] = useState('');
-
-  console.log('data', data);
 
   const shareLink = `${GUIDE_ROOT}${data.MakeModel}${GUIDE_DOMAIN}`;
 
@@ -254,25 +245,7 @@ const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
       )}
       {shareVisibility && (
         <Popover visibility={shareVisibility} setVisibility={setShareVisibility}>
-          <Text colour={COLOURS.primary} type='bodySemiBold'>
-            Share this car
-          </Text>
-          <StyledShareLinkContainer>
-            <ShareLink
-              twitter
-              // urlRoot='https://neev.uk/guides/'
-              // urlPage={data.MakeModel}
-              url={shareLink}
-              message='Check out this electric car I found on Neev'
-            />
-            <ShareLink
-              facebook
-              // urlRoot='https://neev.uk/guides/'
-              // urlPage={data.MakeModel}
-              url={shareLink}
-              message='Check out this electric car I found on Neev'
-            />
-          </StyledShareLinkContainer>
+          <SharePopoverContent shareLink={shareLink} />
         </Popover>
       )}
 

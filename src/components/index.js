@@ -20,6 +20,7 @@ import Loader from './loader/Loader';
 import ToolTip from './tooltip/ToolTip';
 import Popover from './popover/Popover';
 import ShareLink from './share-link/ShareLink';
+import SharePopoverContent from './share-popover-content/SharePopoverContent';
 
 export {
   Action,
@@ -43,5 +44,6 @@ export {
   Text,
   Loader,
   ShareLink,
+  SharePopoverContent,
   ToolTip,
 };

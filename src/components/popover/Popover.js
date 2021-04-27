@@ -12,8 +12,8 @@ const StyledFeedbackBg = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 102%;
+  height: 102%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,9 +22,10 @@ const StyledFeedbackBg = styled.div`
 `;
 
 const StyledFeedbackPopover = styled.div`
+  position: relative;
   width: calc(100% - 3rem);
   min-height: 50%;
-  margin-left: 0.75rem;
+  margin-left: calc(0.75rem - 2%);
   display: flex;
   // justify-content: center;
   align-items: center;
