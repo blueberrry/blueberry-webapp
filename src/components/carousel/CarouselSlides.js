@@ -16,9 +16,7 @@ const CarouselSlides = ({ slides = [] }) => {
         index={index}
         key={`${slide.slideId}-${index}`}
         classNameHidden='inactive-slide'
-        classNameVisible='active-slide'
-        onFocus={(e) => console.log('focused')}
-        onBlur={(e) => console.log('blurred')}>
+        classNameVisible='active-slide'>
         <CarouselCards slide={slide} index={index} isDesktop={false} />
       </Slide>
     ));

@@ -30,12 +30,13 @@ const StyledListItem = styled.section`
   border-radius: ${SIZES.crdBrRd}rem;
   background-color: ${COLOURS.white};
   overflow: hidden;
-  margin: 0.75rem 0 0 0.75rem;
+  margin: 0.75rem 0.75rem 0 0.75rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   max-width: 400px;
   @media screen and ${BREAKPOINTS.tabletSm} {
+    margin: 0.75rem 0 0 0.75rem;
     height: inherit;
     max-width: unset;
   }

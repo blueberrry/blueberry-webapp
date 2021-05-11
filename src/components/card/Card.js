@@ -5,10 +5,12 @@ import { BREAKPOINTS, COLOURS, SIZES, RESETS } from '../../constants';
 import { Text } from '../text/Text';
 
 const StyledCard = styled.section`
-  height: ${(props) => (props.resultsPage ? 'auto' : '570px')};
+  height: ${(props) => (props.resultsPage ? 'auto' : 'auto')};
   border-radius: ${SIZES.crdBrRd}rem;
-  background-color: ${(props) => (!props.resultsPage ? COLOURS.white : COLOURS.primary)};
-  margin: ${SIZES.spacerXSm}rem;
+  //background-color: ${(props) => (!props.resultsPage ? COLOURS.white : COLOURS.primary)};
+  background-color: ${COLOURS.primary};
+
+  margin: ${SIZES.spacerXSm}rem 0;
   margin-top: 0;
   @media screen and ${BREAKPOINTS.mobileXl} {
     max-width: 80rem;

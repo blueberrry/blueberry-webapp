@@ -67,6 +67,7 @@ const Action = styled.button`
      &:hover {
       cursor: pointer !important;
     }`}
+    ${(props) => props.transparent && `background: none;`}
 `;
 
 const Button = ({
@@ -84,6 +85,7 @@ const Button = ({
   iconButton,
   wrapper,
   external,
+  transparent,
 }) => {
   let buttonStyles = {};
   if (primary) {
@@ -153,7 +155,12 @@ const Button = ({
 
   if (external) {
     return (
-      <ActionAnchor href={external} styles={buttonStyles} fullWidth={fullWidth} style={containerStyles}>
+      <ActionAnchor
+        href={external}
+        styles={buttonStyles}
+        fullWidth={fullWidth}
+        style={containerStyles}
+        transparent={transparent}>
         {children}
       </ActionAnchor>
     );
@@ -166,7 +173,8 @@ const Button = ({
       fullWidth={fullWidth}
       style={containerStyles}
       iconButton={iconButton}
-      wrapper={wrapper}>
+      wrapper={wrapper}
+      transparent={transparent}>
       {children}
     </Action>
   );

@@ -6,23 +6,25 @@ import { BREAKPOINTS, COLOURS, OFFSETS, SIZES, STEP_GRID } from '../../constants
 const CardHeaderStyled = styled.section`
   margin: 0;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding: 0 ${SIZES.spacerXSm}rem;
-  text-align: center;
+  // border: 1px solid red;
   ${STEP_GRID.fullWidth}
-  margin-top: 20px;
-  margin-bottom: 17px;
+  margin-bottom: 1.063rem;
   @media screen and ${BREAKPOINTS.tabletSm} {
+    margin-top: 1.25remx;
     margin: ${SIZES.spacerXSm}rem;
+    text-align: center;
+    display: flex;
+    // flex-direction: column;
+    justify-content: center;
+    // align-items: center;
   }
 `;
 
 const CardHeader = ({ headerText }) => {
   return (
-    <CardHeaderStyled>
-      <Text type='h2' className='card-header' colour={COLOURS.primary}>
+    <CardHeaderStyled className='card-header-1'>
+      <Text type='h2' className='card-header' colour={COLOURS.white}>
         {headerText}
       </Text>
     </CardHeaderStyled>

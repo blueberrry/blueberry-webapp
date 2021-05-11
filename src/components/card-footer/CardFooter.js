@@ -10,6 +10,10 @@ const CardFooterStyled = styled.section`
   justify-content: center;
   align-items: center;
   margin-bottom: ${SIZES.spacerXXSm}rem;
+  margin-top: 2.5rem;
+  @media screen and (min-height: 690px) {
+    margin-top: 3.5rem;
+  }
   @media screen and ${BREAKPOINTS.tabletSm} {
     grid-column: 1 / span 2;
     margin: ${SIZES.spacerSm}rem;
@@ -50,6 +54,7 @@ const CardFooter = ({ decrementFormStep, incrementFormStep, postData, skip, step
         {decrementFormStep && (
           <Action
             modest
+            transparent={true}
             handleClick={
               step !== 1
                 ? decrementFormStep
@@ -58,15 +63,16 @@ const CardFooter = ({ decrementFormStep, incrementFormStep, postData, skip, step
                     return window.history.back();
                   }
             }>
-            <Text type='bodySemiBold' colour={COLOURS.dark}>
-              &lt; Back
+            <Text type='bodySemiBold' colour={COLOURS.white}>
+              Back
             </Text>
           </Action>
         )}
         <br />
         <Action
-          tertiary={isFindCars ? true : false}
-          secondary={isFindCars ? false : true}
+          // tertiary={isFindCars ? true : false}
+          // secondary={isFindCars ? false : true}
+          tertiary
           handleClick={step !== 4 ? incrementFormStep : postData}>
           <Text type='bodySemiBold' colour={COLOURS.white}>
             {step !== 4 ? 'Next' : 'Find cars'}

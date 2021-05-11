@@ -6,14 +6,28 @@ import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 import { BREAKPOINTS, RANGE, SIZES, COLOURS, DROP_SHADOWS } from '../../constants';
 import { Text } from '../../components';
+
 const RangeContainer = styled.div`
-  width: 240px;
+  width: 280px;
+  width: 100%;
+  @media screen and (min-width: 400px) {
+    // width: 300px;
+    max-width: 80%;
+  }
   @media screen and ${BREAKPOINTS.tabletSm} {
-    width: 300px;
+    // width: 300px;
+    max-width: 80%;
   }
   > div.step-labels {
+    // width: 115%;
+    // margin-left: -1rem;
     width: 115%;
-    margin-left: -1rem;
+    transform: translateX(-20px);
+    // border: 1px solid red;
+    pointer-events: none;
+    @media screen and (min-width: 700px) {
+      transform: translateX(-32px);
+    }
   }
 
   > div.input-range {
@@ -36,7 +50,7 @@ const RangeContainer = styled.div`
       background: ${COLOURS.lightGray};
       > .input-range__track--active {
         height: 0.5rem;
-        background: ${COLOURS.primary};
+        background: ${COLOURS.secondary};
         border-radius: 1rem;
         @media screen and ${BREAKPOINTS.tabletSm} {
           height: 0.75rem;
@@ -44,10 +58,10 @@ const RangeContainer = styled.div`
       }
       > span.input-range__slider-container {
         ${DROP_SHADOWS.primary}
-        background: ${COLOURS.primary};
+        background: ${COLOURS.secondaryMask};
         > div.input-range__slider {
-          background: ${COLOURS.primary};
-          border: ${COLOURS.primary};
+          background: ${COLOURS.secondary};
+          border: ${COLOURS.secondary};
           width: 2rem;
           height: 2rem;
           margin-left: -0.95rem;

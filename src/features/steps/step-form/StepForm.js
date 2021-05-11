@@ -1,4 +1,3 @@
-
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ReactGA from 'react-ga';
@@ -7,7 +6,7 @@ import FormLogger from '../../../components/FormLogger';
 import Step1 from '../step-1/Step1';
 import Step2 from '../step-2/Step2';
 import Step3 from '../step-3/Step3';
-import Step4 from '../step-4/Step4';
+import Step4 from '../step-4_/Step4_';
 import Step5Results from '../step-5-results/Step5Results';
 import { BREAKPOINTS, COLOURS, SIZES } from '../../../constants';
 import { Card, Text, ProgressBar, Action } from '../../../components';
@@ -123,19 +122,21 @@ const StepForm = ({ setPage }) => {
   };
 
   const [currentSlide, setCurrentSlide] = useState(null);
+  const [currentChargeLocSlide, setCurrentChargeLocSlide] = useState(null);
 
   const tempSelectedCarTypes = ['large', 'standard', 'personal'];
   const [carResults, setCarResults] = useState(null);
   const [resultsId, setResultsId] = useState(null);
 
-  const postData = (e) => {
+  const postData = (e, locSlider) => {
+    debugger;
     e.preventDefault();
     nextStep();
     return postForm(
       currentSlide, //carTypes
       form.budgetMonthlyId || form.budgetFullId, // price
       form.milesDailyId || form.milesYearlyId, // range
-      form.chargingLocationId // chargetime -- home: 2, local: 5, trips: 10
+      locSlider + 1 // chargetime -- home: 2, local: 5, trips: 10
     ).then((response) => {
       setResultsId(response.resultID);
       setCarResults(response.results);
@@ -165,11 +166,11 @@ const StepForm = ({ setPage }) => {
       10: 100,
     },
     milesYearly: {
-      2: 2000,
-      4: 6000,
-      6: 10000,
-      8: 14000,
-      10: 18000,
+      2: '20k',
+      4: '60k',
+      6: '10k',
+      8: '14k',
+      10: '18k',
     },
   }; //constants
 
@@ -237,6 +238,7 @@ const StepForm = ({ setPage }) => {
             skip={skipStep}
             step={step}
             handleChange={handleChange}
+            setCurrentSlide={setCurrentChargeLocSlide}
             activeId={JSON.parse(form.chargingLocationId)}
           />
         );

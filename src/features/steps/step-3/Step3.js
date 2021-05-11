@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import movingCar from '../../../assets/images/svgs/moving-car.svg';
 import { CardImage, CardHeader, CardMain, CardRange, CardSwitch, CardFooter, ToolTip } from '../../../components';
 import ScrollLock from '../../../hocs/ScrollLock';
+import { ToolTipMobileContainer } from '../step-2/Step2';
 
 const Step3 = ({
   decrementFormStep,
@@ -41,14 +42,20 @@ const Step3 = ({
   };
   const switchItems = ['daily', 'yearly'];
 
+  const toolTipMessage =
+    'We’ll use your mileage to work out what range your car will need. This won’t affect your pricing.';
+
   return (
     <ScrollLock>
-      <CardHeader headerText='Roughly how many miles do you drive?' />
-      <CardImage src={movingCar} alt={null} imgMaxWidth={{ maxWidth: '375px' }}></CardImage>
+      <CardHeader headerText='How many miles do you drive?' />
+      {/* <CardImage src={movingCar} alt={null} imgMaxWidth={{ maxWidth: '375px' }}></CardImage> */}
       <CardMain>
         <CardSwitch switchItems={switchItems} checkedItem={milesType} handleSwitchChange={handleChange('milesType')} />
         <MilesRange />
       </CardMain>
+      <ToolTipMobileContainer className='tooltip-mobile'>
+        <ToolTip message={toolTipMessage} />
+      </ToolTipMobileContainer>
       <CardFooter
         decrementFormStep={decrementFormStep}
         incrementFormStep={incrementFormStep}

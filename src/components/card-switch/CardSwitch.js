@@ -8,7 +8,7 @@ const CardSwitchStyled = styled.section`
   //   margin-bottom: ${SIZES.spacerMd}rem;
   // }
   // margin-bottom: ${SIZES.spacerMd}rem;
-  margin-bottom: 29px;
+  // margin-bottom: 29px;
 `;
 
 const CardSwitch = ({ switchItems, checkedItem, handleSwitchChange }) => {

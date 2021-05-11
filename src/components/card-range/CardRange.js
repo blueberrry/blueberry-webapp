@@ -7,6 +7,9 @@ import { BREAKPOINTS, COLOURS, SIZES } from '../../constants';
 
 const CardRangeStyled = styled.section`
   margin-top: 29px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   > h3 {
     margin-top: ${SIZES.spacerMd}rem;
   }

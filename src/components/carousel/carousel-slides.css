@@ -2,7 +2,13 @@ li.carousel__slide {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 280px;
+  min-height: 270px;
+}
+
+@media screen and (min-height: 600px) {
+  li.carousel__slide {
+    min-height: 350px !important;
+  }
 }
 
 li.carousel__slide.active-slide {

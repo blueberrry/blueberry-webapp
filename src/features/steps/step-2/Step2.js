@@ -15,18 +15,20 @@ const ToolTipDesktopContainer = styled.div`
   }
 `;
 
-const ToolTipMobileContainer = styled.div`
+export const ToolTipMobileContainer = styled.div`
   display: flex;
   justify-content: center;
-  @media screen and ${BREAKPOINTS.tabletSm} {
-    display: none;
-  }
+  grid-column: 1 / span 2;
+  // @media screen and ${BREAKPOINTS.tabletSm} {
+  //   display: none;
+  // }
 `;
 
 const MessageStyled = styled.div`
   max-width: 380px;
   display: flex;
   text-align: center;
+  margin-top: 1rem;
 `;
 
 const RESET_ANCHOR = css`
@@ -112,11 +114,11 @@ const Step2 = ({
   return (
     <ScrollLock>
       <CardHeader headerText='Whats your budget?' />
-      <CardImage src={piggyBank} alt='Pig' imgMaxWidth={{ maxWidth: '215px' }}>
+      {/* <CardImage src={piggyBank} alt='Pig' imgMaxWidth={{ maxWidth: '215px' }}>
         <ToolTipDesktopContainer>
           <ToolTip message={toolTipMessage} />
         </ToolTipDesktopContainer>
-      </CardImage>
+      </CardImage> */}
       <CardMain>
         <CardSwitch
           switchItems={switchItems}

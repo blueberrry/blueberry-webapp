@@ -1,4 +1,13 @@
 import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import { BREAKPOINTS } from '../constants';
+
+const StyledScrollLock = styled.div`
+  all: inherit;
+  @media screen and ${BREAKPOINTS.tabletSm} {
+    width: 200%;
+  }
+`;
 
 let firstClientX, clientX;
 
@@ -41,11 +50,7 @@ const ScrollLock = ({ children }) => {
     };
   });
 
-  return (
-    <div ref={containerRef} style={{ all: 'inherit' }}>
-      {children}
-    </div>
-  );
+  return <StyledScrollLock ref={containerRef}>{children}</StyledScrollLock>;
 };
 
 export default ScrollLock;

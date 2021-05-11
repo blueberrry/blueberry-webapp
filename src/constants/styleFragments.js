@@ -17,3 +17,5 @@ export const DROP_SHADOWS = {
   -webkit-filter: drop-shadow(0px 8px 4px rgba(0, 0, 0, 0.35));
   -moz-filter: drop-shadow(0px 9px 4px rgba(0, 0, 0, 0.35));`,
 };
+
+export const CARD_MAX_WIDTH = '45rem';

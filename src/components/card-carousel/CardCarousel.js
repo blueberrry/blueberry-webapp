@@ -11,20 +11,22 @@ const desktopStyles = css`
   max-width: 100%;
   justify-content: center;
   > div {
-    height: 250px;
+    height: 300px;
     min-width: 225px;
+    max-width: 260px;
     margin-right: 2rem;
   }
 `;
 
 const CardCarouselStyled = styled.div`
-  perspective: 1000px;
+  perspective: 750px;
   width: 100%;
   ${STEP_GRID.fullWidth}
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -37px;
+  // margin-top: -37px;
+  // margin-bottom: 3.5rem;
   @media screen and ${BREAKPOINTS.tabletSm} {
     margin-top: unset;
   }

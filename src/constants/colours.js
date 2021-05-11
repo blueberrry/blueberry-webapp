@@ -11,6 +11,7 @@ const colourTheme = {
   guardsmanRed: '#C50000',
   bluewoodMask: 'rgba(44, 61, 85, 0.75)',
   congressBlueMask: 'rgba(3,60,140,0.13)',
+  otherMask: 'rgba(255, 255, 255, 0.1)',
 };
 
 export const COLOURS = {
@@ -28,4 +29,5 @@ export const COLOURS = {
   danger: colourTheme.guardsmanRed,
   primaryMask: colourTheme.bluewoodMask,
   secondaryMask: colourTheme.congressBlueMask,
+  otherMask: colourTheme.otherMask,
 };

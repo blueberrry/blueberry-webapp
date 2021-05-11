@@ -10,6 +10,9 @@ const StyledH1 = styled.h1`
 `;
 
 const StyledH2 = styled.h2`
+  span.h2 {
+    font-size: ${SIZES.h2Lg}rem;
+  }
   @media screen and ${BREAKPOINTS.tabletSm} {
     span.h2 {
       font-size: ${SIZES.h2Lg}rem;
@@ -79,6 +82,9 @@ const StyledText = styled.span`
     font-size: ${SIZES.bodyLg}rem;
     font-weight: 600;
     transform: translateY(${SIZES.spacerUltraSm}rem);
+  }
+  &.font-large {
+    font-size: 1.875rem;
   }
 `;
 

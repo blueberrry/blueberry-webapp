@@ -42,7 +42,7 @@ export const SIZES = {
   btnBrRdSm: 1,
 
   // card
-  crdBrRd: 1.875,
+  crdBrRd: 1.25,
 
   // Font Sizes
   h1: 1, // 16
