@@ -67,8 +67,9 @@ const SharePopoverContent = ({ shareLink }) => {
         Share this car
       </Text>
       <StyledShareLinkContainer>
-        <ShareLink twitter url={shareLink} message='Check out this electric car I found on Neev' />
+        <ShareLink whatsapp url={shareLink} message='Check out this electric car I found on Neev' />
         <ShareLink facebook url={shareLink} message='Check out this electric car I found on Neev' />
+        <ShareLink twitter url={shareLink} message='Check out this electric car I found on Neev' />
       </StyledShareLinkContainer>
       <StyledCopyLink onClick={() => handleCopyLink(shareLink)}>
         <Text className='small'>

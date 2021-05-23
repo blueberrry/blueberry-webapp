@@ -17,3 +17,5 @@ export const convertCamelCase = (text) => {
   var finalResult = result.charAt(0).toUpperCase() + result.slice(1);
   return finalResult;
 };
+
+

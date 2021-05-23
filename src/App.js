@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactGA from 'react-ga';
 import { Reset } from 'styled-reset';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 import GlobalFonts from './assets/fonts/fonts';
 import GlobalStyles from './global-styles/GlobalStyles';
 import { AppHeader, ArticleContainer } from './components';
@@ -25,6 +26,7 @@ function App() {
           <StepForm />
         </ArticleContainer>
       </FormValuesProvider>
+      <MessengerCustomerChat pageId='103214621805331' appId='<APP_ID>' htmlRef='https://connect.facebook.net/en_GB/sdk/xfbml.customerchat.js' />
     </>
   );
 }

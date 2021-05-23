@@ -1,11 +1,12 @@
 import React from 'react';
 import FacebookShareLink from 'react-facebook-share-link';
 import TwitterShareLink from 'react-twitter-share-link';
-import { Twitter, Facebook } from '../IconLibrary';
+import { Twitter, Facebook, Whatsapp } from '../IconLibrary';
 
 const ShareLink = ({
   twitter = false,
   facebook = false,
+  whatsapp = false,
   message = 'Check out this electric car I found on Neev',
   url,
 }) => {
@@ -30,6 +31,15 @@ const ShareLink = ({
           </a>
         )}
       </FacebookShareLink>
+    );
+  }
+
+  if (whatsapp) {
+    let whatsappLink = `https://api.whatsapp.com/send?text=${message}%20${url}`;
+    return (
+      <a href={whatsappLink} target='_blank' rel='noreferrer'>
+        <Whatsapp />
+      </a>
     );
   }
   return null;
