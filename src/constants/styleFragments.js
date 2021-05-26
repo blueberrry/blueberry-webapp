@@ -19,3 +19,12 @@ export const DROP_SHADOWS = {
 };
 
 export const CARD_MAX_WIDTH = '45rem';
+
+export const VISUALLY_HIDDEN = `
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+`;

@@ -65,7 +65,7 @@ const Step1 = ({ decrementFormStep, incrementFormStep, setCurrentSlide, skip, st
         { icon: fivePassengers, className: 'five-passengers' },
         { icon: smallLuggage, className: 'small-luggage' },
       ],
-      title: 'Personal',
+      title: 'City',
       info: '3 - 5 passengers',
     },
   ];

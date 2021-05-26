@@ -21,6 +21,7 @@ import ToolTip from './tooltip/ToolTip';
 import Popover from './popover/Popover';
 import ShareLink from './share-link/ShareLink';
 import SharePopoverContent from './share-popover-content/SharePopoverContent';
+import SkeletonLoader from './skeleton-loader/SkeletonLoader';
 
 export {
   Action,
@@ -46,4 +47,5 @@ export {
   ShareLink,
   SharePopoverContent,
   ToolTip,
+  SkeletonLoader,
 };

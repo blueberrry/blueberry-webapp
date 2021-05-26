@@ -70,8 +70,8 @@ const StyledListStatistics = styled.div`
 `;
 
 const StyledImageContainer = styled.div`
-  height: 190px;
-  > img {
+  height: 11.875rem;
+  > div.img > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
