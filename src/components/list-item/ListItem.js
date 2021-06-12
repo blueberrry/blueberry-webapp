@@ -105,7 +105,7 @@ const StyledShareButton = styled.span`
   margin-left: ${SIZES.spacerUltraSm}rem;
 `;
 
-const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
+const ListItem = ({ matchRate, data, resultsId, budgetType, isDesktop, children }) => {
   const initialPopoversVisibility = false;
   const [feedbackVisibility, setFeedbackVisibility] = useState(initialPopoversVisibility);
   const [shareVisibility, setShareVisibility] = useState(initialPopoversVisibility);
@@ -147,7 +147,9 @@ const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
         </Action>
       </StyledFeedbackAction>
       <StyledListItem popoverActive={feedbackVisibility || shareVisibility}>
-        <StyledMatch>{`${matchRate}% match`}</StyledMatch>
+        <StyledMatch>
+          <Text colour={COLOURS.primary} type='bodySemiBold'>{`${matchRate}% match`}</Text>
+        </StyledMatch>
         <Action
           handleClick={(e) => {
             e.preventDefault();
@@ -184,7 +186,9 @@ const ListItem = ({ matchRate, data, resultsId, isDesktop, children }) => {
               }}
               wrapper={true}>
               <Badge colour={COLOURS.lighterGray}>
-                <Text colour={COLOURS.primary}>{`£${data['OTR Price']}`}</Text>
+                <Text colour={COLOURS.primary} type='bodySemiBold'>
+                  {budgetType === 'inFull' ? `£${data['OTR Price']}` : `£${data['MonthlyPrice']}pm`}
+                </Text>
               </Badge>
             </Action>
           </StyledListHeader>

@@ -102,15 +102,22 @@ const Range = ({ steps, value, handleRangeChange, labelSymbol }) => {
     8: 800,
     10: 3000,
   },*/
-  const Labels = () =>
-    Object.keys(steps).map((step) => (
-      <Text
-        key={step}
-        colour={COLOURS.primary}
-        className={
-          rangeValue === JSON.parse(step) ? 'step-label--active' : 'step-label--inactive'
-        }>{`${labelSymbol}${steps[step]}`}</Text>
-    ));
+  const Labels = () => {
+    console.log('rangeValue', rangeValue);
+    console.log('steps', steps);
+    return Object.keys(steps).map((step) => {
+      console.log('JSON.parse(step)', JSON.parse(step));
+      return (
+        <Text
+          key={step}
+          colour={COLOURS.primary}
+          className={
+            rangeValue === JSON.parse(step) ? 'step-label--active' : 'step-label--inactive'
+          }>{`${labelSymbol}${steps[step].name}`}</Text>
+      );
+    });
+  };
+
   return (
     <>
       <RangeContainer className='range-container'>

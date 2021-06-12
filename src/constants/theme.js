@@ -39,7 +39,7 @@ export const SIZES = {
   btnPdYLg: 1,
   btnPdXLg: 5,
   btnBrRd: 2.5,
-  btnBrRdSm: 1,
+  btnBrRdSm: 1.25,
 
   // card
   crdBrRd: 1.25,

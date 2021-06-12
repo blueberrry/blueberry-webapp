@@ -7,12 +7,11 @@ import { VISUALLY_HIDDEN } from '../../constants/';
 
 // todo - figure out why this isn't working as expected (doesn't seem to be visually hiding anything whilst the image is loading,
 //      - it does seem to be working with stuff like border: 1px solid red
+const StyledImg = styled.img`
+  ${(props) => props.isHidden && VISUALLY_HIDDEN}
+`;
 
 const Image2 = ({ src, alt, maxWidth }) => {
-  const StyledImg = styled.img`
-    ${(props) => props.isHidden && VISUALLY_HIDDEN}
-  `;
-
   const [ref, imgLoaded, onImgLoad] = useImgLoaded();
 
   return (

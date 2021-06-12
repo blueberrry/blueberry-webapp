@@ -67,7 +67,7 @@ const Step2 = ({
     if (budgetType === 'monthly')
       return (
         <CardRange
-          rangeTitle={`Up to £${budgetMonthly} per month`}
+          rangeTitle={`Up to £${budgetMonthly.name} per month`}
           steps={budgetMonthlySteps}
           handleRangeChange={handleChange('budgetMonthlyId')}
           rangeValue={budgetMonthlyId}
@@ -77,7 +77,7 @@ const Step2 = ({
     if (budgetType === 'inFull')
       return (
         <CardRange
-          rangeTitle={`Up to £${budgetFull}`}
+          rangeTitle={`Up to £${budgetFull.name}`}
           steps={budgetFullSteps}
           handleRangeChange={handleChange('budgetFullId')}
           rangeValue={budgetFullId}
@@ -87,6 +87,8 @@ const Step2 = ({
   };
 
   const switchItems = ['monthly', 'inFull'];
+
+  console.log('budgetFull2', budgetFull);
 
   const toolTipMessage =
     'When choosing your budget, keep in mind that running costs such as road tax, fuel and service charges for electric cars are significantly lower on average compared with petrol or diesel cars.';

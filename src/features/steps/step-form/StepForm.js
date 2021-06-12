@@ -7,7 +7,7 @@ import Step1 from '../step-1/Step1';
 import Step2 from '../step-2/Step2';
 import Step3 from '../step-3/Step3';
 import Step4 from '../step-4_/Step4_';
-import Step5Results from '../step-5-results/Step5Results';
+import Step5Results from '../step-5-results/Step5Results2';
 import { BREAKPOINTS, COLOURS, SIZES } from '../../../constants';
 import { Card, Text, ProgressBar, Action } from '../../../components';
 import { getJSON } from '../../../services/utils';
@@ -129,7 +129,6 @@ const StepForm = ({ setPage }) => {
   const [resultsId, setResultsId] = useState(null);
 
   const postData = (e, locSlider) => {
-    debugger;
     e.preventDefault();
     nextStep();
     return postForm(
@@ -138,47 +137,55 @@ const StepForm = ({ setPage }) => {
       form.milesDailyId || form.milesYearlyId, // range
       locSlider + 1 // chargetime -- home: 2, local: 5, trips: 10
     ).then((response) => {
+      debugger;
       setResultsId(response.resultID);
       setCarResults(response.results);
     });
   };
 
   const RANGE_VALUES = {
+    // budgetMonthly: {
+    //   2: '250',
+    //   4: '450',
+    //   6: '650',
+    //   8: '850',
+    //   10: '1000+',
+    // },
     budgetMonthly: {
-      2: '250',
-      4: '450',
-      6: '650',
-      8: '850',
-      10: '1000+',
+      2: { name: '250', figure: 250 },
+      4: { name: '450', figure: 450 },
+      6: { name: '650', figure: 650 },
+      8: { name: '850', figure: 850 },
+      10: { name: '1000+', figure: 1000 },
     },
     budgetFull: {
-      2: '25k',
-      4: '45k',
-      6: '65k',
-      8: '85k',
-      10: '100k+',
+      2: { name: '25k', figure: 20000 },
+      4: { name: '45k', figure: 45000 },
+      6: { name: '65k', figure: 65000 },
+      8: { name: '85k', figure: 85000 },
+      10: { name: '100k+', figure: 100000 },
     },
     milesDaily: {
-      2: 10,
-      4: 30,
-      6: 50,
-      8: 70,
-      10: 100,
+      2: { name: '10', figure: 10 },
+      4: { name: '30', figure: 30 },
+      6: { name: '50', figure: 50 },
+      8: { name: '70', figure: 70 },
+      10: { name: '100', figure: 100 },
     },
     milesYearly: {
-      2: '1k',
-      4: '5k',
-      6: '10k',
-      8: '30k',
-      10: '50k+',
+      2: { name: '1k', figure: 1000 },
+      4: { name: '5k', figure: 5000 },
+      6: { name: '10k', figure: 10000 },
+      8: { name: '30k', figure: 30000 },
+      10: { name: '50k+', figure: 50000 },
     },
   }; //constants
 
-  const CHARGING_LOCATION = {
-    1: 'Home',
-    2: 'Local public charging point',
-    3: 'Charging points during trips',
-  };
+  // const CHARGING_LOCATION = {
+  //   1: 'Home',
+  //   2: 'Local public charging point',
+  //   3: 'Charging points during trips',
+  // };
 
   const lastStep = 5;
   const isLastStep = form.step === lastStep;
@@ -207,9 +214,10 @@ const StepForm = ({ setPage }) => {
             budgetMonthlySteps={RANGE_VALUES.budgetMonthly}
             budgetMonthlyId={form.budgetMonthlyId}
             budgetMonthly={RANGE_VALUES.budgetMonthly[form.budgetMonthlyId]}
+            // budgetFullSteps={Object.keys(RANGE_VALUES.budgetFull).map((key) => RANGE_VALUES.budgetFull[key])}
             budgetFullSteps={RANGE_VALUES.budgetFull}
             budgetFullId={form.budgetFullId}
-            budgetFull={RANGE_VALUES.budgetFull[form.budgetFullId]}
+            budgetFull={RANGE_VALUES.budgetFull[form.budgetFullId].name}
           />
         );
       case 3:
@@ -243,7 +251,16 @@ const StepForm = ({ setPage }) => {
           />
         );
       case lastStep:
-        return <Step5Results carTypes={carTypes} carResults={carResults} resultsId={resultsId} />;
+        return (
+          <Step5Results
+            carTypes={carTypes}
+            carResults={carResults}
+            resultsId={resultsId}
+            budgetType={form.budgetType}
+            budgetMonthly={RANGE_VALUES.budgetMonthly[form.budgetMonthlyId]}
+            budgetFull={RANGE_VALUES.budgetFull[form.budgetFullId]}
+          />
+        );
       default:
         return <p>Something went wrong</p>;
     }
@@ -279,10 +296,10 @@ const StepForm = ({ setPage }) => {
                 Order by matches
               </Text>
             </Action> */}
-            <Text type='body' colour={COLOURS.white} className='small'>
+            {/* <Text type='body' colour={COLOURS.white} className='small'>
               <span style={{ textDecoration: 'line-through', opacity: '0.25' }}>order by matches </span>
               <span style={{ opacity: '0.25' }}>(coming soon)</span>
-            </Text>
+            </Text> */}
           </span>
         )}
       </StepFormHeaderStyled>

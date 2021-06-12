@@ -57,6 +57,9 @@ const StyledBody = styled.p`
   > span.small {
     font-size: ${SIZES.bodySm}rem;
   }
+  > span.medium {
+    font-size: 1.125rem;
+  }
   > span.main-action {
     font-size: ${SIZES.bodyLg}rem;
   }

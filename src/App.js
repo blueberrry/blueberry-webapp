@@ -26,11 +26,11 @@ function App() {
           <StepForm />
         </ArticleContainer>
       </FormValuesProvider>
-      <MessengerCustomerChat
+      {/* <MessengerCustomerChat
         pageId='103214621805331'
         appId='<APP_ID>'
         htmlRef='https://connect.facebook.net/en_GB/sdk/xfbml.customerchat.js'
-      />
+      /> */}
     </>
   );
 }
